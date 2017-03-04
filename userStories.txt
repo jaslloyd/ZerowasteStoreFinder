@@ -1,0 +1,25 @@
+As a user I want to be able to search for specific items
+
+As a user I want to be able to see all zero waste shops on a map
+
+As a user I want to be able to verify the place sells zero waste stuff
+
+As a admin I want to be able to add new stores
+
+As an admin I want to be able to edit stores
+
+As an admin I want to be able to delete stores
+
+Store entry should have: location(lon+lat) open hours, website, and what exactly they offer for zero waste
+
+
+DB schema
+Store Schema:
+  Store name
+  Store address
+  Store long+lat (for google maps)
+  Store inventory - what they offer for zero waste
+
+User searches for nuts:
+  Displayed a list of stores that you can buy zero waste nuts
+  Can also display the stores location on a map.
