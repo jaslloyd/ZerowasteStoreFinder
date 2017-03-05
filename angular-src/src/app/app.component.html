@@ -1,3 +1,7 @@
-<h1>
-  {{title}}
-</h1>
+<app-navbar></app-navbar>
+<div class="container">
+  <!-- Allows flash messages to be displayed on any page -->
+  <flash-messages></flash-messages>
+  <!-- Displays the pages at the route we request -->
+  <p> <router-outlet></router-outlet> </p>
+</div>
