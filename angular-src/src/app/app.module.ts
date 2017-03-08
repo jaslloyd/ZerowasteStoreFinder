@@ -14,6 +14,7 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 
 // Import our services for the application
 import {MapsService} from './services/maps.service';
+import {BackendService} from './services/backend.service';
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
@@ -36,7 +37,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FlashMessagesModule
   ],
-  providers: [MapsService],
+  providers: [MapsService, BackendService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

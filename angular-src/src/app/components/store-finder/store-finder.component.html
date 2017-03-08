@@ -1,3 +1,16 @@
-<p>
-  store-finder works!
-</p>
+<div class="form-group">
+  <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
+  <div class="col-sm-12">
+    <input type="text" name="storeFinderInput" [(ngModel)]="query" (keyup)="searchStores()" class="form-control text-center" placeholder="Type location or Food you're looking for" required>
+  </div>
+</div>
+  <!-- *ngIF -> *ngFor="let store in stores" -->
+  <!-- <div id="stores"  *ngIf="stores.length > 0"> -->
+    <div class="row" *ngFor="let store of stores">
+      <div class="col-sm-12">
+        <div class="well">
+          <p>{{store.title}}</p>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
