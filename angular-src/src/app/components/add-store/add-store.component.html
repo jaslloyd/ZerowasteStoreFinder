@@ -1,0 +1,24 @@
+<h2 class="page-header">Add new store</h2>
+<form (submit)="onAddStoreSubmit()">
+  <div class="form-group">
+    <label for="name">Find Store</label>
+    <input type="text" id="autocompleteInput" class="form-control">
+    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+      <sebm-google-map-marker
+        [latitude]="marker.lat"
+        [longitude]="marker.lng"
+        [label]="marker.label"
+        [markerDraggable]="marker.draggable">
+
+        <sebm-google-map-info-window>
+              <strong>Content here...</strong>
+        </sebm-google-map-info-window>
+      </sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
+  <div class="form-group">
+    <label for="Email">Zero waste products</label>
+    <input type="text" [(ngModel)]="products" name="products" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-default">Add Store</button>
+</form>

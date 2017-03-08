@@ -17,6 +17,7 @@ export class StoreFinderComponent implements OnInit {
   constructor(private mapsService: MapsService, private backEndService: BackendService) { }
 
   ngOnInit() {
+    
   }
 
   searchStores(){

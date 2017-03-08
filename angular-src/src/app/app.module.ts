@@ -6,7 +6,6 @@ import {RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
 import { StoreFinderComponent } from './components/store-finder/store-finder.component';
 import { ContactComponent } from './components/contact/contact.component';
 
@@ -15,27 +14,38 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
 // Import our services for the application
 import {MapsService} from './services/maps.service';
 import {BackendService} from './services/backend.service';
+import { AboutComponent } from './components/about/about.component';
+import { AddStoreComponent } from './components/add-store/add-store.component';
+
+import { AgmCoreModule } from 'angular2-google-maps/core';
+
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'storefinder', component: StoreFinderComponent},
+  {path: '', component: StoreFinderComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'addstore', component: AddStoreComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent,
     StoreFinderComponent,
-    ContactComponent
+    ContactComponent,
+    AboutComponent,
+    AddStoreComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule
+    FlashMessagesModule,
+    AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyAY6CukXgRddILNPPXpJ5j8CUepn2pX7p8',
+        libraries: ['places']
+    })
   ],
   providers: [MapsService, BackendService],
   bootstrap: [AppComponent]

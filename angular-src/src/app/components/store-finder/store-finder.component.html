@@ -4,13 +4,16 @@
     <input type="text" name="storeFinderInput" [(ngModel)]="query" (keyup)="searchStores()" class="form-control text-center" placeholder="Type location or Food you're looking for" required>
   </div>
 </div>
-  <!-- *ngIF -> *ngFor="let store in stores" -->
-  <!-- <div id="stores"  *ngIf="stores.length > 0"> -->
+  <!-- *ngIF && stores.length > 0 -->
+  <div id="stores"  *ngIf="query != ''">
     <div class="row" *ngFor="let store of stores">
       <div class="col-sm-12">
         <div class="well">
+          <h4>[Store title]</h4>
+          <p>[Items they sell, zero waste]</p>
+          <p>[Location]</p>
           <p>{{store.title}}</p>
         </div>
       </div>
     </div>
-  <!-- </div> -->
+  </div>
