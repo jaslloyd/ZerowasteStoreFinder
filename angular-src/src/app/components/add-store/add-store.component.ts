@@ -11,7 +11,9 @@ export class AddStoreComponent implements OnInit {
   lng: number;
   marker: marker;
   zoom: number = 8;
-  store: Object;
+  place: any;
+  store: store;
+  products: string;
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone) { }
@@ -48,12 +50,26 @@ export class AddStoreComponent implements OnInit {
 
             this.lat = place.geometry.location.lat();
             this.lng = place.geometry.location.lng();
-            this.store = place;
-            console.log(place);
-            console.log(this.store);
+            // Make this zoom better
+            this.zoom = 17;
+            this.place = place;
           });
       });
     });
+  }
+
+  onAddStoreSubmit(){
+    console.log(this.place);
+    // Need to do verification on if all these parameters are specified
+    this.store = {
+      name: this.place.name,
+      address: this.place.formatted_address,
+      openingHours: this.place.opening_hours.weekday_text,
+      products: this.products,
+      lat: this.lat,
+      lng: this.lng
+    };
+    console.log(this.store);
   }
 }
 
@@ -62,4 +78,13 @@ interface marker{
 	lng: number;
 	label?: string;
 	draggable: boolean;
+}
+
+interface store{
+  name: string;
+  address: string;
+  openingHours: string;
+  products: string;
+  lat: number;
+  lng: number;
 }
