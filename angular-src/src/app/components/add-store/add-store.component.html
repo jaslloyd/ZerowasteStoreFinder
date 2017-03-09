@@ -2,7 +2,7 @@
 <form (submit)="onAddStoreSubmit()">
   <div class="form-group">
     <label for="name">Find Store</label>
-    <input type="text" id="autocompleteInput" class="form-control">
+    <input type="text" id="storeLocationInput" class="form-control">
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
       <sebm-google-map-marker
         [latitude]="marker.lat"
@@ -11,7 +11,7 @@
         [markerDraggable]="marker.draggable">
 
         <sebm-google-map-info-window>
-              <strong>Content here...</strong>
+
         </sebm-google-map-info-window>
       </sebm-google-map-marker>
     </sebm-google-map>
