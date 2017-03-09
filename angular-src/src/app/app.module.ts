@@ -19,13 +19,15 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { MapsService } from './services/maps.service';
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
+import { StoreComponent } from './components/store/store.component';
 
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
   {path: '', component: StoreFinderComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'addstore', component: AddStoreComponent}
+  {path: 'addstore', component: AddStoreComponent},
+  {path: 'store/:id', component: StoreComponent}
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     ContactComponent,
     AboutComponent,
     AddStoreComponent,
+    StoreComponent,
   ],
   imports: [
     BrowserModule,
