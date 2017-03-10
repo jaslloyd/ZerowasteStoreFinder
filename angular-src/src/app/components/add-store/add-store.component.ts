@@ -63,7 +63,6 @@ export class AddStoreComponent implements OnInit {
             // Make this zoom better
             this.zoom = 17;
             this.place = place;
-            console.log(this.place);
           });
       });
     });
@@ -90,14 +89,14 @@ export class AddStoreComponent implements OnInit {
     }
 
     console.log(this.store);
-    // this.backendService.addStore(this.store).subscribe(data => {
-    //   if(data.success){
-    //     this.flashMessage.show('Store added', {cssClass:'alert-success', timeout: 3000});
-    //   }else{
-    //     this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
-    //   }
-    //   this.router.navigate(['/addstore']);
-    // });
+    this.backendService.addStore(this.store).subscribe(data => {
+      if(data.success){
+        this.flashMessage.show('Store added', {cssClass:'alert-success', timeout: 3000});
+      }else{
+        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
+      }
+      //this.router.navigate(['/addstore']);
+    });
   }
 }
 

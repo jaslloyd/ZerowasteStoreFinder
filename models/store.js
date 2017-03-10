@@ -24,7 +24,7 @@ module.exports.getStore = function(id, callback){
 module.exports.getStores = function(queryString, callback){
   // Need to find a way to search name, products and location column(when added)
   const query = {name: queryString};
-  Store.findOne(query, callback);
+  Store.findAll(query, callback);
 };
 
 module.exports.addStore = function(store, callback){
