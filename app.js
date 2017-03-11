@@ -7,6 +7,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/database.js');
 
+mongoose.connect(config.database);
+
 var stores = require('./routes/stores');
 
 var app = express();
@@ -17,7 +19,8 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.engine('html', require('pug').renderFile);
+app.set('view engine', 'html');
 app.use(cors());
 // app.use('/api/store', store);
 app.use('/api/stores', stores);
@@ -37,7 +40,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  //res.render('error');
 });
 
 module.exports = app;

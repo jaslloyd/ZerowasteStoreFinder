@@ -6,7 +6,7 @@ const StoreSchema = mongoose.Schema({
     id: String,
     name: String,
     address: String,
-    openingHours: String,
+    openingHours: Array,
     products: String,
     lat: Number,
     lng: Number
@@ -17,16 +17,18 @@ const Store = mongoose.model('Store', StoreSchema);
 module.exports = Store;
 
 // Encapsulate the DB functions inside of users model
-module.exports.getStore = function(id, callback){
-  Store.findById(id, callback);
+module.exports.getStore = function(storeId, callback){
+  const storeIdJSON = {id : storeId};
+  Store.findOne(storeIdJSON, callback);
 };
 
 module.exports.getStores = function(queryString, callback){
-  // Need to find a way to search name, products and location column(when added)
-  const query = {name: queryString};
-  Store.findAll(query, callback);
+  const nameQuery = {name: {"$regex": "^"+ queryString, "$options": "i"}};
+  const locationQuery = {address: {"$regex": queryString, "$options": "i"}};
+  Store.find({$or: [nameQuery, locationQuery]}, callback);
 };
 
-module.exports.addStore = function(store, callback){
+module.exports.addStore = function(newStore, callback){
   // Add store here...
+  newStore.save(callback);
 };

@@ -12,9 +12,7 @@ export class BackendService {
     headers.append('Content-Type','application/json');
     console.log(query);
     // Make request to back-end to get stores
-    //return this.http.post('api/stores/', query, {headers: headers})
-    return this.http.get('api/stores/' + query, {headers: headers})
-    //return this.http.get('https://jsonplaceholder.typicode.com/posts', {headers: headers})
+    return this.http.get('http://localhost:3000/api/stores/search/' + query, {headers: headers})
       .map(res => res.json());
   }
 
@@ -28,7 +26,7 @@ export class BackendService {
   getStore(storeID){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.get('api/stores/id/'+storeID, {headers: headers})
+    return this.http.get('http://localhost:3000/api/stores/'+storeID, {headers: headers})
       .map(res => res.json());
   }
 }

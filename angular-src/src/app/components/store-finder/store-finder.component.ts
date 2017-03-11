@@ -21,14 +21,17 @@ export class StoreFinderComponent implements OnInit {
   }
 
   searchStores(){
-    console.log(this.query);
-    this.backEndService.searchStores(this.query).subscribe(stores => {
-      this.stores = stores;
-    },
-    err => {
-      console.log(err);
-      return false;
-    });
+    if (this.query != ""){
+      this.backEndService.searchStores(this.query).subscribe(stores => {
+        //add empty check here
+        this.stores = stores.stores;
+        console.log(this.stores);
+      },
+      err => {
+        console.log(err);
+        return false;
+      });
+    }
   }
 
 

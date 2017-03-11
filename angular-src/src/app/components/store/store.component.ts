@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -10,22 +10,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
+  store = {
+    id: "",
+    name:  "",
+    address:  "",
+    products:  "",
+    openingHours: ["N/A"],
+    lat:  "",
+    lng:  ""
+  };
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
    private backendService: BackendService,
    private flashMessage: FlashMessagesService,
-   private router: Router) { }
+   private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    // TODO: Find a way to pull this from the url
-    this.backendService.getStore("[Insert store id here]").subscribe(data => {
-      if(data.success){
-        // Assign data to class variables here
-      }else{
-        this.flashMessage.show('Something went wrong...', {cssClass:'alert-danger', timeout: 3000});
-      }
-    });
+    this.activatedRoute.params.subscribe((params: Params) => {
+        let id = params['id'];
+        this.backendService.getStore(id).subscribe(store => {
+          this.store = store.store;
+          console.log(this.store);
+        },
+        err => {
+          console.log(err);
+          return false;
+        });
+      });
+
+
   }
 
 }

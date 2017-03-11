@@ -1,3 +1,14 @@
-<p>
-  store works!
-</p>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="well">
+      <h4>Store: {{store.name}}</h4>
+      <p>Address: {{store.address}}</p>
+      <p>Opening Hours</p>
+      <ul>
+          <li *ngFor="let entry of store.openingHours">{{entry}}</li>
+      </ul>
+      <<p>Zero Waste products: {{store.products}}</p>
+      <p></p>
+    </div>
+  </div>
+</div>

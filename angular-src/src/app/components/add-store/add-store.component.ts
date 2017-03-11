@@ -63,6 +63,7 @@ export class AddStoreComponent implements OnInit {
             // Make this zoom better
             this.zoom = 17;
             this.place = place;
+            console.log(this.place);
           });
       });
     });
@@ -79,7 +80,7 @@ export class AddStoreComponent implements OnInit {
       name: this.place.name,
       address: this.place.formatted_address,
       products: this.products,
-      openingHours: "N/A",
+      openingHours: ["N/A"],
       lat: this.lat,
       lng: this.lng
     };
@@ -111,7 +112,7 @@ interface store{
   id: string;
   name: string;
   address: string;
-  openingHours: string;
+  openingHours: Array<string>;
   products: string;
   lat: number;
   lng: number;

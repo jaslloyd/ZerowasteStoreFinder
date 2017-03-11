@@ -3,26 +3,27 @@ const router = express.Router();
 const Store = require('../models/store');
 
 /* Return all stores that match query */
-router.get('/:query', function(req, res, next) {
+// Use queryStrings for reading query
+router.get('/search/:query', function(req, res, next) {
   console.log(req.params.query);
-  query = req.paras.query;
+  query = req.params.query;
   Store.getStores(query, (err, stores) => {
     if(err) throw err;
+    console.log(query);
     res.json({stores: stores});
   });
-  res.send('respond with a resource');
 });
 
 /* Return specific store by ID */
-// I hate this /id/:id
-router.get('/id/:storeID', function(req, res, next) {
+router.get('/:storeID', function(req, res, next) {
+  console.log('we made it!');
   console.log(req.params.storeID);
-  storeID = req.paras.storeID;
+  storeID = req.params.storeID;
   Store.getStore(storeID, (err, store) => {
     if(err) throw err;
+    console.log(store);
     res.json({store: store});
   });
-  res.send('respond with a resource');
 });
 
 
@@ -37,6 +38,8 @@ router.post('/addStore', function(req, res, next) {
     lat: req.body.lat,
     lng:  req.body.lng
   });
+
+  console.log(newStore);
 
   Store.addStore(newStore, (err, store) => {
     if(err){

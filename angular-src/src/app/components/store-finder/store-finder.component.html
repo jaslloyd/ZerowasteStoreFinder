@@ -1,7 +1,7 @@
 <div class="form-group">
   <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
   <div class="col-sm-12">
-    <input type="text" name="storeFinderInput" [(ngModel)]="query" (keyup)="searchStores()" class="form-control text-center" placeholder="Type location or Food you're looking for" required>
+    <input type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name or Location e.g. 'Dublin 7'" required>
   </div>
 </div>
   <!-- *ngIF && stores.length > 0 -->
@@ -9,10 +9,14 @@
     <div class="row" *ngFor="let store of stores">
       <div class="col-sm-12">
         <div class="well">
-          <h4>[Store title]</h4>
-          <p>[Items they sell, zero waste]</p>
-          <p>[Location]</p>
-          <p>{{store.title}}</p>
+          <h4>Store: <a [routerLink]="['/store', store.id]">{{store.name}}</a></h4>
+          <p>Address: {{store.address}}</p>
+          <p>Opening Hours</p>
+          <ul>
+              <li *ngFor="let entry of store.openingHours">{{entry}}</li>
+          </ul>
+          <p>Zero Waste products: {{store.products}}</p>
+          <p></p>
         </div>
       </div>
     </div>
