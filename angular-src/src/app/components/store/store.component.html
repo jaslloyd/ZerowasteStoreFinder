@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="well">
+    <div class="well" *ngIf="store?.name">
       <h4>Store: {{store.name}}</h4>
       <p>Address: {{store.address}}</p>
       <p>Opening Hours</p>
@@ -9,18 +9,20 @@
       </ul>
       <p>Zero Waste products: {{store.products}}</p>
       <p></p>
-      <sebm-google-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">
-        <sebm-google-map-marker
-          [latitude]="marker.lat"
-          [longitude]="marker.lng"
-          [label]="marker.label"
-          [markerDraggable]="marker.draggable">
+      <div *ngIf="marker?.lat">
+        <sebm-google-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">
+          <sebm-google-map-marker
+            [latitude]="marker.lat"
+            [longitude]="marker.lng"
+            [label]="marker.label"
+            [markerDraggable]="marker.draggable">
 
-          <sebm-google-map-info-window>
+            <sebm-google-map-info-window>
 
-          </sebm-google-map-info-window>
-        </sebm-google-map-marker>
-      </sebm-google-map>
+            </sebm-google-map-info-window>
+          </sebm-google-map-marker>
+        </sebm-google-map>
+      </div>
     </div>
   </div>
 </div>

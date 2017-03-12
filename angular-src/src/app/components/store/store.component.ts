@@ -3,6 +3,8 @@ import { BackendService } from '../../services/backend.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Marker } from '../../interfaces/marker';
+import { Store } from '../../interfaces/store';
 
 @Component({
   selector: 'app-store',
@@ -14,22 +16,8 @@ export class StoreComponent implements OnInit {
   lng: 0;
   zoom: number = 15;
 
-  store = {
-    id: "",
-    name:  "",
-    address:  "",
-    products:  "",
-    openingHours: ["N/A"],
-    lat:  "",
-    lng:  ""
-  };
-
-  marker = {
-    lat: 0,
-  	lng: 0,
-  	label: "Placeholder",
-  	draggable: false
-  };
+  store: Store;
+  marker: Marker;
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
@@ -43,8 +31,8 @@ export class StoreComponent implements OnInit {
         this.backendService.getStore(id).subscribe(store => {
           this.store = store.store;
           this.marker = {
-            lat: parseFloat(this.store.lat),
-            lng: parseFloat(this.store.lng),
+            lat: this.store.lat,
+            lng: this.store.lng,
             label: this.store.name,
             draggable: false
           };
@@ -56,11 +44,4 @@ export class StoreComponent implements OnInit {
         });
       });
   }
-}
-
-interface marker{
-  lat: number;
-	lng: number;
-	label?: string;
-	draggable: boolean;
 }

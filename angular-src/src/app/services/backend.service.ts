@@ -4,29 +4,29 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class BackendService {
+  headers: Headers = new Headers();
 
-  constructor(private http:Http) { }
+  constructor(private http:Http) {
+    this.headers.append('Content-Type','application/json');
+  }
 
   searchStores(query){
-    let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    console.log(query);
-    // Make request to back-end to get stores
-    return this.http.get('http://localhost:3000/api/stores/search/' + query, {headers: headers})
+    return this.http.get('http://localhost:3000/api/stores/search/' + query, {headers: this.headers})
       .map(res => res.json());
   }
 
   addStore(store){
-    let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.post('http://localhost:3000/api/stores/addStore', store, {headers: headers})
+    return this.http.post('http://localhost:3000/api/stores/addStore', store, {headers: this.headers})
       .map(res => res.json());
   }
 
   getStore(storeID){
-    let headers = new Headers();
-    headers.append('Content-Type','application/json');
-    return this.http.get('http://localhost:3000/api/stores/'+storeID, {headers: headers})
+    return this.http.get('http://localhost:3000/api/stores/'+storeID, {headers: this.headers})
+      .map(res => res.json());
+  }
+
+  getAllStores(){
+    return this.http.get('http://localhost:3000/api/stores/all', {headers: this.headers})
       .map(res => res.json());
   }
 }

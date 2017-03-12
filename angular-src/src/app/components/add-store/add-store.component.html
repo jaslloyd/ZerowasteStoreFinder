@@ -5,10 +5,10 @@
     <input type="text" id="storeLocationInput" class="form-control">
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
       <sebm-google-map-marker
-        [latitude]="marker.lat"
-        [longitude]="marker.lng"
-        [label]="marker.label"
-        [markerDraggable]="marker.draggable">
+        [latitude]="marker?.lat"
+        [longitude]="marker?.lng"
+        [label]="marker?.label"
+        [markerDraggable]="marker?.draggable">
 
         <sebm-google-map-info-window>
 

@@ -4,6 +4,8 @@ import { BackendService } from '../../services/backend.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Marker } from '../../interfaces/marker';
+import { Store } from '../../interfaces/store';
 
 declare var google: any;
 @Component({
@@ -14,11 +16,11 @@ declare var google: any;
 export class AddStoreComponent implements OnInit {
   lat: number;
   lng: number;
-  marker: marker;
   zoom: number = 8;
 
   place: any;
-  store: store;
+  marker: Marker;
+  store: Store;
   products: string;
 
   constructor(private loader: MapsAPILoader,
@@ -34,12 +36,6 @@ export class AddStoreComponent implements OnInit {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
       });
-    }
-    this.marker = {
-      lat: this.lat,
-      lng: this.lng,
-      label: "My location",
-      draggable: true
     }
     this.autocomplete();
   }
@@ -60,8 +56,6 @@ export class AddStoreComponent implements OnInit {
 
             this.lat = this.marker.lat;
             this.lng = this.marker.lng;
-            console.log(this.lat);
-            console.log(this.lng);
             // Make this zoom better
             this.zoom = 17;
             this.place = place;
@@ -72,9 +66,6 @@ export class AddStoreComponent implements OnInit {
   }
 
   onAddStoreSubmit(){
-    console.log('Submit');
-    console.log(this.lat);
-    console.log(this.lng);
     if(!this.authService.validateNewStore(this.place, this.products)){
       this.flashMessage.show('Please fill in all fields', {cssClass:'alert-danger', timeout: 3000});
       return false;
@@ -101,24 +92,7 @@ export class AddStoreComponent implements OnInit {
       }else{
         this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
-      //this.router.navigate(['/addstore']);
+      this.router.navigate(['/addstore']);
     });
   }
-}
-
-interface marker{
-  lat: number;
-	lng: number;
-	label?: string;
-	draggable: boolean;
-}
-
-interface store{
-  id: string;
-  name: string;
-  address: string;
-  openingHours: Array<string>;
-  products: string;
-  lat: number;
-  lng: number;
 }
