@@ -3,13 +3,20 @@ const router = express.Router();
 const Store = require('../models/store');
 
 /* Return all stores that match query */
-// Use queryStrings for reading query
 router.get('/search/:query', function(req, res, next) {
-  console.log(req.params.query);
-  query = req.params.query;
-  Store.getStores(query, (err, stores) => {
+  const query = req.params.query;
+  const nameQuery = {name: {"$regex": "^"+ query, "$options": "i"}};
+  const locationQuery = {address: {"$regex": query, "$options": "i"}};
+  const fullQuery = {$or: [nameQuery, locationQuery]};
+  Store.getStores(fullQuery, (err, stores) => {
     if(err) throw err;
-    console.log(query);
+    res.json({stores: stores});
+  });
+});
+
+router.get('/all', function(req, res, next) {
+  Store.getStores({}, (err, stores) => {
+    if(err) throw err;
     res.json({stores: stores});
   });
 });
@@ -50,7 +57,6 @@ router.post('/addStore', function(req, res, next) {
         res.json({success: false, msg: 'Store already exists...'});
     }
   });
-
 });
 
 module.exports = router;

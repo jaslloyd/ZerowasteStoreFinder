@@ -23,12 +23,9 @@ module.exports.getStore = function(storeId, callback){
 };
 
 module.exports.getStores = function(queryString, callback){
-  const nameQuery = {name: {"$regex": "^"+ queryString, "$options": "i"}};
-  const locationQuery = {address: {"$regex": queryString, "$options": "i"}};
-  Store.find({$or: [nameQuery, locationQuery]}, callback);
+  Store.find(queryString, callback);
 };
 
 module.exports.addStore = function(newStore, callback){
-  // Add store here...
   newStore.save(callback);
 };
