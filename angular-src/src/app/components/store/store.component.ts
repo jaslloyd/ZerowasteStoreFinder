@@ -10,6 +10,10 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./store.component.css']
 })
 export class StoreComponent implements OnInit {
+  lat: 0;
+  lng: 0;
+  zoom: number = 15;
+
   store = {
     id: "",
     name:  "",
@@ -20,6 +24,13 @@ export class StoreComponent implements OnInit {
     lng:  ""
   };
 
+  marker = {
+    lat: 0,
+  	lng: 0,
+  	label: "Placeholder",
+  	draggable: false
+  };
+
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
    private backendService: BackendService,
@@ -28,18 +39,28 @@ export class StoreComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-        let id = params['id'];
+        const id = params['id'];
         this.backendService.getStore(id).subscribe(store => {
           this.store = store.store;
-          console.log(this.store);
+          this.marker = {
+            lat: parseFloat(this.store.lat),
+            lng: parseFloat(this.store.lng),
+            label: this.store.name,
+            draggable: false
+          };
+          console.log(this.marker);
         },
         err => {
           console.log(err);
           return false;
         });
       });
-
-
   }
+}
 
+interface marker{
+  lat: number;
+	lng: number;
+	label?: string;
+	draggable: boolean;
 }

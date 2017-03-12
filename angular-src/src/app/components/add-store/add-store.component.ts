@@ -58,8 +58,10 @@ export class AddStoreComponent implements OnInit {
               draggable: false
             };
 
-            this.lat = place.geometry.location.lat();
-            this.lng = place.geometry.location.lng();
+            this.lat = this.marker.lat;
+            this.lng = this.marker.lng;
+            console.log(this.lat);
+            console.log(this.lng);
             // Make this zoom better
             this.zoom = 17;
             this.place = place;
@@ -70,6 +72,9 @@ export class AddStoreComponent implements OnInit {
   }
 
   onAddStoreSubmit(){
+    console.log('Submit');
+    console.log(this.lat);
+    console.log(this.lng);
     if(!this.authService.validateNewStore(this.place, this.products)){
       this.flashMessage.show('Please fill in all fields', {cssClass:'alert-danger', timeout: 3000});
       return false;
@@ -81,8 +86,8 @@ export class AddStoreComponent implements OnInit {
       address: this.place.formatted_address,
       products: this.products,
       openingHours: ["N/A"],
-      lat: this.lat,
-      lng: this.lng
+      lat: this.marker.lat,
+      lng: this.marker.lng
     };
 
     if (this.place.hasOwnProperty("opening_hours")){

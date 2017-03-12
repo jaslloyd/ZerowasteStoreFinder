@@ -7,8 +7,20 @@
       <ul>
           <li *ngFor="let entry of store.openingHours">{{entry}}</li>
       </ul>
-      <<p>Zero Waste products: {{store.products}}</p>
+      <p>Zero Waste products: {{store.products}}</p>
       <p></p>
+      <sebm-google-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">
+        <sebm-google-map-marker
+          [latitude]="marker.lat"
+          [longitude]="marker.lng"
+          [label]="marker.label"
+          [markerDraggable]="marker.draggable">
+
+          <sebm-google-map-info-window>
+
+          </sebm-google-map-info-window>
+        </sebm-google-map-marker>
+      </sebm-google-map>
     </div>
   </div>
 </div>

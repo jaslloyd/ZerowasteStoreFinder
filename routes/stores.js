@@ -16,8 +16,6 @@ router.get('/search/:query', function(req, res, next) {
 
 /* Return specific store by ID */
 router.get('/:storeID', function(req, res, next) {
-  console.log('we made it!');
-  console.log(req.params.storeID);
   storeID = req.params.storeID;
   Store.getStore(storeID, (err, store) => {
     if(err) throw err;
@@ -38,16 +36,21 @@ router.post('/addStore', function(req, res, next) {
     lat: req.body.lat,
     lng:  req.body.lng
   });
-
-  console.log(newStore);
-
-  Store.addStore(newStore, (err, store) => {
-    if(err){
-      res.json({success: false, msg: 'Failed to add new store'});
+  Store.getStore(newStore.id, (err, store) => {
+    if(err) throw err;
+    if(!store){
+      Store.addStore(newStore, (err, store) => {
+        if(err){
+          res.json({success: false, msg: 'Failed to add new store'});
+        }else{
+          res.json({success: true, msg: 'Added new store'});
+        }
+      });
     }else{
-      res.json({success: true, msg: 'Added new store'});
+        res.json({success: false, msg: 'Store already exists...'});
     }
   });
+
 });
 
 module.exports = router;
