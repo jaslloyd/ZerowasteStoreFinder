@@ -23,6 +23,9 @@ export class AddStoreComponent implements OnInit {
   store: Store;
   products: string;
 
+  allStores: any;
+  allMarkers: any = [];
+
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
    private flashMessage: FlashMessagesService,
@@ -37,6 +40,21 @@ export class AddStoreComponent implements OnInit {
         this.lng = position.coords.longitude;
       });
     }
+
+    // If this list grows to thousounds going to be very slow...
+    // TODO: Look into caching later...
+    this.backendService.getAllStores().subscribe(stores => {
+      this.allStores = stores.stores;
+      this.allStores.forEach((store) => {
+        this.allMarkers.push({
+          lat: store.lat,
+          lng: store.lng,
+          label: store.name,
+          draggable: false
+        });
+      });
+      console.log(this.allMarkers);
+    });
     this.autocomplete();
   }
 
