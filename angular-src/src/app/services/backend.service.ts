@@ -29,4 +29,9 @@ export class BackendService {
     return this.http.get('http://localhost:3000/api/stores/all', {headers: this.headers})
       .map(res => res.json());
   }
+
+  getAllMarkers(){
+    return this.http.get('http://localhost:3000/api/stores/locations', {headers: this.headers})
+      .map(res => res.json())
+  }
 }

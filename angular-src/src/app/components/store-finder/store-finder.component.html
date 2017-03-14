@@ -21,3 +21,30 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <button id="mapBtn" (click)="toggleMap()" class="btn btn-default">{{btnText}}</button>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="showStoresOnMap">
+    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+      <!-- Display all current stores -->
+      <!-- TODO: Check best place for label... -->
+      <sebm-google-map-marker
+        *ngFor="let m of allMarkers"
+        [latitude]="m.lat"
+        [longitude]="m.lng"
+        [label]=""
+        [markerDraggable]="m.draggable">
+
+        <sebm-google-map-info-window>
+          <!-- Fill in information about store -->
+          <p>
+            <a style="color:blue;" [routerLink]="['/store', m.link]"><strong>{{m.label}}</strong></a>
+          </p>
+        </sebm-google-map-info-window>
+
+      </sebm-google-map-marker>
+    </sebm-google-map>
+  </div>
