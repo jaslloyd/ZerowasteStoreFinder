@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Http, Headers} from '@angular/http';
-import {MapsService} from '../../services/maps.service';
-import {BackendService} from '../../services/backend.service';
-import {FlashMessagesService} from 'angular2-flash-messages';
-import {Router} from '@angular/router';
-import 'rxjs/add/operator/map';
+import { Http, Headers } from '@angular/http';
+import { BackendService } from '../../services/backend.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-store-finder',
@@ -16,15 +15,13 @@ import { Store } from '../../interfaces/store';
 export class StoreFinderComponent implements OnInit {
   query: String;
   stores: Store[] = [];
-  allMarkers: Marker[] = [];
-  allStores: Store[] = [];
   lat: number;
   lng: number;
   zoom: number = 10;
   showStoresOnMap: boolean = false;
-  btnText = "View stores on map";
+  btnText = "View all stores on map";
 
-  constructor(private mapsService: MapsService, private backendService: BackendService) { }
+  constructor(private backendService: BackendService) { }
 
   ngOnInit() {
     if(navigator.geolocation){
@@ -33,18 +30,6 @@ export class StoreFinderComponent implements OnInit {
         this.lng = position.coords.longitude;
       });
     }
-    this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores.stores;
-      this.allStores.forEach((store) => {
-        this.allMarkers.push({
-          lat: store.lat,
-          lng: store.lng,
-          label: store.name,
-          draggable: false,
-          link: store.id
-        });
-      });
-    });
   }
 
   searchStores(){
@@ -63,8 +48,6 @@ export class StoreFinderComponent implements OnInit {
 
   toggleMap(){
     this.showStoresOnMap = !this.showStoresOnMap;
-    this.btnText = this.showStoresOnMap ? 'Hide Map' : 'View stores on map';
+    this.btnText = this.showStoresOnMap ? 'Hide Map' : 'View all stores on map';
   }
-
-
 }

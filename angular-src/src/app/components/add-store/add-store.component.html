@@ -5,21 +5,7 @@
     <input type="text" id="storeLocationInput" class="form-control">
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
 
-      <!-- Display all current stores -->
-      <!-- TODO: Check best place for label... -->
-      <sebm-google-map-marker
-        *ngFor="let m of allMarkers"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]=""
-        [markerDraggable]="m.draggable">
-
-        <sebm-google-map-info-window>
-          <!-- Fill in information about store -->
-          <p>{{m.label}}</p>
-        </sebm-google-map-info-window>
-
-      </sebm-google-map-marker>
+      <app-map></app-map>
 
       <sebm-google-map-marker
         [latitude]="marker?.lat"

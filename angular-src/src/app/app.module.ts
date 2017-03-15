@@ -12,14 +12,15 @@ import { StoreFinderComponent } from './components/store-finder/store-finder.com
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { AddStoreComponent } from './components/add-store/add-store.component';
+import { StoreComponent } from './components/store/store.component';
+import { MapComponent } from './components/map/map.component';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 // Import our services for the application
-import { MapsService } from './services/maps.service';
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
-import { StoreComponent } from './components/store/store.component';
+
 
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
     AboutComponent,
     AddStoreComponent,
     StoreComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ const appRoutes: Routes = [
         libraries: ['places']
     })
   ],
-  providers: [MapsService, BackendService, AuthService],
+  providers: [BackendService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

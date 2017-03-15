@@ -26,14 +26,12 @@ router.get('/:storeID', function(req, res, next) {
   storeID = req.params.storeID;
   Store.getStore(storeID, (err, store) => {
     if(err) throw err;
-    console.log(store);
     res.json({store: store});
   });
 });
 
 
 router.post('/addStore', function(req, res, next) {
-  console.log(req.body);
   let newStore = new Store({
     id: req.body.id,
     name: req.body.name,
@@ -43,6 +41,7 @@ router.post('/addStore', function(req, res, next) {
     lat: req.body.lat,
     lng:  req.body.lng
   });
+
   Store.getStore(newStore.id, (err, store) => {
     if(err) throw err;
     if(!store){

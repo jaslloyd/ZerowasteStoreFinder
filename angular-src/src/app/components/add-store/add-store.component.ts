@@ -2,11 +2,11 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import { BackendService } from '../../services/backend.service';
 import { AuthService } from '../../services/auth.service';
-import { MapsService } from '../../services/maps.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
+import { MapComponent } from '../map/map.component';
 
 declare var google: any;
 @Component({
@@ -24,16 +24,11 @@ export class AddStoreComponent implements OnInit {
   store: Store;
   products: string;
 
-  allStores: any;
-  allMarkers: any = [];
-  test: any;
-
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
    private flashMessage: FlashMessagesService,
    private backendService: BackendService,
    private authService: AuthService,
-   private mapService: MapsService,
    private router: Router) { }
 
   ngOnInit() {
@@ -43,20 +38,6 @@ export class AddStoreComponent implements OnInit {
         this.lng = position.coords.longitude;
       });
     }
-    // If this list grows to thousounds going to be very slow...
-    // TODO: Look into caching later...
-    this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores.stores;
-      this.allStores.forEach((store) => {
-        this.allMarkers.push({
-          lat: store.lat,
-          lng: store.lng,
-          label: store.name,
-          draggable: false
-        });
-      });
-      //console.log(this.allMarkers);
-    });
     this.autocomplete();
   }
 
