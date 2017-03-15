@@ -13,7 +13,7 @@ import { MapComponent } from '../map/map.component';
   styleUrls: ['./store-finder.component.css']
 })
 export class StoreFinderComponent implements OnInit {
-  query: String;
+  query: String = '';
   stores: Store[] = [];
   lat: number;
   lng: number;
@@ -35,8 +35,7 @@ export class StoreFinderComponent implements OnInit {
   searchStores(){
     if (this.query != ""){
       this.backendService.searchStores(this.query).subscribe(stores => {
-        //add empty check here
-        this.stores = stores.stores;
+        this.stores = stores;
         console.log(this.stores);
       },
       err => {

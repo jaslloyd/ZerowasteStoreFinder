@@ -10,14 +10,14 @@ router.get('/search/:query', function(req, res, next) {
   const fullQuery = {$or: [nameQuery, locationQuery]};
   Store.getStores(fullQuery, (err, stores) => {
     if(err) throw err;
-    res.json({stores: stores});
+    res.json(stores);
   });
 });
 
 router.get('/all', function(req, res, next) {
   Store.getStores({}, (err, stores) => {
     if(err) throw err;
-    res.json({stores: stores});
+    res.json(stores);
   });
 });
 
@@ -26,7 +26,7 @@ router.get('/:storeID', function(req, res, next) {
   storeID = req.params.storeID;
   Store.getStore(storeID, (err, store) => {
     if(err) throw err;
-    res.json({store: store});
+    res.json(store);
   });
 });
 

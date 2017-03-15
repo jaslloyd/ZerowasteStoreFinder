@@ -17,7 +17,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores.stores;
+      this.allStores = stores;
       this.allStores.forEach((store) => {
         this.allMarkers.push({
           lat: store.lat,

@@ -29,7 +29,7 @@ export class StoreComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
         const id = params['id'];
         this.backendService.getStore(id).subscribe(store => {
-          this.store = store.store;
+          this.store = store;
           this.marker = {
             lat: this.store.lat,
             lng: this.store.lng,

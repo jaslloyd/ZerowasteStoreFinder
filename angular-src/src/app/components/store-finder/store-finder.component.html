@@ -21,6 +21,9 @@
       </div>
     </div>
   </div>
+  <div class="text-center" *ngIf="stores.length == 0 && query.length > 0">
+    <h4>No Results found</h4>
+  </div>
   <div class="row">
     <div class="col-sm-12 text-center">
       <button id="mapBtn" (click)="toggleMap()" class="btn btn-default">{{btnText}}</button>
