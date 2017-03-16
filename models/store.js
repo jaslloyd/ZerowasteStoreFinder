@@ -17,15 +17,24 @@ const Store = mongoose.model('Store', StoreSchema);
 module.exports = Store;
 
 // Encapsulate the DB functions inside of users model
-module.exports.getStore = function(storeId, callback){
+module.exports.getStore = (storeId, callback) => {
   const storeIdJSON = {id : storeId};
   Store.findOne(storeIdJSON, callback);
 };
 
-module.exports.getStores = function(queryString, callback){
+module.exports.getStores = (queryString, callback) => {
   Store.find(queryString, callback);
 };
 
-module.exports.addStore = function(newStore, callback){
+module.exports.addStore = (newStore, callback) => {
   newStore.save(callback);
+};
+
+module.exports.editStore = (editedStore, callback) => {
+  editStore.save(callback);
+};
+
+module.exports.deleteStore = (storeId, callback) => {
+  const storeIdJSON = {id : storeId};
+  Store.remove(storeIdJSON, callback);
 };

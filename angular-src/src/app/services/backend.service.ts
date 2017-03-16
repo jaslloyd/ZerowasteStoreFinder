@@ -20,6 +20,18 @@ export class BackendService {
       .map(res => res.json());
   }
 
+  editStore(store){
+    //Implement some sort of admin api key
+    return this.http.put('http://localhost:3000/api/stores/'+store.id, store, {headers: this.headers})
+      .map(res => res.json());
+  }
+
+  deleteStore(storeID){
+    //Implement some sort of admin api key
+    return this.http.delete('http://localhost:3000/api/stores/'+storeID, {headers: this.headers})
+      .map(res => res.json());
+  }
+
   getStore(storeID){
     return this.http.get('http://localhost:3000/api/stores/'+storeID, {headers: this.headers})
       .map(res => res.json());
