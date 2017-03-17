@@ -60,7 +60,7 @@ export class AddStoreComponent implements OnInit {
             // Make this zoom better
             this.zoom = 17;
             this.place = place;
-            console.log(this.place);
+            console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
           });
       });
     });

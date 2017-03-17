@@ -4,34 +4,30 @@
     <input type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name or Location e.g. 'Dublin 7'" required>
   </div>
 </div>
-  <!-- *ngIF && stores.length > 0 -->
-  <div id="stores"  *ngIf="query != ''">
-    <div class="row" *ngFor="let store of stores">
-      <div class="col-sm-12">
-        <div class="well">
-          <h4>Store: <a [routerLink]="['/store', store.id]">{{store.name}}</a></h4>
-          <p>Address: {{store.address}}</p>
-          <p>Opening Hours</p>
-          <ul>
-              <li *ngFor="let entry of store.openingHours">{{entry}}</li>
-          </ul>
-          <p>Zero Waste products: {{store.products}}</p>
-          <p></p>
-        </div>
+<!-- *ngIF && stores.length > 0 -->
+<div id="stores"  *ngIf="query != ''">
+  <div class="row" *ngFor="let store of stores">
+    <div class="col-sm-12">
+      <div class="well">
+        <h4>Store: {{store.name}}</h4>
+        <p>Address: {{store.address}}</p>
+        <p>Zero Waste products: {{store.products}}</p>
+        <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
       </div>
     </div>
   </div>
-  <div class="text-center" *ngIf="stores.length == 0 && query.length > 0">
-    <h4>No Results found</h4>
+</div>
+<div id="noResults" class="text-center" *ngIf="stores.length == 0 && query.length > 0">
+  <h4>No Results found</h4>
+</div>
+<div class="row">
+  <div id="buttons" class="col-sm-12 text-center">
+    <button id="mapBtn" (click)="toggleMap()" class="btn btn-default">{{btnText}}</button>
   </div>
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <button id="mapBtn" (click)="toggleMap()" class="btn btn-default">{{btnText}}</button>
-    </div>
-  </div>
+</div>
 
-  <div class="row" *ngIf="showStoresOnMap">
-    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-      <app-map></app-map>
-    </sebm-google-map>
-  </div>
+<div class="row" *ngIf="showStoresOnMap">
+  <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+    <app-map></app-map>
+  </sebm-google-map>
+</div>
