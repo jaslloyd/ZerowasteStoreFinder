@@ -1,15 +1,18 @@
 <sebm-google-map-marker
-  *ngFor="let m of allMarkers"
+  *ngFor="let m of allStores"
   [latitude]="m.lat"
   [longitude]="m.lng"
   [label]=""
-  [markerDraggable]="m.draggable">
+  [markerDraggable]="false">
 
   <sebm-google-map-info-window>
     <!-- Fill in information about store -->
-    <p>
-      <a style="color:blue;" [routerLink]="['/store', m.link]"><strong>{{m.label}}</strong></a>
-    </p>
+    <p><a style="color:blue;" [routerLink]="['/store', m.id]"><strong>{{m.name}}</strong></a></p>
+    <p><strong>Address: </strong>{{m.address}}</p>
+    <!-- <ul *ngIf="m.address">
+      <li *ngFor="let add of m.address">{{add}}</li>
+    </ul> -->
+    <p><strong>Zero waste products: </strong>{{m.products}}</p>
   </sebm-google-map-info-window>
 
 </sebm-google-map-marker>

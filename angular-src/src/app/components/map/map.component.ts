@@ -12,22 +12,12 @@ import { GoogleMapsAPIWrapper, MarkerManager } from 'angular2-google-maps/core/s
 })
 //https://developers.google.com/maps/documentation/javascript/marker-clustering
 export class MapComponent implements OnInit {
-  allMarkers: Marker[] = [];
   allStores: Store[] = [];
   constructor(private backendService: BackendService, private gmapsApi: GoogleMapsAPIWrapper, private markerManager: MarkerManager) { }
 
   ngOnInit() {
     this.backendService.getAllStores().subscribe(stores => {
       this.allStores = stores;
-      this.allStores.forEach((store) => {
-        this.allMarkers.push({
-          lat: store.lat,
-          lng: store.lng,
-          label: store.name,
-          draggable: false,
-          link: store.id
-        });
-      });
     });
   }
 
