@@ -9,7 +9,7 @@
   <div class="row" *ngFor="let store of stores">
     <div class="col-sm-12">
       <div class="well">
-        <h4>Store: {{store.name}}</h4>
+        <h4>{{store.name}}</h4>
         <p>Address: {{store.address}}</p>
         <p>Zero Waste products: {{store.products}}</p>
         <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
