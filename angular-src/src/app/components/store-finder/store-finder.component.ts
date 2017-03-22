@@ -36,7 +36,6 @@ export class StoreFinderComponent implements OnInit {
     if (this.query != ""){
       this.backendService.searchStores(this.query).subscribe(stores => {
         this.stores = stores;
-        console.log(this.stores);
       },
       err => {
         console.log(err);

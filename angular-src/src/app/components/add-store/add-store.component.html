@@ -4,7 +4,6 @@
     <h5><label for="storeLocationInput">Find Store</label></h5>
     <input type="text" id="storeLocationInput" class="form-control">
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-
       <app-map></app-map>
 
       <sebm-google-map-marker
@@ -15,6 +14,8 @@
 
         <sebm-google-map-info-window>
           <!-- Fill in information about store -->
+          <p><strong>{{place?.name}}</strong></p>
+          <p>{{place?.formatted_address}}</p>
         </sebm-google-map-info-window>
       </sebm-google-map-marker>
     </sebm-google-map>
