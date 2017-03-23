@@ -14,12 +14,15 @@ import { AboutComponent } from './components/about/about.component';
 import { AddStoreComponent } from './components/add-store/add-store.component';
 import { StoreComponent } from './components/store/store.component';
 import { MapComponent } from './components/map/map.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 import { FlashMessagesModule } from 'angular2-flash-messages';
 
 // Import our services for the application
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 
 // Tells angular where to direct the requests
@@ -28,7 +31,9 @@ const appRoutes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
   {path: 'addstore', component: AddStoreComponent},
-  {path: 'store/:id', component: StoreComponent}
+  {path: 'store/:id', component: StoreComponent},
+  {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
+  {path: 'login', component: LoginComponent}
 ];
 
 @NgModule({
@@ -41,6 +46,8 @@ const appRoutes: Routes = [
     AddStoreComponent,
     StoreComponent,
     MapComponent,
+    DashboardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +60,7 @@ const appRoutes: Routes = [
         libraries: ['places']
     })
   ],
-  providers: [BackendService, AuthService],
+  providers: [BackendService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

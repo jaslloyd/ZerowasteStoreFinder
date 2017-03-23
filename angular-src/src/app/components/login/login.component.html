@@ -1,0 +1,12 @@
+<h2 class="page-header">Admin Login</h2>
+<form (submit)="onLoginSubmit()">
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password:</label>
+    <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password">
+  </div>
+  <button type="submit" class="btn btn-default">Login</button>
+</form>

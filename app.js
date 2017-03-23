@@ -9,7 +9,8 @@ const config = require('./config/database.js');
 
 mongoose.connect(config.database);
 
-var stores = require('./routes/stores');
+const stores = require('./routes/stores');
+const users = require('./routes/users');
 
 var app = express();
 
@@ -22,8 +23,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('html', require('pug').renderFile);
 app.set('view engine', 'html');
 app.use(cors());
-// app.use('/api/store', store);
+
 app.use('/api/stores', stores);
+app.use('/admin', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
