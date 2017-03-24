@@ -1,3 +1,7 @@
-<p>
-  dashboard works!
-</p>
+<div class="well">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let store of allStores; let i = index">
+      {{store.name}}<span class="pull-right"> <button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
+    </li>
+  </ul>
+</div>
