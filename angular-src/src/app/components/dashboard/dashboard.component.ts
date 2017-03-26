@@ -24,8 +24,8 @@ export class DashboardComponent implements OnInit {
   }
 
   deleteStore(storeId, i){
-    console.log(storeId);
-    console.log(i);
+    // Remove element from stores array to show updates...
+    this.allStores.splice(i, 1);
     this.backendService.deleteStore(storeId).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Store deleted', {cssClass:'alert-success', timeout: 3000});

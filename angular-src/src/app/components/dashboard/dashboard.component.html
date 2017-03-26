@@ -1,7 +1,9 @@
 <div class="well">
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let store of allStores; let i = index">
-      {{store.name}}<span class="pull-right"> <button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
-    </li>
-  </ul>
+  <div class="list-group-item" *ngFor="let store of allStores; let i = index">
+    <span id="closeButton"><button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
+    <a data-toggle="collapse" data-target="#demo">{{store.name}}</a>
+    <div id="demo" class="panel-collapse collapse">
+      <div id="products" class="panel-body">Zero waste Products: {{store.products}}</div>
+    </div>
+  </div>
 </div>
