@@ -23,6 +23,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 // Tells angular where to direct the requests
@@ -48,6 +49,7 @@ const appRoutes: Routes = [
     MapComponent,
     DashboardComponent,
     LoginComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
