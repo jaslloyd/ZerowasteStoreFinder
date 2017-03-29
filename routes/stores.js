@@ -61,7 +61,7 @@ router.get('/:storeID', (req, res, next) => {
 // This needs to be the last post since it will anything that matches /api/stores/xxxx
 router.put('/:storeID', (req, res, next) => {
   const editedStore = {
-    id: req.params.id,
+    id: req.body.id,
     name: req.body.name,
     address: req.body.address,
     products: req.body.products,
@@ -70,14 +70,13 @@ router.put('/:storeID', (req, res, next) => {
     lng:  req.body.lng
   };
 
+  console.log(editedStore);
+  //
   // TODO: Find existing store then update it here...
-  Store.getStore(newStore.id, (err, store) => {
+  Store.getStore(editedStore.id, (err, store) => {
     if(err) throw err;
     // Edit the store values to match new one
-    store.name = editedStore.name;
-    store.address = editedStore.address;
     store.products = editedStore.products;
-    store.openingHours = editedStore.openingHours;
     // Call the editStore function with the edited store...
     Store.editStore(store, (err) => {
       if (err){

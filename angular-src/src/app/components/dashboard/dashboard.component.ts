@@ -37,4 +37,17 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  updateStore(store, index){
+    const updatedStore = store;
+    updatedStore.products = (<HTMLInputElement>document.getElementById('products'+index)).value
+    console.log(updatedStore);
+    this.backendService.editStore(updatedStore).subscribe(data => {
+      if(data.success){
+        this.flashMessage.show('Store updated', {cssClass:'alert-success', timeout: 3000});
+      }else{
+        this.flashMessage.show('Store update failed...', {cssClass:'alert-danger', timeout: 3000});
+      }
+    });
+  }
+
 }

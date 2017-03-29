@@ -31,7 +31,7 @@ module.exports.addStore = (newStore, callback) => {
 };
 
 module.exports.editStore = (editedStore, callback) => {
-  editStore.save(callback);
+  editedStore.save(callback);
 };
 
 module.exports.deleteStore = (storeId, callback) => {
