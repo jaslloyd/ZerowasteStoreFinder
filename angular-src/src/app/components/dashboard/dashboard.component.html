@@ -4,8 +4,8 @@
     <a data-toggle="collapse" [attr.data-target]="'#storeInfo'+i" >{{store.name}}</a>
     <div [attr.id]="'storeInfo'+i" class="panel-collapse collapse">
       <div id="products" class="panel-body">
-        Zero waste Products:
-        <input type="text" [attr.id]="'products'+i" name="products" value="{{store.products}}" class="form-control">
+        <span>Zero waste Products:</span>
+        <input type="text" [attr.id]="'products'+i" name="products" value="{{store.products}}" class="form-control" required>
         <button class="btn btn-success" (click)="updateStore(store, i)" href="#">Update Store</button>
       </div>
     </div>

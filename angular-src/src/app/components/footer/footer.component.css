@@ -1,13 +1,15 @@
 footer{
     width:100%;
-    min-height:40px;
+    min-height:20px;
     background-color: #222; /* This color gets inverted color or you can add navbar inverse class in html */
 }
 
 #githubButton{
+  background-color: #FFF;
   color: rgb(102,43,129);
 }
 
 #linkedinButton{
+  background-color: #FFF;
   color: rgb(0,127,178);
 }

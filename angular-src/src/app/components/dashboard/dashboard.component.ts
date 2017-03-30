@@ -23,9 +23,9 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  deleteStore(storeId, i){
+  deleteStore(storeId, index){
     // Remove element from stores array to show updates...
-    this.allStores.splice(i, 1);
+    this.allStores.splice(index, 1);
     this.backendService.deleteStore(storeId).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Store deleted', {cssClass:'alert-success', timeout: 3000});
@@ -39,8 +39,8 @@ export class DashboardComponent implements OnInit {
 
   updateStore(store, index){
     const updatedStore = store;
+    // Typescript is type safe need to cast...
     updatedStore.products = (<HTMLInputElement>document.getElementById('products'+index)).value
-    console.log(updatedStore);
     this.backendService.editStore(updatedStore).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Store updated', {cssClass:'alert-success', timeout: 3000});
