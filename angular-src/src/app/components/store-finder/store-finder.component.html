@@ -27,18 +27,6 @@
 </div>
 
 <div class="row" *ngIf="showStoresOnMap">
-  <!-- <div id="test">
-    <div id="floating-panel" class="well" *ngIf="place?.name">
-      <span>{{place?.name}}</span>
-      <br/>
-      <img src="https://cdn.pixabay.com/photo/2014/04/03/10/03/google-309739_960_720.png" alt="Smiley face" height="32" width="32">
-      <span>{{place?.formatted_address}}</span>
-      <p>Opening Hours:</p>
-      <ul>
-        <li *ngFor="let entry of place?.opening_hours.weekday_text">{{entry}}</li>
-      </ul>
-    </div>
-  </div> -->
   <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
     <app-map></app-map>
   </sebm-google-map>

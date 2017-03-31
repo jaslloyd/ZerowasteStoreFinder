@@ -1,7 +1,8 @@
 footer{
     width:100%;
-    min-height:20px;
-    background-color: #222; /* This color gets inverted color or you can add navbar inverse class in html */
+    min-height:5%;
+    background-color: #0c84e4; /* This color gets inverted color or you can add navbar inverse class in html */
+    color: #FFF;
 }
 
 #githubButton{
@@ -13,3 +14,8 @@ footer{
   background-color: #FFF;
   color: rgb(0,127,178);
 }
+
+/*#socialButtons {
+  padding-bottom:5px;
+  padding-top:5px;
+}*/
