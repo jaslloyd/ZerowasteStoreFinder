@@ -44,7 +44,7 @@ router.post('/addStore', (req, res, next) => {
         }
       });
     }else{
-        res.json({success: false, msg: 'Store already exists...'});
+        res.json({success: false, msg: 'Store already exists'});
     }
   });
 });

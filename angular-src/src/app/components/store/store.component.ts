@@ -36,7 +36,6 @@ export class StoreComponent implements OnInit {
             label: this.store.name,
             draggable: false
           };
-          console.log(this.marker);
         },
         err => {
           console.log(err);

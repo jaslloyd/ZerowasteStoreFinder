@@ -3,7 +3,7 @@
   <div class="col-sm-12 text-center">
     <h2>Zero waste Store Logo</h2>
     <br/>
-    <input type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name or Location e.g. 'Dublin 7'" required>
+    <input id="storeQueryField" type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name or Location e.g. 'Dublin 7'" required>
   </div>
 </div>
 <!-- *ngIF && stores.length > 0 -->

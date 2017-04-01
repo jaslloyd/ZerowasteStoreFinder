@@ -11,6 +11,7 @@ mongoose.connect(config.database);
 
 const stores = require('./routes/stores');
 const users = require('./routes/users');
+const messages = require('./routes/messages');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(cors());
 
 app.use('/api/stores', stores);
 app.use('/admin', users);
+app.use('/message', messages);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

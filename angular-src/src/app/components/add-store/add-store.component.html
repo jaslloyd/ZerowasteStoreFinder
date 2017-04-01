@@ -2,7 +2,7 @@
 <form (submit)="onAddStoreSubmit()">
   <div class="form-group">
     <h5><label for="storeLocationInput">Find Store</label></h5>
-    <input type="text" id="storeLocationInput" class="form-control">
+    <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name">
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
       <app-map></app-map>
 

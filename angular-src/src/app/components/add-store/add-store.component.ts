@@ -60,8 +60,7 @@ export class AddStoreComponent implements OnInit {
             // Make this zoom better
             this.zoom = 17;
             this.place = place;
-            console.log(this.place.opening_hours);
-            console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
+            //console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
           });
       });
     });
@@ -87,7 +86,6 @@ export class AddStoreComponent implements OnInit {
       this.store.openingHours = this.place.opening_hours.weekday_text;
     }
 
-    console.log(this.store);
     this.backendService.addStore(this.store).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Store added', {cssClass:'alert-success', timeout: 3000});
