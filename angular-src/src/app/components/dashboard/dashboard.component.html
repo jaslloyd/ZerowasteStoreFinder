@@ -1,13 +1,35 @@
-<div class="well">
-  <div class="list-group-item" *ngFor="let store of allStores; let i = index">
-    <span id="closeButton"><button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
-    <a data-toggle="collapse" [attr.data-target]="'#storeInfo'+i" >{{store.name}}</a>
-    <div [attr.id]="'storeInfo'+i" class="panel-collapse collapse">
-      <div id="products" class="panel-body">
-        <span>Zero waste Products:</span>
-        <input type="text" [attr.id]="'products'+i" name="products" value="{{store.products}}" class="form-control" required>
-        <button class="btn btn-success" (click)="updateStore(store, i)" href="#">Update Store</button>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="well">
+      <h3>Stores:</h3>
+      <div class="list-group-item" *ngFor="let store of allStores; let i = index">
+        <span id="closeButton"><button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
+        <a data-toggle="collapse" [attr.data-target]="'#storeInfo'+i" >{{store.name}}</a>
+        <div [attr.id]="'storeInfo'+i" class="panel-collapse collapse">
+          <div id="products" class="panel-body">
+            <span>Zero waste Products:</span>
+            <input type="text" [attr.id]="'products'+i" name="products" value="{{store.products}}" class="form-control" required>
+            <button class="btn btn-success" (click)="updateStore(store, i)" href="#">Update Store</button>
+          </div>
+        </div>
       </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="well">
+      <h3>Messages:</h3>
+        <div *ngFor="let message of messages; let i = index" class="list-group-item">
+          <span id="closeButton"><button (click)="deleteMessage(message._id, i)" class="btn btn-danger">X</button></span>
+          <a data-toggle="collapse" [attr.data-target]="'#messageInfo'+i" >{{message.subject}}</a>
+          <div [attr.id]="'messageInfo'+i" class="panel-collapse collapse">
+            <div id="products" class="panel-body">
+              <span>Name: {{message.name}}</span>
+              <p>Email: <a href="mailto:{{message.email}}">{{message.email}}</a></p>
+              <p>Message: {{message.message}}</p>
+            </div>
+          </div>
+        </div>
     </div>
   </div>
 </div>

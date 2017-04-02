@@ -20,3 +20,5 @@ footer{
   background-color: #33b833;
   font-size: 17px;
 }
+
+.clear { clear: both; height: 60px; }

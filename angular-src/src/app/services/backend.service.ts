@@ -21,13 +21,11 @@ export class BackendService {
   }
 
   editStore(store){
-    //Implement some sort of admin api key
     return this.http.put('http://localhost:3000/api/stores/'+store.id, store, {headers: this.headers})
       .map(res => res.json());
   }
 
   deleteStore(storeID){
-    //Implement some sort of admin api key
     return this.http.delete('http://localhost:3000/api/stores/'+storeID, {headers: this.headers})
       .map(res => res.json());
   }
@@ -45,5 +43,20 @@ export class BackendService {
   getAllMarkers(){
     return this.http.get('http://localhost:3000/api/stores/locations', {headers: this.headers})
       .map(res => res.json())
+  }
+
+  getMessages(){
+    return this.http.get('http://localhost:3000/message/messages', {headers: this.headers})
+      .map(res => res.json());
+  }
+
+  addMessage(message){
+    return this.http.post('http://localhost:3000/message/addMessage', message, {headers: this.headers})
+      .map(res => res.json());
+  }
+
+  deleteMessage(messageID){
+    return this.http.delete('http://localhost:3000/message/'+messageID, {headers: this.headers})
+      .map(res => res.json());
   }
 }

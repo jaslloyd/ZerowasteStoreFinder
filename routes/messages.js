@@ -6,7 +6,6 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/database');
 
 router.post('/addMessage', (req, res, next) => {
-  console.log(req.body);
   let newMessage = new Message({
     name: req.body.name,
     email: req.body.email,

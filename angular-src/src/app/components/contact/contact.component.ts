@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from '../../services/backend.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact',
@@ -6,14 +9,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+  name: String;
+  email: String;
+  subject: String;
+  message: String;
+  subjects = ["Choose one", "Feature Suggestion", "Support", "Other"];
 
-  constructor() { }
+  constructor(
+    private flashMessage: FlashMessagesService,
+    private backendService: BackendService,
+    private router: Router) {
+      this.subject = this.subjects[0];
+    }
 
   ngOnInit() {
+
   }
 
   onContactSubmit(){
-    console.log('MESSAGE!!')
+    const message = {
+      name: this.name,
+      email: this.email,
+      subject: this.subject,
+      message: this.message
+    }
+    
+    this.backendService.addMessage(message).subscribe(data => {
+      if(data.success){
+        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 5000});
+      }else{
+        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
+      }
+      this.router.navigate(['/']);
+    });
   }
 
 }

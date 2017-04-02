@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   allStores: Store[] = [];
+  messages: any = [];
   constructor(
     private flashMessage: FlashMessagesService,
     private backendService: BackendService,
@@ -21,14 +22,17 @@ export class DashboardComponent implements OnInit {
     this.backendService.getAllStores().subscribe(stores => {
       this.allStores = stores;
     });
+
+    this.backendService.getMessages().subscribe(messages => {
+      this.messages = messages;
+    });
   }
 
   deleteStore(storeId, index){
-    // Remove element from stores array to show updates...
-    this.allStores.splice(index, 1);
     this.backendService.deleteStore(storeId).subscribe(data => {
       if(data.success){
         this.flashMessage.show('Store deleted', {cssClass:'alert-success', timeout: 3000});
+        this.allStores.splice(index, 1);
         this.router.navigate(['/dashboard']);
       }
       else{
@@ -46,6 +50,19 @@ export class DashboardComponent implements OnInit {
         this.flashMessage.show('Store updated', {cssClass:'alert-success', timeout: 3000});
       }else{
         this.flashMessage.show('Store update failed...', {cssClass:'alert-danger', timeout: 3000});
+      }
+    });
+  }
+
+  deleteMessage(messageId, index){
+    this.backendService.deleteMessage(messageId).subscribe(data => {
+      if(data.success){
+        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
+        this.messages.splice(index, 1);
+        this.router.navigate(['/dashboard']);
+      }
+      else{
+        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
     });
   }
