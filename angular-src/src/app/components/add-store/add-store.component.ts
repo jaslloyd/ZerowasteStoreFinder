@@ -17,7 +17,7 @@ declare var google: any;
 export class AddStoreComponent implements OnInit {
   lat: number;
   lng: number;
-  zoom: number = 8;
+  zoom: number = 10;
 
   place: any;
   marker: Marker;

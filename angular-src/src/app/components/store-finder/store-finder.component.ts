@@ -15,8 +15,8 @@ import { MapComponent } from '../map/map.component';
 export class StoreFinderComponent implements OnInit {
   query: String = '';
   stores: Store[] = [];
-  lat: number;
-  lng: number;
+  lat: number = 0;
+  lng: number = 0;
   zoom: number = 10;
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
@@ -33,9 +33,11 @@ export class StoreFinderComponent implements OnInit {
   }
 
   searchStores(){
-    if (this.query != ""){
+    if (this.query != ''){
       this.backendService.searchStores(this.query).subscribe(stores => {
-        this.stores = stores;
+        if(stores){
+          this.stores = stores;
+        }
       },
       err => {
         console.log(err);

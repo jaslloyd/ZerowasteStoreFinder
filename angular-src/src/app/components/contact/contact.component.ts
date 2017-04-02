@@ -13,7 +13,7 @@ export class ContactComponent implements OnInit {
   email: String;
   subject: String;
   message: String;
-  subjects = ["Choose one", "Feature Suggestion", "Support", "Other"];
+  subjects = ["Choose one", "Feature Suggestion", "Bug Report", "Support", "Other"];
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -33,7 +33,7 @@ export class ContactComponent implements OnInit {
       subject: this.subject,
       message: this.message
     }
-    
+
     this.backendService.addMessage(message).subscribe(data => {
       if(data.success){
         this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 5000});
