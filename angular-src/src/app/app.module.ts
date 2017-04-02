@@ -34,7 +34,8 @@ const appRoutes: Routes = [
   {path: 'addstore', component: AddStoreComponent},
   {path: 'store/:id', component: StoreComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: '**', component: StoreFinderComponent}
 ];
 
 @NgModule({
