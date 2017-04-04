@@ -322,7 +322,7 @@ var AddStoreComponent = (function () {
         this.router = router;
         this.lat = 52;
         this.lng = 13;
-        this.zoom = 5;
+        this.zoom = 3;
     }
     AddStoreComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -1076,7 +1076,7 @@ module.exports = "#closeButton{\r\n  margin-right: 25px;\r\n}\r\n"
 /***/ 707:
 /***/ (function(module, exports) {
 
-module.exports = "footer{\r\n    width:100%;\r\n    min-height:1%;\r\n    background-color: #33b833;\r\n    color: #FFF;\r\n    font-size: 17px;\r\n}\r\n\r\n#githubButton{\r\n  background-color: #FFF;\r\n  color: rgb(102,43,129);\r\n}\r\n\r\n#emailButton{\r\n  background-color: #FFF;\r\n  color: rgb(0,168,236);\r\n}\r\n\r\n.navbar-inverse {\r\n  background-color: #33b833;\r\n  font-size: 17px;\r\n}\r\n\r\n.clear { clear: both; height: 100px; }\r\n"
+module.exports = "footer{\r\n    width:100%;\r\n    min-height:1%;\r\n    color: black;\r\n    font-size: 15px;\r\n}\r\n\r\n#githubButton{\r\n  background-color: #FFF;\r\n  color: rgb(102,43,129);\r\n}\r\n\r\n.clear { clear: both; height: 100px; }\r\n"
 
 /***/ }),
 
@@ -1153,7 +1153,7 @@ module.exports = "<div class=\"row\">\n  <div class=\"col-sm-6\">\n    <div clas
 /***/ 718:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"clear\"></div>\n<footer class=\"footer navbar-fixed-bottom\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n          <p>Developed by Jason Lloyd </p>\n      </div>\n      <div class=\"col-sm-6 text-right\" style=\"padding-bottom:5px;padding-top:5px;\">\n        <a class=\"btn btn-default btn-sm btn-git\" href=\"http://github.com/thedeployguy\" id =\"githubButton\"><i class=\"fa fa-github fa-2x\"></i></a>\r\n        <a class=\"btn btn-default btn-sm btn-mail\" href=\"mailto:jason.lloyddev@gmail.com\" id =\"emailButton\"><i class=\"fa fa-envelope fa-2x\"></i></a>\r\n      </div>\n    </div>\n  </div>\n</footer>\n"
+module.exports = "<div class=\"clear\"></div>\n<footer class=\"footer navbar-fixed-bottom\">\n  <div class=\"container\">\n    <div class=\"row\">\n      <div class=\"col-sm-6\">\n          <p>Developed by Jason Lloyd</p>\n      </div>\n      <div class=\"col-sm-6 text-right\" style=\"padding-bottom:5px;padding-top:5px;\">\n        <a class=\"btn btn-default btn-sm btn-git\" href=\"http://github.com/thedeployguy\" id =\"githubButton\"><i class=\"fa fa-github fa-2x\"></i></a>\r\n      </div>\n    </div>\n  </div>\n</footer>\n"
 
 /***/ }),
 

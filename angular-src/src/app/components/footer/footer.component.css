@@ -1,24 +1,13 @@
 footer{
     width:100%;
     min-height:1%;
-    background-color: #33b833;
-    color: #FFF;
-    font-size: 17px;
+    color: black;
+    font-size: 15px;
 }
 
 #githubButton{
   background-color: #FFF;
   color: rgb(102,43,129);
-}
-
-#emailButton{
-  background-color: #FFF;
-  color: rgb(0,168,236);
-}
-
-.navbar-inverse {
-  background-color: #33b833;
-  font-size: 17px;
 }
 
 .clear { clear: both; height: 100px; }
