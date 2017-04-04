@@ -11,52 +11,52 @@ export class BackendService {
   }
 
   searchStores(query){
-    return this.http.get('http://localhost:3000/api/stores/search/' + query, {headers: this.headers})
+    return this.http.get('/api/stores/search/' + query, {headers: this.headers})
       .map(res => res.json());
   }
 
   addStore(store){
-    return this.http.post('http://localhost:3000/api/stores/addStore', store, {headers: this.headers})
+    return this.http.post('/api/stores/addStore', store, {headers: this.headers})
       .map(res => res.json());
   }
 
   editStore(store){
-    return this.http.put('http://localhost:3000/api/stores/'+store.id, store, {headers: this.headers})
+    return this.http.put('/api/stores/'+store.id, store, {headers: this.headers})
       .map(res => res.json());
   }
 
   deleteStore(storeID){
-    return this.http.delete('http://localhost:3000/api/stores/'+storeID, {headers: this.headers})
+    return this.http.delete('/api/stores/'+storeID, {headers: this.headers})
       .map(res => res.json());
   }
 
   getStore(storeID){
-    return this.http.get('http://localhost:3000/api/stores/'+storeID, {headers: this.headers})
+    return this.http.get('/api/stores/'+storeID, {headers: this.headers})
       .map(res => res.json());
   }
 
   getAllStores(){
-    return this.http.get('http://localhost:3000/api/stores/all', {headers: this.headers})
+    return this.http.get('/api/stores/all', {headers: this.headers})
       .map(res => res.json());
   }
 
   getAllMarkers(){
-    return this.http.get('http://localhost:3000/api/stores/locations', {headers: this.headers})
+    return this.http.get('/api/stores/locations', {headers: this.headers})
       .map(res => res.json())
   }
 
   getMessages(){
-    return this.http.get('http://localhost:3000/message/messages', {headers: this.headers})
+    return this.http.get('/message/messages', {headers: this.headers})
       .map(res => res.json());
   }
 
   addMessage(message){
-    return this.http.post('http://localhost:3000/message/addMessage', message, {headers: this.headers})
+    return this.http.post('/message/addMessage', message, {headers: this.headers})
       .map(res => res.json());
   }
 
   deleteMessage(messageID){
-    return this.http.delete('http://localhost:3000/message/'+messageID, {headers: this.headers})
+    return this.http.delete('/message/'+messageID, {headers: this.headers})
       .map(res => res.json());
   }
 }
