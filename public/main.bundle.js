@@ -38,7 +38,7 @@ var AuthService = (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         headers.append('Content-Type', 'application/json');
         // This returns an observeable (need to check what that means)
-        return this.http.post('http://localhost:3000/admin/login', user, { headers: headers })
+        return this.http.post('/admin/login', user, { headers: headers })
             .map(function (res) { return res.json(); });
     };
     AuthService.prototype.storeUserData = function (token, user) {
