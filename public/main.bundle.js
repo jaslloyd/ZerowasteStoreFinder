@@ -320,7 +320,9 @@ var AddStoreComponent = (function () {
         this.backendService = backendService;
         this.authService = authService;
         this.router = router;
-        this.zoom = 10;
+        this.lat = 52;
+        this.lng = 13;
+        this.zoom = 5;
     }
     AddStoreComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -328,6 +330,7 @@ var AddStoreComponent = (function () {
             navigator.geolocation.getCurrentPosition(function (position) {
                 _this.lat = position.coords.latitude;
                 _this.lng = position.coords.longitude;
+                _this.zoom = 10;
             });
         }
         this.autocomplete();
@@ -1073,7 +1076,7 @@ module.exports = "#closeButton{\r\n  margin-right: 25px;\r\n}\r\n"
 /***/ 707:
 /***/ (function(module, exports) {
 
-module.exports = "footer{\r\n    width:100%;\r\n    min-height:5%;\r\n    background-color: #33b833;\r\n    color: #FFF;\r\n    font-size: 17px;\r\n}\r\n\r\n#githubButton{\r\n  background-color: #FFF;\r\n  color: rgb(102,43,129);\r\n}\r\n\r\n#emailButton{\r\n  background-color: #FFF;\r\n  color: rgb(0,168,236);\r\n}\r\n\r\n.navbar-inverse {\r\n  background-color: #33b833;\r\n  font-size: 17px;\r\n}\r\n\r\n.clear { clear: both; height: 100px; }\r\n"
+module.exports = "footer{\r\n    width:100%;\r\n    min-height:1%;\r\n    background-color: #33b833;\r\n    color: #FFF;\r\n    font-size: 17px;\r\n}\r\n\r\n#githubButton{\r\n  background-color: #FFF;\r\n  color: rgb(102,43,129);\r\n}\r\n\r\n#emailButton{\r\n  background-color: #FFF;\r\n  color: rgb(0,168,236);\r\n}\r\n\r\n.navbar-inverse {\r\n  background-color: #33b833;\r\n  font-size: 17px;\r\n}\r\n\r\n.clear { clear: both; height: 100px; }\r\n"
 
 /***/ }),
 
