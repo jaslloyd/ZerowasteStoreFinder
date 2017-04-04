@@ -22,7 +22,7 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type','application/json');
     // This returns an observeable (need to check what that means)
-    return this.http.post('http://localhost:3000/admin/login', user, {headers: headers})
+    return this.http.post('/admin/login', user, {headers: headers})
       .map(res => res.json());
   }
 
