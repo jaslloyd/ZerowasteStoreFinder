@@ -5,9 +5,11 @@ const Store = require('../models/store');
 /* Return all stores that match query */
 router.get('/search/:query', (req, res, next) => {
   const query = req.params.query;
-  const nameQuery = {name: {"$regex": "^"+ query, "$options": "i"}};
+  // const nameQuery = {name: {"$regex": "^"+ query, "$options": "i"}};
+  const nameQuery = {name: {"$regex": query, "$options": "i"}};
   const locationQuery = {address: {"$regex": query, "$options": "i"}};
-  const fullQuery = {$or: [nameQuery, locationQuery]};
+  const productsQuery = {products: {"$regex": query, "$options": "i"}};
+  const fullQuery = {$or: [nameQuery, locationQuery, productsQuery]};
   Store.getStores(fullQuery, (err, stores) => {
     if(err) throw err;
     res.json(stores);
