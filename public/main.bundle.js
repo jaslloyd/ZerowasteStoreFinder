@@ -788,7 +788,7 @@ var StoreFinderComponent = (function () {
         this.stores = [];
         this.lat = 52;
         this.lng = 13;
-        this.zoom = 10;
+        this.zoom = 3;
         this.showStoresOnMap = false;
         this.btnText = "View all stores on map";
     }
@@ -798,6 +798,7 @@ var StoreFinderComponent = (function () {
             navigator.geolocation.getCurrentPosition(function (position) {
                 _this.lat = position.coords.latitude;
                 _this.lng = position.coords.longitude;
+                _this.zoom = 10;
             });
         }
     };
@@ -1182,7 +1183,7 @@ module.exports = "<nav class=\"navbar navbar-inverse\">\n   <div class=\"contain
 /***/ 722:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-group\">\n  <label for=\"storeFinderInput\" class=\"col-sm-12 control-label text-center\"></label>\n  <div class=\"col-sm-12 text-center\">\n    <h2>Zero waste Store Logo</h2>\n    <br/>\n    <input id=\"storeQueryField\" type=\"text\" name=\"storeFinderInput\" [(ngModel)]=\"query\" (ngModelChange)=\"searchStores()\" class=\"form-control text-center\" placeholder=\"Type Store name or Location e.g. 'Dublin 7'\" required>\n  </div>\n</div>\n<!-- *ngIF && stores.length > 0 -->\n<div id=\"stores\"  *ngIf=\"query != ''\">\n  <div class=\"row\" *ngFor=\"let store of stores\">\n    <div class=\"col-sm-12\">\n      <div class=\"well\">\n        <h4>{{store.name}}</h4>\n        <p>Address: {{store.address}}</p>\n        <p>Zero Waste products: {{store.products}}</p>\n        <a class=\"btn btn-sm btn-primary\"[routerLink]=\"['/store', store.id]\">More information</a>\n      </div>\n    </div>\n  </div>\n</div>\n<div id=\"noResults\" class=\"text-center\" *ngIf=\"stores.length == 0 && query.length > 0\">\n  <h4>No Results found</h4>\n</div>\n<div class=\"row\">\n  <div id=\"buttons\" class=\"col-sm-12 text-center\">\n    <button id=\"mapBtn\" (click)=\"toggleMap()\" class=\"btn btn-success\">{{btnText}}</button>\n  </div>\n</div>\n\n<div class=\"row\" *ngIf=\"showStoresOnMap\">\n  <sebm-google-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [zoomControl]=\"true\">\n    <app-map></app-map>\n  </sebm-google-map>\n</div>\n"
+module.exports = "<div class=\"form-group\">\n  <label for=\"storeFinderInput\" class=\"col-sm-12 control-label text-center\"></label>\n  <div class=\"col-sm-12 text-center\">\n    <h2>Store Finder</h2>\n    <br/>\n    <input id=\"storeQueryField\" type=\"text\" name=\"storeFinderInput\" [(ngModel)]=\"query\" (ngModelChange)=\"searchStores()\" class=\"form-control text-center\" placeholder=\"Type Store name or Location e.g. 'Dublin 7'\" required>\n  </div>\n</div>\n<!-- *ngIF && stores.length > 0 -->\n<div id=\"stores\"  *ngIf=\"query != ''\">\n  <div class=\"row\" *ngFor=\"let store of stores\">\n    <div class=\"col-sm-12\">\n      <div class=\"well\">\n        <h4>{{store.name}}</h4>\n        <p>Address: {{store.address}}</p>\n        <p>Zero Waste products: {{store.products}}</p>\n        <a class=\"btn btn-sm btn-primary\"[routerLink]=\"['/store', store.id]\">More information</a>\n      </div>\n    </div>\n  </div>\n</div>\n<div id=\"noResults\" class=\"text-center\" *ngIf=\"stores.length == 0 && query.length > 0\">\n  <h4>No Results found</h4>\n</div>\n<div class=\"row\">\n  <div id=\"buttons\" class=\"col-sm-12 text-center\">\n    <button id=\"mapBtn\" (click)=\"toggleMap()\" class=\"btn btn-success\">{{btnText}}</button>\n  </div>\n</div>\n\n<div class=\"row\" *ngIf=\"showStoresOnMap\">\n  <sebm-google-map [latitude]=\"lat\" [longitude]=\"lng\" [zoom]=\"zoom\" [zoomControl]=\"true\">\n    <app-map></app-map>\n  </sebm-google-map>\n</div>\n"
 
 /***/ }),
 

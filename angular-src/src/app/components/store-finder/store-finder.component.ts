@@ -17,7 +17,7 @@ export class StoreFinderComponent implements OnInit {
   stores: Store[] = [];
   lat: number = 52;
   lng: number = 13;
-  zoom: number = 10;
+  zoom: number = 3;
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
 
@@ -28,6 +28,7 @@ export class StoreFinderComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
+        this.zoom = 10;
       });
     }
   }
