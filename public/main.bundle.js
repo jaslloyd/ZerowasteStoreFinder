@@ -986,7 +986,7 @@ var BackendService = (function () {
     function BackendService(http) {
         this.http = http;
         this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        this.serverHostname = "http://localhost:3000";
+        this.serverHostname = ""; //http://localhost:3000;
         this.headers.append('Content-Type', 'application/json');
     }
     BackendService.prototype.searchStores = function (query) {
