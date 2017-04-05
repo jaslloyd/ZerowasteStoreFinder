@@ -15,8 +15,8 @@ import { MapComponent } from '../map/map.component';
 export class StoreFinderComponent implements OnInit {
   query: String = '';
   stores: Store[] = [];
-  lat: number = 0;
-  lng: number = 0;
+  lat: number = 52;
+  lng: number = 13;
   zoom: number = 10;
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
