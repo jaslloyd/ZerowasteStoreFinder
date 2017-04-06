@@ -17,3 +17,9 @@
 .btn-success {
   background-color: #33b833;
 }
+
+
+.well{
+  background-color: #FFFFFF;
+  box-shadow: -5px 5px 5px #888888;
+}

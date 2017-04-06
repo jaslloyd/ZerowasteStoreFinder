@@ -21,9 +21,12 @@ export class StoreFinderComponent implements OnInit {
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
 
+  dayIndex: number;
   constructor(private backendService: BackendService) { }
 
   ngOnInit() {
+    const now = new Date();
+    this.dayIndex = now.getDay() - 1;
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
@@ -38,6 +41,7 @@ export class StoreFinderComponent implements OnInit {
       this.backendService.searchStores(this.query).subscribe(stores => {
         if(stores){
           this.stores = stores;
+          console.log(stores);
         }
       },
       err => {
