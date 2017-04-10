@@ -89,7 +89,7 @@ export class AddStoreComponent implements OnInit {
 
     this.backendService.addStore(this.store).subscribe(data => {
       if(data.success){
-        this.flashMessage.show('Store added', {cssClass:'alert-success', timeout: 3000});
+        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
       }else{
         this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }

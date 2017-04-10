@@ -31,12 +31,12 @@ export class DashboardComponent implements OnInit {
   deleteStore(storeId, index){
     this.backendService.deleteStore(storeId).subscribe(data => {
       if(data.success){
-        this.flashMessage.show('Store deleted', {cssClass:'alert-success', timeout: 3000});
+        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
         this.allStores.splice(index, 1);
         this.router.navigate(['/dashboard']);
       }
       else{
-        this.flashMessage.show('Deleting store failed', {cssClass:'alert-danger', timeout: 3000});
+        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
     });
   }

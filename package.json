@@ -1,6 +1,6 @@
 {
   "name": "zerowastestorefinder",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Website to search for stores that sell Zero waste products",
   "private": true,
   "scripts": {
