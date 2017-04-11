@@ -71,7 +71,6 @@ router.put('/:storeID', (req, res, next) => {
   Store.getStore(editedStore.id, (err, store) => {
     if(err) throw err;
     store.products = editedStore.products;
-    // Call the editStore function with the edited store...
     Store.editStore(store, (err) => {
       if (err){
         res.json({success: false, msg: 'Failed to update store'});
