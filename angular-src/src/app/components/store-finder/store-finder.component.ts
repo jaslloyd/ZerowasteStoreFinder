@@ -20,6 +20,7 @@ export class StoreFinderComponent implements OnInit {
   zoom: number = 3;
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
+  noResults: boolean = false;
 
   dayIndex: number;
   constructor(private backendService: BackendService) { }
@@ -37,11 +38,14 @@ export class StoreFinderComponent implements OnInit {
   }
 
   searchStores(){
-    if (this.query != ''){
+    if (this.query.length > 0){
       this.backendService.searchStores(this.query).subscribe(stores => {
-        if(stores){
+        if(stores.length > 0){
           this.stores = stores;
-          console.log(stores);
+          this.noResults = false;
+        }else{
+          this.stores = [];
+          this.noResults = true;
         }
       },
       err => {

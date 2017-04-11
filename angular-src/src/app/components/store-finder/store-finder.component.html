@@ -6,7 +6,7 @@
     <input id="storeQueryField" type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
   </div>
 </div>
-<div id="stores"  *ngIf="query != ''">
+<div id="stores"  *ngIf="query.length > 0">
   <div class="row" *ngFor="let store of stores">
     <div class="col-sm-offset-2 col-sm-8">
       <div class="well">
@@ -19,7 +19,7 @@
     </div>
   </div>
 </div>
-<div id="noResults" class="text-center" *ngIf="stores.length == 0 && query.length > 0">
+<div id="noResults" class="text-center" *ngIf="noResults">
   <h4>No Results found</h4>
 </div>
 <div class="row">
