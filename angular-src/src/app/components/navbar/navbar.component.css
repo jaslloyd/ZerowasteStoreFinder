@@ -25,3 +25,7 @@ li > a {
 .navbar-inverse .navbar-toggle .icon-bar {
     background-color: #ffffff;
 }
+
+.navbar-brand{
+  font-size: 20px;
+}

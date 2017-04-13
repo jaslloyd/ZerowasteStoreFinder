@@ -14,8 +14,8 @@
       <div class="well">
         <h4>{{store.name}}</h4>
         <p>Address: {{store.address}}</p>
-        <p>Zero Waste products: {{store.products}}</p>
-        <p>{{store.openingHours[dayIndex]}}</p>
+        <p>Zero Waste products:<b>{{store.products}}</b></p>
+        <p>Opening Hours Today: {{store.openingHours[dayIndex]}}</p>
         <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
       </div>
     </div>
