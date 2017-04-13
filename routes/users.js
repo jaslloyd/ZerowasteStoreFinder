@@ -38,6 +38,7 @@ router.post('/login', (req, res, next) => {
         });
         res.json({
           success: true,
+          msg: 'Login Successful',
           token: 'JWT ' +token,
           user: {
             id: user._id,

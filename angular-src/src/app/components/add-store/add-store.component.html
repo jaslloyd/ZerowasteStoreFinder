@@ -1,7 +1,7 @@
-<h2 class="page-header text-center">Add new store</h2>
+<h3 class="page-header text-center">Add new store</h3>
 <form (submit)="onAddStoreSubmit()">
   <div class="form-group">
-    <h5><label for="storeLocationInput">Find Store</label></h5>
+    <label for="storeLocationInput">Locate Store</label>
     <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name">
     <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
       <app-map></app-map>
@@ -13,7 +13,6 @@
         [markerDraggable]="marker?.draggable">
 
         <sebm-google-map-info-window>
-          <!-- Fill in information about store -->
           <p><strong>{{place?.name}}</strong></p>
           <p>{{place?.formatted_address}}</p>
         </sebm-google-map-info-window>
@@ -21,7 +20,7 @@
     </sebm-google-map>
   </div>
   <div class="form-group">
-    <h5><label for="products">Zero waste products</label></h5>
+    <label for="products">Zero waste products</label>
     <input type="text" [(ngModel)]="products" name="products" placeholder="Zero waste foods available for purchase" class="form-control">
   </div>
   <div class="form-group text-right">
