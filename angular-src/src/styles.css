@@ -2,3 +2,13 @@
 body {
   font-size: 15px;
 }
+
+.greenIcon {
+  color: #33b833;
+  margin-right: 5px;
+}
+
+.blueIcon {
+  color: #4285F4;
+  margin-right: 5px;
+}

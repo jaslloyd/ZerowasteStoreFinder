@@ -2,12 +2,12 @@
   <div class="col-sm-12">
     <div class="well" *ngIf="store?.name">
       <h4>{{store.name}}</h4>
-      <p>Address: {{store.address}}</p>
-      <p>Opening Hours</p>
+      <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>
+      <p><span class="glyphicon glyphicon-time blueIcon" aria-hidden="true"></span>  Opening Hours</p>
       <ul>
           <li *ngFor="let entry of store.openingHours">{{entry}}</li>
       </ul>
-      <p>Zero Waste products: {{store.products}}</p>
+      <p><span class="glyphicon glyphicon-leaf greenIcon" aria-hidden="true"></span>  Zero Waste products: {{store.products}}</p>
       <p></p>
       <div *ngIf="marker?.lat">
         <sebm-google-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">

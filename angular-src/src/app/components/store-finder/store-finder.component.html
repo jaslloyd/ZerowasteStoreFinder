@@ -12,10 +12,10 @@
   <div class="row" *ngFor="let store of stores">
     <div class="col-sm-offset-2 col-sm-8">
       <div class="well">
-        <h4>{{store.name}}</h4>
-        <p>Address: {{store.address}}</p>
-        <p>Zero Waste products:<b>{{store.products}}</b></p>
-        <p>Opening Hours Today: {{store.openingHours[dayIndex]}}</p>
+        <h5><b>{{store.name}}</b></h5>
+        <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>
+        <p><span class="glyphicon glyphicon-leaf greenIcon" aria-hidden="true"></span>  Zero Waste products:<b>{{store.products}}</b></p>
+        <p><span class="glyphicon glyphicon-time blueIcon" aria-hidden="true"></span>  Opening Hours Today: {{store.openingHours[dayIndex]}}</p>
         <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
       </div>
     </div>

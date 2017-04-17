@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class BackendService {
   headers: Headers = new Headers();
-  serverHostname = ""
+  serverHostname = "" //"http://localhost:3000"
 
   constructor(private http:Http) {
     this.headers.append('Content-Type','application/json');
