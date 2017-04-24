@@ -29,3 +29,7 @@ li > a {
 .navbar-brand{
   font-size: 20px;
 }
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
+  border-color: #33b833;
+}
