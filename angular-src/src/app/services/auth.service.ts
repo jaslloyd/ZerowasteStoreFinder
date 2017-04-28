@@ -11,8 +11,8 @@ export class AuthService {
 
   constructor(private http:Http) { }
 
-  validateNewStore(store, products){
-      if (store == undefined || products == undefined || products == ""){
+  validateNewStore(store, selectedItems, otherItems){
+      if (store == undefined || selectedItems == undefined || selectedItems.length == 0 && otherItems.length == 0){
         return false;
       }
       return true;

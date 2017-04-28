@@ -23,6 +23,18 @@ export class AddStoreComponent implements OnInit {
   marker: Marker;
   store: Store;
   products: string;
+  selectedItems: Array<Object>;
+  otherItems: string = '';
+
+  productOptions = [
+    {name: 'Vegatables', checked: false},
+    {name: 'Fruits', checked: false},
+    {name: 'Nuts', checked: false},
+    {name: 'Placeholder 1', checked: false},
+    {name: 'Placeholder 2', checked: false},
+    {name: 'Placeholder 3', checked: false},
+    {name: 'Placeholder 4', checked: false}
+  ];
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
@@ -40,8 +52,18 @@ export class AddStoreComponent implements OnInit {
       });
     }
     this.autocomplete();
+
   }
 
+  getSelectedProducts(){
+    return this.productOptions
+            .filter(opt => opt.checked)
+            .map(opt => opt.name);
+  }
+
+  onSelectedProduct(){
+    this.selectedItems = this.getSelectedProducts();
+  }
   autocomplete(){
     this.loader.load().then(() => {
       var autocomplete = new google.maps.places.Autocomplete(document.getElementById("storeLocationInput"), {});
@@ -68,7 +90,7 @@ export class AddStoreComponent implements OnInit {
   }
 
   onAddStoreSubmit(){
-    if(!this.authService.validateNewStore(this.place, this.products)){
+    if(!this.authService.validateNewStore(this.place, this.selectedItems, this.otherItems)){
       this.flashMessage.show('Please fill in all fields', {cssClass:'alert-danger', timeout: 3000});
       return false;
     }
@@ -77,7 +99,7 @@ export class AddStoreComponent implements OnInit {
       id: this.place.id,
       name: this.place.name,
       address: this.place.formatted_address,
-      products: this.products,
+      products: this.otherItems.length == 0 ? this.selectedItems.join(", ") : this.selectedItems.length == 0 ? this.otherItems : this.selectedItems.join(", ") + ', ' + this.otherItems,
       openingHours: ["N/A"],
       lat: this.marker.lat,
       lng: this.marker.lng
