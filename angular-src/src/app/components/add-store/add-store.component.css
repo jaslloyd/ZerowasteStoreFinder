@@ -11,6 +11,10 @@
 }
 
 .scrollbox {
-  height:100px;
+  height:150px;
   overflow-y:scroll;
+}
+
+#resetButton {
+  margin-bottom: 15px;
 }

@@ -27,14 +27,9 @@ export class AddStoreComponent implements OnInit {
   otherItems: string = '';
 
   productOptions = [
-    {name: 'Vegatables', checked: false},
-    {name: 'Fruits', checked: false},
-    {name: 'Nuts', checked: false},
-    {name: 'Placeholder 1', checked: false},
-    {name: 'Placeholder 2', checked: false},
-    {name: 'Placeholder 3', checked: false},
-    {name: 'Placeholder 4', checked: false}
+    {name: 'Vegatables', checked: false}
   ];
+  
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
@@ -44,6 +39,7 @@ export class AddStoreComponent implements OnInit {
    private router: Router) { }
 
   ngOnInit() {
+    this.addItems();
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
@@ -52,7 +48,30 @@ export class AddStoreComponent implements OnInit {
       });
     }
     this.autocomplete();
+  }
 
+  resetSelections(){
+    this.productOptions.forEach((item) => {
+      item.checked = false;
+    });
+    this.selectedItems = [];
+  }
+
+  addItems(){
+    let items = [
+      "Fruits" , "Meat", "Poultry", "Cheese", "Eggs", "Bread, cake, pastries", "Cereals (e.g. oats)", "Rice", "Pasta", "Nuts", "Dry Fruits", "Tea", "Coffee", "Nut Butter", "Honey", "Butter", "Zero waste acessories(e.g. toothbrush, lunchboxes, bottles etc.)", "Cleaning products", "Beauty products", "Body products", "Second hand clothing", "Second hand furniture", "Second hand appliances", "Zero waste friendly take away"
+    ]
+
+    items.forEach((item) => {
+      this.addProductItem(item);
+    });
+  }
+
+  addProductItem(itemName){
+    this.productOptions.push({
+      name: itemName,
+      checked: false
+    })
   }
 
   getSelectedProducts(){

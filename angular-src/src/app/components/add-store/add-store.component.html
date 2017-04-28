@@ -1,4 +1,4 @@
-<h3 class="page-header text-center">Add new store</h3>
+<h3 class="text-center">Add new store</h3>
 <form (submit)="onAddStoreSubmit()">
   <div class="form-group">
     <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
@@ -21,6 +21,7 @@
   </div>
   <div class="form-group">
     <h5><label for="producoptionsts"><b> Select Zero Waste products sold: </b></label></h5>
+    <a id="resetButton" class="btn btn-sm btn-danger" (click)="resetSelections()">Reset Selections</a>
     <div class="scrollbox">
       <div *ngFor="let option of productOptions">
         <label>
