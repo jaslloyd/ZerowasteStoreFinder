@@ -17,8 +17,9 @@ declare var google: any;
 export class AddStoreComponent implements OnInit {
   lat: number = 52;
   lng: number = 13;
-  zoom: number = 3;
+  zoom: number = 4;
 
+  gmapsOptions: Object;
   place: any;
   marker: Marker;
   store: Store;
@@ -44,17 +45,16 @@ export class AddStoreComponent implements OnInit {
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;
         this.lng = position.coords.longitude;
-        this.zoom = 10;
+        this.zoom = 11;
       });
     }
-    this.autocomplete();
-  }
+    //http://stackoverflow.com/questions/6747833/how-can-i-find-a-user-s-country-using-html5-geolocation
+    this.gmapsOptions = {
+      componentRestrictions: {country: "ie"}
+    }
+    this.gmapsOptions = {};
 
-  resetSelections(){
-    this.productOptions.forEach((item) => {
-      item.checked = false;
-    });
-    this.selectedItems = [];
+    this.autocomplete();
   }
 
   addItems(){
@@ -74,18 +74,26 @@ export class AddStoreComponent implements OnInit {
     })
   }
 
+  resetSelections(){
+    this.productOptions.forEach((item) => {
+      item.checked = false;
+    });
+    this.selectedItems = [];
+  }
+
+  onSelectedProduct(){
+    this.selectedItems = this.getSelectedProducts();
+  }
+
   getSelectedProducts(){
     return this.productOptions
             .filter(opt => opt.checked)
             .map(opt => opt.name);
   }
 
-  onSelectedProduct(){
-    this.selectedItems = this.getSelectedProducts();
-  }
   autocomplete(){
     this.loader.load().then(() => {
-      var autocomplete = new google.maps.places.Autocomplete(document.getElementById("storeLocationInput"), {});
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById("storeLocationInput"), this.gmapsOptions);
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
             var place = autocomplete.getPlace();
