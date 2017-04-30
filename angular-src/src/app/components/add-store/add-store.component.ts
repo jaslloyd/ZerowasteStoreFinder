@@ -19,13 +19,14 @@ export class AddStoreComponent implements OnInit {
   lng: number = 13;
   zoom: number = 4;
 
-  gmapsOptions: Object;
+  gmapsOptions: Object = {};
   place: any;
   marker: Marker;
   store: Store;
   products: string;
   selectedItems: Array<Object>;
   otherItems: string = '';
+  shortName: string;
 
   productOptions = [
     {name: 'Vegatables', checked: false}
@@ -48,12 +49,11 @@ export class AddStoreComponent implements OnInit {
         this.zoom = 11;
       });
     }
-    //http://stackoverflow.com/questions/6747833/how-can-i-find-a-user-s-country-using-html5-geolocation
-    this.gmapsOptions = {
-      componentRestrictions: {country: "ie"}
-    }
-    this.gmapsOptions = {};
-
+    // this.backendService.getUsersCountryCode(this.lat, this.lng).subscribe(data =>{
+    //      this.shortName = data.results[data.results.length - 1].address_components[0].short_name;
+    //      this.gmapsOptions = {componentRestrictions: {country: this.shortName}}
+    // });
+    console.log(this.gmapsOptions);
     this.autocomplete();
   }
 

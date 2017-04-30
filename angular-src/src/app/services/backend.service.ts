@@ -60,4 +60,9 @@ export class BackendService {
     return this.http.delete(this.serverHostname+'/message/'+messageID, {headers: this.headers})
       .map(res => res.json());
   }
+
+  getUsersCountryCode(lat, lng){
+    return this.http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng, {})
+      .map(res => res.json());
+}
 }
