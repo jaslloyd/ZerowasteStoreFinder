@@ -53,7 +53,6 @@ export class AddStoreComponent implements OnInit {
     //      this.shortName = data.results[data.results.length - 1].address_components[0].short_name;
     //      this.gmapsOptions = {componentRestrictions: {country: this.shortName}}
     // });
-    console.log(this.gmapsOptions);
     this.autocomplete();
   }
 
@@ -72,13 +71,6 @@ export class AddStoreComponent implements OnInit {
       name: itemName,
       checked: false
     })
-  }
-
-  resetSelections(){
-    this.productOptions.forEach((item) => {
-      item.checked = false;
-    });
-    this.selectedItems = [];
   }
 
   onSelectedProduct(){
@@ -117,8 +109,13 @@ export class AddStoreComponent implements OnInit {
   }
 
   onAddStoreSubmit(){
-    if(!this.authService.validateNewStore(this.place, this.selectedItems, this.otherItems)){
-      this.flashMessage.show('Please fill in all fields', {cssClass:'alert-danger', timeout: 3000});
+    if(!this.authService.validateNewStore(this.place)){
+      this.flashMessage.show('Please search and select the store you want to add', {cssClass:'alert-danger', timeout: 3000});
+      return false;
+    }
+
+    if(!this.authService.validateSelectedItems(this.selectedItems, this.otherItems)){
+      this.flashMessage.show('Please select at least one item the store sells', {cssClass:'alert-danger', timeout: 3000});
       return false;
     }
 
@@ -144,5 +141,12 @@ export class AddStoreComponent implements OnInit {
       }
       this.router.navigate(['/addstore']);
     });
+  }
+
+  resetSelections(){
+    this.productOptions.forEach((item) => {
+      item.checked = false;
+    });
+    this.selectedItems = [];
   }
 }
