@@ -7,7 +7,7 @@
         <h3>Stores: <span class="badge">{{allStores.length}}</span></h3>
         <div class="list-group-item" *ngFor="let store of allStores; let i = index">
           <span id="closeButton"><button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
-          <a data-toggle="collapse" [attr.data-target]="'#storeInfo'+i" >{{store.name}}</a>
+          <button class="storeButton btn btn-link" data-toggle="collapse" [attr.data-target]="'#storeInfo'+i" >{{store.name}}</button>
           <div [attr.id]="'storeInfo'+i" class="panel-collapse collapse">
             <div id="products" class="panel-body">
               <span>Zero waste Products:</span>
