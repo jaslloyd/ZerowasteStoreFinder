@@ -64,5 +64,5 @@ export class BackendService {
   getUsersCountryCode(lat, lng){
     return this.http.get('http://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng, {})
       .map(res => res.json());
-}
+  }
 }

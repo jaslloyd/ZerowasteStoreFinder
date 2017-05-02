@@ -4,8 +4,8 @@ User:
 [DONE] As a user I want to be able to see all zero waste shops on a map
 [DONE] As a user I want to be able to verify the place sells zero waste stuff
 [DONE] As a user I want to be able to contact the admin of website
-As a user I want to see useful links and information about zero waste
-As a user I want to be able to donate to support the website.
+[DONE] As a user I want to see useful links and information about zero waste
+[DONE] As a user I want to be able to donate to support the website.
 
 Admin:
 [DONE] As a admin I want to be able to add new stores
