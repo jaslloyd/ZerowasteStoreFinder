@@ -15,27 +15,20 @@
 <body>
     <app-root></app-root>
 
-    <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" async></script>
-    <script type="text/javascript" src="inline.8e85e2494889965122f2.bundle.js"></script>
-    <script type="text/javascript" src="polyfills.8bdf6c84041524e4a749.bundle.js"></script>
-    <script type="text/javascript" src="vendor.653bc3a679d8727317d6.bundle.js"></script>
-    <script type="text/javascript" src="main.d6ccb909e8d3a0072a19.bundle.js"></script>
+    <script src="assets/jquery-min.js" defer></script>
+    <script src="assets/bootstrap.min.js" defer></script>
+    <script src="assets/menu-fix.js" defer></script>
 
     <script>
-    $(document).on("click",".navbar-collapse.in",function(a){$(a.target).is("a")&&$(this).collapse("hide")});
-    </script>
+    // Google Analytics code
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    <script>
-      // Google Analytics code
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-89291366-2', 'auto');
-      ga('send', 'pageview');
+    ga('create', 'UA-89291366-2', 'auto');
+    ga('send', 'pageview');
 
     </script>
-</body>
+<script type="text/javascript" src="inline.8e85e2494889965122f2.bundle.js"></script><script type="text/javascript" src="polyfills.8bdf6c84041524e4a749.bundle.js"></script><script type="text/javascript" src="vendor.653bc3a679d8727317d6.bundle.js"></script><script type="text/javascript" src="main.d6ccb909e8d3a0072a19.bundle.js"></script></body>
 </html>
