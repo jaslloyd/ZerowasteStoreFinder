@@ -4,8 +4,6 @@
   <meta charset="utf-8">
   <title>Zero Waste Store Finder</title>
   <link rel="stylesheet" href="https://bootswatch.com/paper/bootstrap.min.css">
-  <script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
   <base href="/">
   <meta name="description" content="Where you can search for zero waste stores in your area. You can also add stores that you know that sell zero waste products to help the community">
@@ -16,15 +14,13 @@
 </head>
 <body>
     <app-root></app-root>
+
+<script src="https://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous" async></script>
 </body>
 
 <script>
-// Auto close "burger" menu when clicked. Otherwise it takes up entire mobile view
-$(document).on('click','.navbar-collapse.in',function(e) {
-    if( $(e.target).is('a') ) {
-        $(this).collapse('hide');
-    }
-});
+$(document).on("click",".navbar-collapse.in",function(a){$(a.target).is("a")&&$(this).collapse("hide")});
 </script>
 
 <script>
@@ -38,4 +34,6 @@ $(document).on('click','.navbar-collapse.in',function(e) {
   ga('send', 'pageview');
 
 </script>
+
+
 </html>
