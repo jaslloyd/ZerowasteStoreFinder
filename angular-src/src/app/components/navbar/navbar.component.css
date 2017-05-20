@@ -1,5 +1,5 @@
 .navbar-inverse {
-  background-color: #33b833;
+  background-color: #40A497;
   font-size: 17px;
 }
 
@@ -19,7 +19,7 @@ li > a {
   color: #D7D7D7;
 }
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
-  background-color: #77CA77;
+  background-color: #19403B;
 }
 
 .navbar-inverse .navbar-toggle .icon-bar {
@@ -31,5 +31,5 @@ li > a {
 }
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
-  border-color: #33b833;
+  border-color: #40A497;
 }

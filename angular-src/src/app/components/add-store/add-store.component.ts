@@ -110,11 +110,13 @@ export class AddStoreComponent implements OnInit {
 
   onAddStoreSubmit(){
     if(!this.authService.validateNewStore(this.place)){
+      window.scrollTo(0, 0);
       this.flashMessage.show('Please search and select the store you want to add', {cssClass:'alert-danger', timeout: 3000});
       return false;
     }
 
     if(!this.authService.validateSelectedItems(this.selectedItems, this.otherItems)){
+      window.scrollTo(0, 0);
       this.flashMessage.show('Please select at least one item the store sells', {cssClass:'alert-danger', timeout: 3000});
       return false;
     }
@@ -135,11 +137,13 @@ export class AddStoreComponent implements OnInit {
 
     this.backendService.addStore(this.store).subscribe(data => {
       if(data.success){
-        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
+        this.router.navigate(['/']);
+        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 5000});
       }else{
-        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
+        window.scrollTo(0, 0);
+        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 5000});
       }
-      this.router.navigate(['/addstore']);
+
     });
   }
 
