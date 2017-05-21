@@ -28,6 +28,10 @@ export class StoreFinderComponent implements OnInit {
   ngOnInit() {
     const now = new Date();
     this.dayIndex = now.getDay() - 1;
+    if (this.dayIndex == -1){
+      this.dayIndex = 6;
+    }
+    
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

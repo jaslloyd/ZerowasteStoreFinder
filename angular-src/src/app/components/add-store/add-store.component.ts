@@ -29,7 +29,7 @@ export class AddStoreComponent implements OnInit {
   shortName: string;
 
   productOptions = [
-    {name: 'Vegatables', checked: false}
+    {name: 'Vegetables', checked: false}
   ];
   
 
