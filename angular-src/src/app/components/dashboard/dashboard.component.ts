@@ -47,8 +47,10 @@ export class DashboardComponent implements OnInit {
     updatedStore.products = (<HTMLInputElement>document.getElementById('products'+index)).value
     this.backendService.editStore(updatedStore).subscribe(data => {
       if(data.success){
+        window.scrollTo(0, 0);
         this.flashMessage.show('Store updated', {cssClass:'alert-success', timeout: 3000});
       }else{
+        window.scrollTo(0, 0);
         this.flashMessage.show('Store update failed...', {cssClass:'alert-danger', timeout: 3000});
       }
     });
@@ -57,11 +59,13 @@ export class DashboardComponent implements OnInit {
   deleteMessage(messageId, index){
     this.backendService.deleteMessage(messageId).subscribe(data => {
       if(data.success){
+        window.scrollTo(0, 0);
         this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
         this.messages.splice(index, 1);
         this.router.navigate(['/dashboard']);
       }
       else{
+        window.scrollTo(0, 0);
         this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
     });

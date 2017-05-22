@@ -60,7 +60,8 @@ const appRoutes: Routes = [
     FlashMessagesModule,
     AgmCoreModule.forRoot({
         apiKey: 'AIzaSyAY6CukXgRddILNPPXpJ5j8CUepn2pX7p8',
-        libraries: ['places']
+        libraries: ['places'],
+        language: 'uk'
     })
   ],
   providers: [BackendService, AuthService, AuthGuard],
