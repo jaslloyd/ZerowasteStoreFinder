@@ -61,7 +61,7 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
         apiKey: 'AIzaSyAY6CukXgRddILNPPXpJ5j8CUepn2pX7p8',
         libraries: ['places'],
-        language: 'uk'
+        language: 'en'
     })
   ],
   providers: [BackendService, AuthService, AuthGuard],
