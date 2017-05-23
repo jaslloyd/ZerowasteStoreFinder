@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { MapComponent } from '../map/map.component';
+import { GoogleMapsAPIWrapper, MarkerManager } from 'angular2-google-maps/core/services';
 
 @Component({
   selector: 'app-store-finder',
@@ -23,6 +24,7 @@ export class StoreFinderComponent implements OnInit {
   noResults: boolean = false;
 
   dayIndex: number;
+  allStores: Store[] = [];
   constructor(private backendService: BackendService) { }
 
   ngOnInit() {
@@ -31,7 +33,9 @@ export class StoreFinderComponent implements OnInit {
     if (this.dayIndex == -1){
       this.dayIndex = 6;
     }
-    
+    this.backendService.getAllStores().subscribe(stores => {
+      this.allStores = stores;
+    });
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

@@ -13,6 +13,10 @@ import { GoogleMapsAPIWrapper, MarkerManager } from 'angular2-google-maps/core/s
 //https://developers.google.com/maps/documentation/javascript/marker-clustering
 export class MapComponent implements OnInit {
   allStores: Store[] = [];
+  lat: number = 52;
+  lng: number = 13;
+  zoom: number = 4;
+
   constructor(private backendService: BackendService, private gmapsApi: GoogleMapsAPIWrapper, private markerManager: MarkerManager) { }
 
   ngOnInit() {
@@ -20,5 +24,6 @@ export class MapComponent implements OnInit {
       this.allStores = stores;
     });
   }
+
 
 }

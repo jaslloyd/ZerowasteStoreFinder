@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="well" *ngIf="store?.name">
+      <button class="btn btn-warning" (click)="goBack()"><- BACK</button>
       <h4>{{store.name}}</h4>
       <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>
       <p><span class="glyphicon glyphicon-time blueIcon" aria-hidden="true"></span>  Opening Hours</p>

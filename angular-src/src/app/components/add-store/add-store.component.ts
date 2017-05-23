@@ -27,7 +27,7 @@ export class AddStoreComponent implements OnInit {
   selectedItems: Array<Object>;
   otherItems: string = '';
   shortName: string;
-
+  allStores: Store[] = [];
   productOptions = [
     {name: 'Vegetables', checked: false}
   ];
@@ -42,6 +42,11 @@ export class AddStoreComponent implements OnInit {
 
   ngOnInit() {
     this.addItems();
+
+    this.backendService.getAllStores().subscribe(stores => {
+      this.allStores = stores;
+    });
+    
     if(navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

@@ -5,6 +5,7 @@ import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-store',
@@ -23,7 +24,8 @@ export class StoreComponent implements OnInit {
    private _zone: NgZone,
    private backendService: BackendService,
    private flashMessage: FlashMessagesService,
-   private activatedRoute: ActivatedRoute) { }
+   private activatedRoute: ActivatedRoute,
+   private _location: Location) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -42,5 +44,9 @@ export class StoreComponent implements OnInit {
           return false;
         });
       });
+  }
+
+  goBack(){
+    this._location.back();
   }
 }
