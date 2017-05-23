@@ -1,5 +1,5 @@
 .sebm-google-map-container {
-  height: 400px;
+  height: 500px;
 }
 
 #storeLocationInput {
@@ -11,7 +11,7 @@
 }
 
 .scrollbox {
-  height:150px;
+  height:250px;
   overflow-y:scroll;
 }
 
@@ -19,4 +19,8 @@
    width: auto;
    float: right;
    margin-right: 5px;
+}
+
+.padrow {
+  margin-top: 50px
 }

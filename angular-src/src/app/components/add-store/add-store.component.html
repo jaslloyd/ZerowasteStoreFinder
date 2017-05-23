@@ -1,60 +1,65 @@
 <h3 class="text-center">Add new store</h3>
 <form (submit)="onAddStoreSubmit()">
-  <div class="form-group">
-    <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
-    <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name" required>
-    <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-    
-    <sebm-google-map-marker
-        *ngFor="let m of allStores"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]=""
-        [markerDraggable]="false"
-        (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+  <div class="row padrow">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
+        <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name" required>
+        <a id="resetButton" class="form-control-inline btn btn-sm btn-danger" (click)="resetSelections()">Reset Selections</a>
+        <h5><label for="productOptions"><b> Select Zero Waste products sold: </b></label></h5>
+        <div class="scrollbox">
+          <div *ngFor="let option of productOptions">
+            <label>
+              <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked" />
+              {{option.name}}
+            </label>
+          </div>
+        </div>
+      </div>
 
-        <sebm-google-map-info-window #infoWindow>
-          <p><strong>{{m.name}}</strong></p>
-          <p><strong>Address: </strong>{{m.address}}</p>
-          <p><strong>Zero waste products: </strong>{{m.products}}</p>
-          <a class="" [routerLink]="['/store', m.id]">More information</a>
-        </sebm-google-map-info-window>
-    </sebm-google-map-marker>
-
-      <sebm-google-map-marker
-        [latitude]="marker?.lat"
-        [longitude]="marker?.lng"
-        [label]="marker?.label"
-        [markerDraggable]="marker?.draggable">
-
-        <sebm-google-map-info-window>
-          <p><strong>{{place?.name}}</strong></p>
-          <p>{{place?.formatted_address}}</p>
-        </sebm-google-map-info-window>
-      </sebm-google-map-marker>
-    </sebm-google-map>
-  </div>
-  <div class="form-group">
-     <a id="resetButton" class="form-control-inline btn btn-sm btn-danger" (click)="resetSelections()">Reset Selections</a>
-    <h5><label for="productOptions"><b> Select Zero Waste products sold: </b></label></h5>
-    <div class="scrollbox">
-      <div *ngFor="let option of productOptions">
-        <label>
-          <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked" />
-          {{option.name}}
-        </label>
+      <div class="form-group">
+        <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
+        <br>
+        <label for="products"><b>Other products:</b></label>
+        <input type="text" [(ngModel)]="otherItems" name="otherItems" placeholder="Other products not in list" class="form-control">
+      </div>
+      <div class="form-group text-right">
+        <button type="submit" class="btn btn-lg btn-success">Add Store</button>
       </div>
     </div>
-  </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+          <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+          <sebm-google-map-marker
+              *ngFor="let m of allStores"
+              [latitude]="m.lat"
+              [longitude]="m.lng"
+              [label]=""
+              [markerDraggable]="false"
+              (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
-  <div class="form-group">
-    <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
-    <br>
-    <label for="products"><b>Other products:</b></label>
-    <input type="text" [(ngModel)]="otherItems" name="otherItems" placeholder="Other products not in list" class="form-control">
-  </div>
-  <div class="form-group text-right">
-    <button type="submit" class="btn btn-lg btn-success">Add Store</button>
+              <sebm-google-map-info-window #infoWindow>
+                <p><strong>{{m.name}}</strong></p>
+                <p><strong>Address: </strong>{{m.address}}</p>
+                <p><strong>Zero waste products: </strong>{{m.products}}</p>
+                <a class="" [routerLink]="['/store', m.id]">More information</a>
+              </sebm-google-map-info-window>
+          </sebm-google-map-marker>
+
+            <sebm-google-map-marker
+              [latitude]="marker?.lat"
+              [longitude]="marker?.lng"
+              [label]="marker?.label"
+              [markerDraggable]="marker?.draggable">
+
+              <sebm-google-map-info-window>
+                <p><strong>{{place?.name}}</strong></p>
+                <p>{{place?.formatted_address}}</p>
+              </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+          </sebm-google-map>
+        </div>
+    </div>
   </div>
 </form>
 <br/>
