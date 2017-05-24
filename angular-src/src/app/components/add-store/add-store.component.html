@@ -7,26 +7,24 @@
         <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name" required>
         <a id="resetButton" class="form-control-inline btn btn-sm btn-danger" (click)="resetSelections()">Reset Selections</a>
         <h5><label for="productOptions"><b> Select Zero Waste products sold: </b></label></h5>
-        <div class="scrollbox">
-          <div *ngFor="let option of productOptions">
-            <label>
+        <br/>
+        <div class="col-sm-6">  
+         <div *ngFor="let option of productOptions | slice:0:productOptions.length/2">
+            <label >
               <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked" />
               {{option.name}}
             </label>
           </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
-        <br>
-        <label for="products"><b>Other products:</b></label>
-        <input type="text" [(ngModel)]="otherItems" name="otherItems" placeholder="Other products not in list" class="form-control">
-      </div>
-      <div class="form-group text-right">
-        <button type="submit" class="btn btn-lg btn-success">Add Store</button>
+        <div class="col-sm-6">  
+         <div *ngFor="let option of productOptions | slice:(productOptions.length/2)+1:productOptions.length">
+           <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked" />
+              {{option.name}}
+          </div>
+        </div>
       </div>
     </div>
+
     <div class="col-sm-6">
         <div class="form-group">
           <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
@@ -59,6 +57,25 @@
             </sebm-google-map-marker>
           </sebm-google-map>
         </div>
+    </div>
+  </div>
+  
+  <div class="row">
+      <div class="col-sm-12">
+        <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
+      </div>
+  </div>
+  <div class="row">
+    <div class="form-group">
+      <div class="col-sm-2">
+        <label for="products"><b>Other products:</b></label>
+      </div>
+      <div class="col-sm-6">
+          <input type="text" [(ngModel)]="otherItems" name="otherItems" placeholder="Other products not in list" class="form-control">
+      </div>
+    </div>
+    <div class="form-group text-right">
+      <button type="submit" class="btn btn-lg btn-success">Add Store</button>
     </div>
   </div>
 </form>

@@ -63,19 +63,30 @@ export class AddStoreComponent implements OnInit {
 
   addItems(){
     let items = [
-      "Fruits" , "Meat", "Poultry", "Cheese", "Eggs", "Bread, cake, pastries", "Cereals (e.g. oats)", "Rice", "Pasta", "Nuts", "Dry Fruits", "Tea", "Coffee", "Nut Butter", "Honey", "Butter", "Zero waste acessories(e.g. toothbrush, lunchboxes, bottles etc.)", "Cleaning products", "Beauty products", "Body products", "Second hand clothing", "Second hand furniture", "Second hand appliances", "Zero waste friendly take away"
+      "Bread, cake, pastries", "Nuts", "Dry Fruits", "Tea", "Coffee", "Nut Butter", "Honey", "Butter", 
     ]
 
-    items.forEach((item) => {
-      this.addProductItem(item);
-    });
+    let fruitsVeggies = ["Fruits", "Vegetables"];
+    let animalProducts = ["Meat", "Poultry", "Cheese", "Eggs", "Butter"];
+    let cereals = ["Rice", "Pasta"];
+    let breakfastItems = ["Bread, Cakes, Pastries", "Breakfast Cereals", "Nuts", "Dry Fruit", "Tea", "Coffee", "Nut Butter", "Honey"];
+    let otherItems = ["Acessories(e.g. lunchboxes, bottles etc.)", "Cleaning products", "Beauty products", "Body products", "Second hand clothing", "Second hand furniture", "Second hand appliances", "Zero waste friendly take away"];
+
+    this.addProductItem(fruitsVeggies);
+    this.addProductItem(animalProducts);
+    this.addProductItem(cereals);
+    this.addProductItem(breakfastItems);
+    this.addProductItem(otherItems);
+
   }
 
-  addProductItem(itemName){
-    this.productOptions.push({
-      name: itemName,
-      checked: false
-    })
+  addProductItem(items){
+    items.forEach((item) => {
+      this.productOptions.push({
+        name: item,
+        checked: false
+      });
+    });
   }
 
   onSelectedProduct(){

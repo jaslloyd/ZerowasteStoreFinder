@@ -10,10 +10,10 @@
   background-color: #40A497;
 }
 
-.scrollbox {
+/*.scrollbox {
   height:250px;
   overflow-y:scroll;
-}
+}*/
 
 .form-control-inline {
    width: auto;
@@ -22,5 +22,5 @@
 }
 
 .padrow {
-  margin-top: 50px
+  margin-top: 25px
 }
