@@ -28,38 +28,38 @@
     <div class="col-sm-6">
         <div class="form-group">
           <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-          <sebm-google-map-marker
-              *ngFor="let m of allStores"
-              [latitude]="m.lat"
-              [longitude]="m.lng"
-              [label]=""
-              [markerDraggable]="false"
-              (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
-
-              <sebm-google-map-info-window #infoWindow>
-                <p><strong>{{m.name}}</strong></p>
-                <p><strong>Address: </strong>{{m.address}}</p>
-                <p><strong>Zero waste products: </strong>{{m.products}}</p>
-                <a class="" [routerLink]="['/store', m.id]">More information</a>
-              </sebm-google-map-info-window>
-          </sebm-google-map-marker>
-
             <sebm-google-map-marker
-              [latitude]="marker?.lat"
-              [longitude]="marker?.lng"
-              [label]="marker?.label"
-              [markerDraggable]="marker?.draggable">
+                *ngFor="let m of allStores"
+                [latitude]="m.lat"
+                [longitude]="m.lng"
+                [label]=""
+                [markerDraggable]="false"
+                (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
-              <sebm-google-map-info-window>
-                <p><strong>{{place?.name}}</strong></p>
-                <p>{{place?.formatted_address}}</p>
-              </sebm-google-map-info-window>
+                <sebm-google-map-info-window #infoWindow>
+                  <p><strong>{{m.name}}</strong></p>
+                  <p><strong>Address: </strong>{{m.address}}</p>
+                  <p><strong>Zero waste products: </strong>{{m.products}}</p>
+                  <a class="" [routerLink]="['/store', m.id]">More information</a>
+                </sebm-google-map-info-window>
             </sebm-google-map-marker>
-          </sebm-google-map>
+
+              <sebm-google-map-marker
+                [latitude]="marker?.lat"
+                [longitude]="marker?.lng"
+                [label]="marker?.label"
+                [markerDraggable]="marker?.draggable">
+
+                <sebm-google-map-info-window>
+                  <p><strong>{{place?.name}}</strong></p>
+                  <p>{{place?.formatted_address}}</p>
+                </sebm-google-map-info-window>
+              </sebm-google-map-marker>
+          </sebm-google-map> 
         </div>
     </div>
   </div>
-  
+
   <div class="row">
       <div class="col-sm-12">
         <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
@@ -78,6 +78,9 @@
       <button type="submit" class="btn btn-lg btn-success">Add Store</button>
     </div>
   </div>
+  <div class="row">
+    <h5>Store not found on google maps? <a [routerLink]="['/contact']">Contact us!</a></h5>
+  </div>
 </form>
 <br/>
-<h5>Store not found on google maps? <a [routerLink]="['/contact']">Contact us!</a></h5>
+
