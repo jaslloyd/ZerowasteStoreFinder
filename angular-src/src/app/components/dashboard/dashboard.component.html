@@ -4,8 +4,9 @@
   <div class="panel-body">
     <div class="col-sm-6">
       <div class="well">
-        <h3>Stores: <span class="badge">{{allStores.length}}</span></h3>
-        <div class="list-group-item" *ngFor="let store of allStores; let i = index">
+        <h3>Stores: <span class="badge">{{stores.length}}</span></h3>
+        <input type="text" class="form-control" [(ngModel)]="filter" (ngModelChange)="filterStores()" placeholder="Filter" value="{{filter}}">
+        <div class="list-group-item" *ngFor="let store of stores; let i = index">
           <span id="closeButton"><button (click)="deleteStore(store.id, i)" class="btn btn-danger">X</button></span>
           <button class="storeButton btn btn-link" data-toggle="collapse" [attr.data-target]="'#storeInfo'+i" >{{store.name}}</button>
           <div [attr.id]="'storeInfo'+i" class="panel-collapse collapse">

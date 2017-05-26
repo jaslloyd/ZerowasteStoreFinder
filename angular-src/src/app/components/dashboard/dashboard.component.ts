@@ -10,8 +10,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  allStores: Store[] = [];
+  stores: Store[] = [];
   messages: any = [];
+  filter: string = '';
+  orignalStores: Store[] = [];
+
   constructor(
     private flashMessage: FlashMessagesService,
     private backendService: BackendService,
@@ -20,7 +23,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit() {
     this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores;
+      this.stores = stores;
+      this.orignalStores = this.stores;
     });
 
     this.backendService.getMessages().subscribe(messages => {
@@ -32,7 +36,7 @@ export class DashboardComponent implements OnInit {
     this.backendService.deleteStore(storeId).subscribe(data => {
       if(data.success){
         this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
-        this.allStores.splice(index, 1);
+        this.stores.splice(index, 1);
         this.router.navigate(['/dashboard']);
       }
       else{
@@ -69,6 +73,13 @@ export class DashboardComponent implements OnInit {
         this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
     });
+  }
+
+  filterStores(){
+   this.stores = this.orignalStores
+                  .filter((store) => {
+                     return store.name.toLowerCase().includes(this.filter.toLowerCase())
+                   });
   }
 
 }
