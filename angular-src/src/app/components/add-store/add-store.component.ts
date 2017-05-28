@@ -66,7 +66,7 @@ export class AddStoreComponent implements OnInit {
       "Bread, cake, pastries", "Nuts", "Dry Fruits", "Tea", "Coffee", "Nut Butter", "Honey", "Butter", 
     ]
 
-    let fruitsVeggies = ["Fruits", "Vegetables"];
+    let fruitsVeggies = ["Fruits"];
     let animalProducts = ["Meat", "Poultry", "Cheese", "Eggs", "Butter"];
     let cereals = ["Rice", "Pasta"];
     let breakfastItems = ["Bread, Cakes, Pastries", "Breakfast Cereals", "Nuts", "Dry Fruit", "Tea", "Coffee", "Nut Butter", "Honey"];
