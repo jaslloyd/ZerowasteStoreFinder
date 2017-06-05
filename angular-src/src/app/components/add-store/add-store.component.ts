@@ -32,6 +32,8 @@ export class AddStoreComponent implements OnInit {
     {name: 'Vegetables', checked: false}
   ];
   
+  validInput: boolean = true;
+  storeInputClasses: string = "form-group"
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
@@ -106,19 +108,26 @@ export class AddStoreComponent implements OnInit {
           this._zone.run(() => {
             var place = autocomplete.getPlace();
 
-            this.marker = {
-              lat: place.geometry.location.lat(),
-              lng: place.geometry.location.lng(),
-              label: place.name,
-              draggable: false
-            };
+            if(place.hasOwnProperty('geometry')){
+              this.marker = {
+                lat: place.geometry.location.lat(),
+                lng: place.geometry.location.lng(),
+                label: place.name,
+                draggable: false
+              };
 
-            this.lat = this.marker.lat;
-            this.lng = this.marker.lng;
-            // Make this zoom better
-            this.zoom = 17;
-            this.place = place;
-            //console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
+              this.lat = this.marker.lat;
+              this.lng = this.marker.lng;
+              // Make this zoom better
+              this.zoom = 17;
+              this.place = place;
+              this.storeInputClasses = "form-group has-success has-feedback";
+              this.validInput = true;
+              //console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
+            } else {
+              this.storeInputClasses = "form-group has-error has-feedback";
+              this.validInput = false;
+            }
           });
       });
     });
