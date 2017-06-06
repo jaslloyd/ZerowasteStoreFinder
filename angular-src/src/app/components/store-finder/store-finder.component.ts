@@ -33,9 +33,11 @@ export class StoreFinderComponent implements OnInit {
     if (this.dayIndex == -1){
       this.dayIndex = 6;
     }
+
     this.backendService.getAllStores().subscribe(stores => {
       this.allStores = stores;
     });
+    
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.lat = position.coords.latitude;

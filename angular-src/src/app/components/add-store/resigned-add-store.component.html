@@ -1,6 +1,6 @@
 <h3 class="text-center">Add new store</h3>
-<form (submit)="onAddStoreSubmit()">
-  <div class="row padrow">
+<form> 
+  <div *ngIf="stage == 1" class="row padrow">
     <div class="col-sm-6">
       <div class="form-group">
         <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
@@ -50,11 +50,13 @@
     </div>
   </div>
 
-
+  <div *ngIf="stage == 2" class="row padrow">
+    <p>Woo</p>
+  </div>
   <div class="row">
     <div class="form-group text-center">
       <button class="btn btn-lg btn-success disabled">Prev</button>
-      <button type="submit" class="btn btn-lg btn-success disabled">Next</button>
+      <button (click)="nextStage()" class="btn btn-lg btn-success">Next</button>
     </div>
   </div>
 </form>

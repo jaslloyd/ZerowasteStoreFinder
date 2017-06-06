@@ -19,14 +19,14 @@ export class AddStoreComponent implements OnInit {
   lng: number = 13;
   zoom: number = 4;
 
-  gmapsOptions: Object = {};
+  stage: number = 1;
+  gmapsOptions: Object = {}
   place: any;
   marker: Marker;
   store: Store;
   products: string;
   selectedItems: Array<Object>;
   otherItems: string = '';
-  shortName: string;
   allStores: Store[] = [];
   productOptions = [
     {name: 'Vegetables', checked: false}
@@ -57,32 +57,30 @@ export class AddStoreComponent implements OnInit {
       });
     }
     // this.backendService.getUsersCountryCode(this.lat, this.lng).subscribe(data =>{
-    //      this.shortName = data.results[data.results.length - 1].address_components[0].short_name;
-    //      this.gmapsOptions = {componentRestrictions: {country: this.shortName}}
+    //      let gmapsOptions: Object = {};
+    //      let shortName: string;
+    //      shortName = data.results[data.results.length - 1].address_components[0].short_name;
+    //      gmapsOptions = {componentRestrictions: {country: this.shortName}}
     // });
     this.autocomplete();
   }
 
   addItems(){
-    let items = [
-      "Bread, cake, pastries", "Nuts", "Dry Fruits", "Tea", "Coffee", "Nut Butter", "Honey", "Butter", 
-    ]
-
     let fruitsVeggies = ["Fruits"];
     let animalProducts = ["Meat", "Poultry", "Cheese", "Eggs", "Butter"];
     let cereals = ["Rice", "Pasta"];
     let breakfastItems = ["Bread, Cakes, Pastries", "Breakfast Cereals", "Nuts", "Dry Fruit", "Tea", "Coffee", "Nut Butter", "Honey"];
     let otherItems = ["Acessories(e.g. lunchboxes, bottles etc.)", "Cleaning products", "Beauty products", "Body products", "Second hand clothing", "Second hand furniture", "Second hand appliances", "Zero waste friendly take away"];
 
-    this.addProductItem(fruitsVeggies);
-    this.addProductItem(animalProducts);
-    this.addProductItem(cereals);
-    this.addProductItem(breakfastItems);
-    this.addProductItem(otherItems);
+    this.addProductItems(fruitsVeggies);
+    this.addProductItems(animalProducts);
+    this.addProductItems(cereals);
+    this.addProductItems(breakfastItems);
+    this.addProductItems(otherItems);
 
   }
 
-  addProductItem(items){
+  addProductItems(items){
     items.forEach((item) => {
       this.productOptions.push({
         name: item,
@@ -118,7 +116,6 @@ export class AddStoreComponent implements OnInit {
 
               this.lat = this.marker.lat;
               this.lng = this.marker.lng;
-              // Make this zoom better
               this.zoom = 17;
               this.place = place;
               this.storeInputClasses = "form-group has-success has-feedback";
@@ -151,14 +148,10 @@ export class AddStoreComponent implements OnInit {
       name: this.place.name,
       address: this.place.formatted_address,
       products: this.otherItems.length == 0 ? this.selectedItems.join(", ") : this.selectedItems.length == 0 ? this.otherItems : this.selectedItems.join(", ") + ', ' + this.otherItems,
-      openingHours: ["N/A"],
+      openingHours: this.place.hasOwnProperty("opening_hours") ? this.place.opening_hours.weekday_text : ["N/A"],
       lat: this.marker.lat,
       lng: this.marker.lng
     };
-
-    if (this.place.hasOwnProperty("opening_hours")){
-      this.store.openingHours = this.place.opening_hours.weekday_text;
-    }
 
     this.backendService.addStore(this.store).subscribe(data => {
       if(data.success){
@@ -168,8 +161,8 @@ export class AddStoreComponent implements OnInit {
         window.scrollTo(0, 0);
         this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 5000});
       }
-
     });
+
   }
 
   resetSelections(){
@@ -177,5 +170,12 @@ export class AddStoreComponent implements OnInit {
       item.checked = false;
     });
     this.selectedItems = [];
+  }
+
+  nextStage(){
+    if (this.validInput){
+      console.log(this.stage);
+      this.stage += 1;
+    }
   }
 }
