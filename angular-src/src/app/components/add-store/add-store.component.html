@@ -62,7 +62,9 @@
 
   <div class="row">
       <div class="col-sm-12">
-        <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
+          <label for="products"><b>Selected products:</b>
+            <span *ngFor="let product of selectedItems">{{product}}, </span>
+          </label>
       </div>
   </div>
   <div class="row">

@@ -46,10 +46,10 @@
     <div *ngIf="stage == 2">
       <div class="row padrow">
         <div class="col-md-6">
-          <h3><strong>{{place?.name}}</strong></h3>
+          <h3><b>{{place?.name}}</b></h3>
           <img alt="store_img" src="{{image}}" />
-          <h4>{{place?.formatted_address}}</h4>
-          <h4>{{place?.international_phone_number}}</h4>
+          <h5><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span> <b>Address</b>: {{place?.formatted_address}}</h5>
+          <h5><span class="glyphicon glyphicon-phone blueIcon" aria-hidden="true"></span> <b>Phone Number</b>: {{place?.formatted_phone_number}}</h5>
         </div>
         <div class="col-md-6">
           <div class="form-group">
@@ -65,8 +65,8 @@
             </div>
             <div class="col-sm-6">
               <div *ngFor="let option of productOptions | slice:(productOptions.length/2)+1:productOptions.length">
-                <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
-                /> {{option.name}}
+                <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"/> 
+                {{option.name}}
               </div>
             </div>
           </div>
@@ -74,7 +74,9 @@
       </div>
       <div class="row">
         <div class="col-sm-12">
-          <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
+          <label for="products"><b>Selected products:</b>
+            <span *ngFor="let product of selectedItems">{{product}}, </span>
+          </label>
         </div>
       </div>
       <div class="row">
@@ -91,8 +93,9 @@
 
     <div class="row padrow">
       <div class="form-group text-center">
-        <button *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-success">Prev</button>
-        <button (click)="nextStage()" class="btn btn-lg btn-success">Next</button>
+        <button *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-primary">Prev</button>
+        <button *ngIf="stage == 1"(click)="nextStage()" class="btn btn-lg btn-primary">Next</button>
+        <button *ngIf="stage > 1"type="submit" class="btn btn-lg btn-success">Add Store</button>
       </div>
     </div>
   </form>

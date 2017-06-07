@@ -123,8 +123,6 @@ export class AddStoreComponent implements OnInit {
               this.storeInputClasses = "form-group has-success has-feedback";
               this.validInput = true;
               this.image = this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300});
-              console.log(this.place);
-              // console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
             } else {
               this.storeInputClasses = "form-group has-error has-feedback";
               this.validInput = false;
