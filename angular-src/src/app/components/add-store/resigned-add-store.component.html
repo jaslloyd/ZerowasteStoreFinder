@@ -1,64 +1,100 @@
-<h3 class="text-center">Add new store</h3>
-<form> 
-  <div *ngIf="stage == 1" class="row padrow">
-    <div class="col-sm-6">
-      <div class="form-group">
-        <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
-        <div id="storeInputDiv" [ngClass]="storeInputClasses">
-          <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name" required>
+<div class="container">
+  <h3 class="text-center">Add new store</h3>
+  <form>
+    <div *ngIf="stage == 1" class="row padrow">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
+          <div id="storeInputDiv" [ngClass]="storeInputClasses">
+            <input type="text" id="storeLocationInput" class="form-control" placeholder="Enter Store name" required>
 
-          <span *ngIf="place?.id && validInput" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
-          <span *ngIf="place?.id && validInput" id="inputGroupSuccess1Status" class="sr-only">(success)</span>
+            <span *ngIf="place?.id && validInput" class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+            <span *ngIf="place?.id && validInput" id="inputGroupSuccess1Status" class="sr-only">(success)</span>
 
-          <span *ngIf="!validInput" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
-          <span *ngIf="!validInput" id="inputError2Status" class="sr-only">(error)</span>
+            <span *ngIf="!validInput" class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+            <span *ngIf="!validInput" id="inputError2Status" class="sr-only">(error)</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+            <sebm-google-map-marker *ngFor="let m of allStores" [latitude]="m.lat" [longitude]="m.lng" [label]="" [markerDraggable]="false"
+              (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+
+              <sebm-google-map-info-window #infoWindow>
+                <p><strong>{{m.name}}</strong></p>
+                <p><strong>Address: </strong>{{m.address}}</p>
+                <p><strong>Zero waste products: </strong>{{m.products}}</p>
+                <a class="" [routerLink]="['/store', m.id]">More information</a>
+              </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+
+            <sebm-google-map-marker [latitude]="marker?.lat" [longitude]="marker?.lng" [label]="marker?.label" [markerDraggable]="marker?.draggable">
+
+              <sebm-google-map-info-window>
+                <p><strong>{{place?.name}}</strong></p>
+                <p>{{place?.formatted_address}}</p>
+              </sebm-google-map-info-window>
+            </sebm-google-map-marker>
+          </sebm-google-map>
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
-        <div class="form-group">
-          <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-            <sebm-google-map-marker
-                *ngFor="let m of allStores"
-                [latitude]="m.lat"
-                [longitude]="m.lng"
-                [label]=""
-                [markerDraggable]="false"
-                (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
 
-                <sebm-google-map-info-window #infoWindow>
-                  <p><strong>{{m.name}}</strong></p>
-                  <p><strong>Address: </strong>{{m.address}}</p>
-                  <p><strong>Zero waste products: </strong>{{m.products}}</p>
-                  <a class="" [routerLink]="['/store', m.id]">More information</a>
-                </sebm-google-map-info-window>
-            </sebm-google-map-marker>
 
-              <sebm-google-map-marker
-                [latitude]="marker?.lat"
-                [longitude]="marker?.lng"
-                [label]="marker?.label"
-                [markerDraggable]="marker?.draggable">
-
-                <sebm-google-map-info-window>
-                  <p><strong>{{place?.name}}</strong></p>
-                  <p>{{place?.formatted_address}}</p>
-                </sebm-google-map-info-window>
-              </sebm-google-map-marker>
-          </sebm-google-map> 
+    <div *ngIf="stage == 2">
+      <div class="row padrow">
+        <div class="col-md-6">
+          <h3><strong>{{place?.name}}</strong></h3>
+          <img alt="store_img" src="{{image}}" />
+          <h4>{{place?.formatted_address}}</h4>
+          <h4>{{place?.international_phone_number}}</h4>
         </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <h3><label for="productOptions"><b> Select Zero Waste products sold: </b></label></h3>
+            <a id="resetButton" class="form-control-inline btn btn-sm btn-danger" (click)="resetSelections()">Reset Selections</a>            <br/>
+            <div class="col-sm-6">
+              <div *ngFor="let option of productOptions | slice:0:productOptions.length/2">
+                <label>
+              <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked" />
+              {{option.name}}
+            </label>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div *ngFor="let option of productOptions | slice:(productOptions.length/2)+1:productOptions.length">
+                <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
+                /> {{option.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="products"><b>Selected products:</b> {{selectedItems}}</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <div class="col-sm-2">
+            <label for="products"><b>Other products:</b></label>
+          </div>
+          <div class="col-sm-10">
+            <input type="text" [(ngModel)]="otherItems" name="otherItems" placeholder="Other products not in list" class="form-control">
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div *ngIf="stage == 2" class="row padrow">
-    <p>Woo</p>
-  </div>
-  <div class="row">
-    <div class="form-group text-center">
-      <button class="btn btn-lg btn-success disabled">Prev</button>
-      <button (click)="nextStage()" class="btn btn-lg btn-success">Next</button>
+    <div class="row padrow">
+      <div class="form-group text-center">
+        <button *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-success">Prev</button>
+        <button (click)="nextStage()" class="btn btn-lg btn-success">Next</button>
+      </div>
     </div>
-  </div>
-</form>
-<br/>
-
+  </form>
+  <br/>
+</div>

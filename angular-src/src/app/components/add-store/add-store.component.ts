@@ -35,6 +35,8 @@ export class AddStoreComponent implements OnInit {
   validInput: boolean = true;
   storeInputClasses: string = "form-group"
 
+  image: string = '';
+
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
    private flashMessage: FlashMessagesService,
@@ -120,7 +122,9 @@ export class AddStoreComponent implements OnInit {
               this.place = place;
               this.storeInputClasses = "form-group has-success has-feedback";
               this.validInput = true;
-              //console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
+              this.image = this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300});
+              console.log(this.place);
+              // console.log(this.place.photos[0].getUrl({'maxWidth': 500, 'maxHeight': 500}));
             } else {
               this.storeInputClasses = "form-group has-error has-feedback";
               this.validInput = false;
@@ -173,9 +177,13 @@ export class AddStoreComponent implements OnInit {
   }
 
   nextStage(){
-    if (this.validInput){
+    if (this.marker.lat){
       console.log(this.stage);
       this.stage += 1;
     }
+  }
+
+  prevStage(){
+    this.stage -= 1;
   }
 }
