@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { MapComponent } from '../map/map.component';
+import { Location } from '@angular/common';
 
 declare var google: any;
 @Component({
@@ -42,7 +43,8 @@ export class AddStoreComponent implements OnInit {
    private flashMessage: FlashMessagesService,
    private backendService: BackendService,
    private authService: AuthService,
-   private router: Router) { }
+   private router: Router,
+   private _location: Location) { }
 
   ngOnInit() {
     this.addItems();
@@ -176,12 +178,11 @@ export class AddStoreComponent implements OnInit {
 
   nextStage(){
     if (this.marker.lat){
-      console.log(this.stage);
       this.stage += 1;
     }
   }
 
   prevStage(){
-    this.stage -= 1;
+    location.reload()
   }
 }

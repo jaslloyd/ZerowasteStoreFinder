@@ -16,6 +16,7 @@
           </div>
         </div>
       </div>
+      
       <div class="col-sm-6">
         <div class="form-group">
           <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
@@ -92,10 +93,14 @@
     </div>
 
     <div class="row padrow">
-      <div class="form-group text-center">
-        <button *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-primary">Prev</button>
-        <button *ngIf="stage == 1"(click)="nextStage()" class="btn btn-lg btn-primary">Next</button>
-        <button *ngIf="stage > 1"type="submit" class="btn btn-lg btn-success">Add Store</button>
+      <div class="form-group">
+        <span class="pull-left"> 
+          <button *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-primary">Prev</button>
+        </span>
+        <span class="pull-right">
+          <button *ngIf="stage == 1"(click)="nextStage()" class="btn btn-lg btn-primary">Next</button>
+          <button *ngIf="stage > 1"type="submit" class="btn btn-lg btn-success">Add Store</button>
+        </span>
       </div>
     </div>
   </form>
