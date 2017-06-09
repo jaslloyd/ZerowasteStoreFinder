@@ -12,7 +12,7 @@ import { Location } from '@angular/common';
 declare var google: any;
 @Component({
   selector: 'app-add-store',
-  templateUrl: './add-store.component.html',
+  templateUrl: './redesigned-add-store.component.html',
   styleUrls: ['./add-store.component.css']
 })
 export class AddStoreComponent implements OnInit {
@@ -135,12 +135,6 @@ export class AddStoreComponent implements OnInit {
   }
 
   onAddStoreSubmit(){
-    if(!this.authService.validateNewStore(this.place)){
-      window.scrollTo(0, 0);
-      this.flashMessage.show('Please search and select the store you want to add', {cssClass:'alert-danger', timeout: 3000});
-      return false;
-    }
-
     if(!this.authService.validateSelectedItems(this.selectedItems, this.otherItems)){
       window.scrollTo(0, 0);
       this.flashMessage.show('Please select at least one item the store sells', {cssClass:'alert-danger', timeout: 3000});
@@ -177,12 +171,23 @@ export class AddStoreComponent implements OnInit {
   }
 
   nextStage(){
-    if (this.marker.lat){
-      this.stage += 1;
+    if(!this.authService.validateNewStore(this.place)){
+      window.scrollTo(0, 0);
+      this.flashMessage.show('Please search and select the store you want to add', {cssClass:'alert-danger', timeout: 3000});
+      return false;
+    } else{
+      this.backendService.getStore(this.place.id).subscribe(store => {
+        if(!store){
+          this.stage += 1;
+        }else{
+          this.flashMessage.show('Store has already been added. Please try added another Store', {cssClass:'alert-warning', timeout: 5000});
+        }
+        
+      }); 
     }
   }
 
-  prevStage(){
-    location.reload()
+  prevStage(e){
+    location.reload();
   }
 }

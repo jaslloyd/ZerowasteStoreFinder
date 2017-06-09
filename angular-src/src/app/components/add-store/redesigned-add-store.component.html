@@ -1,6 +1,6 @@
 <div class="container">
   <h3 class="text-center">Add new store</h3>
-  <form>
+  <form (submit)="onAddStoreSubmit()">
     <div *ngIf="stage == 1" class="row padrow">
       <div class="col-sm-6">
         <div class="form-group">
@@ -16,7 +16,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="col-sm-6">
         <div class="form-group">
           <sebm-google-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
@@ -41,8 +41,12 @@
           </sebm-google-map>
         </div>
       </div>
+      <div class="row">
+        <div class="container">
+          <h5>Store not found on google maps? <a [routerLink]="['/contact']">Contact us!</a></h5>
+        </div>
+      </div>
     </div>
-
 
     <div *ngIf="stage == 2">
       <div class="row padrow">
@@ -66,8 +70,8 @@
             </div>
             <div class="col-sm-6">
               <div *ngFor="let option of productOptions | slice:(productOptions.length/2)+1:productOptions.length">
-                <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"/> 
-                {{option.name}}
+                <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
+                /> {{option.name}}
               </div>
             </div>
           </div>
@@ -95,10 +99,10 @@
     <div class="row padrow">
       <div class="form-group">
         <span class="pull-left"> 
-          <button *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-primary">Prev</button>
+          <a *ngIf="stage > 1" (click)="prevStage($e)" class="btn btn-lg btn-primary">Prev</a>
         </span>
         <span class="pull-right">
-          <button *ngIf="stage == 1"(click)="nextStage()" class="btn btn-lg btn-primary">Next</button>
+          <a *ngIf="stage == 1"(click)="nextStage()" class="btn btn-lg btn-primary">Next</a>
           <button *ngIf="stage > 1"type="submit" class="btn btn-lg btn-success">Add Store</button>
         </span>
       </div>
