@@ -1,7 +1,7 @@
 <div class="container">
   <h3 class="text-center">Add new store</h3>
   <form (submit)="onAddStoreSubmit()">
-    <div *ngIf="stage == 1" class="row padrow">
+    <div [hidden]="stage != 1" class="row padrow">
       <div class="col-sm-6">
         <div class="form-group">
           <h5><label for="storeLocationInput"><b>Locate Store</b></label></h5>
@@ -99,7 +99,7 @@
     <div class="row padrow">
       <div class="form-group">
         <span class="pull-left"> 
-          <a *ngIf="stage > 1" (click)="prevStage($e)" class="btn btn-lg btn-primary">Prev</a>
+          <a *ngIf="stage > 1" (click)="prevStage()" class="btn btn-lg btn-primary">Prev</a>
         </span>
         <span class="pull-right">
           <a *ngIf="stage == 1"(click)="nextStage()" class="btn btn-lg btn-primary">Next</a>

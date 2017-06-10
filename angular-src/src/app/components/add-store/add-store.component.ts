@@ -124,7 +124,7 @@ export class AddStoreComponent implements OnInit {
               this.place = place;
               this.storeInputClasses = "form-group has-success has-feedback";
               this.validInput = true;
-              this.image = this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300});
+              this.image = this.place.hasOwnProperty("photos") ? this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'https://vignette2.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337';
             } else {
               this.storeInputClasses = "form-group has-error has-feedback";
               this.validInput = false;
@@ -188,6 +188,7 @@ export class AddStoreComponent implements OnInit {
   }
 
   prevStage(e){
-    location.reload();
+    this.stage -= 1;
+    // location.reload();
   }
 }
