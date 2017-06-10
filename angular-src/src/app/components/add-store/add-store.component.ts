@@ -71,7 +71,7 @@ export class AddStoreComponent implements OnInit {
 
   addItems(){
     let fruitsVeggies = ["Fruits"];
-    let animalProducts = ["Meat", "Poultry", "Cheese", "Eggs", "Butter"];
+    let animalProducts = ["Meat", "Poultry", "Fish" , "Cheese", "Eggs", "Butter"];
     let cereals = ["Rice", "Pasta"];
     let breakfastItems = ["Bread, Cakes, Pastries", "Breakfast Cereals", "Nuts", "Dry Fruit", "Tea", "Coffee", "Nut Butter", "Honey"];
     let otherItems = ["Acessories(e.g. lunchboxes, bottles etc.)", "Cleaning products", "Beauty products", "Body products", "Second hand clothing", "Second hand furniture", "Second hand appliances", "Zero waste friendly take away"];
