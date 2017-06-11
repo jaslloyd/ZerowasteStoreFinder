@@ -25,6 +25,7 @@ export class AddStoreComponent implements OnInit {
   place: any;
   marker: Marker;
   store: Store;
+  fullStoreName: string = '';
   products: string;
   selectedItems: Array<Object>;
   otherItems: string = '';
@@ -111,6 +112,7 @@ export class AddStoreComponent implements OnInit {
             var place = autocomplete.getPlace();
 
             if(place.hasOwnProperty('geometry')){
+              
               this.marker = {
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng(),
@@ -178,6 +180,7 @@ export class AddStoreComponent implements OnInit {
     } else{
       this.backendService.getStore(this.place.id).subscribe(store => {
         if(!store){
+          this.fullStoreName = (<HTMLInputElement>document.getElementById('storeLocationInput')).value;
           this.stage += 1;
         }else{
           this.flashMessage.show('Store has already been added. Please try added another Store', {cssClass:'alert-warning', timeout: 5000});
@@ -189,6 +192,6 @@ export class AddStoreComponent implements OnInit {
 
   prevStage(e){
     this.stage -= 1;
-    // location.reload();
+    (<HTMLInputElement>document.getElementById('storeLocationInput')).value = this.fullStoreName;
   }
 }
