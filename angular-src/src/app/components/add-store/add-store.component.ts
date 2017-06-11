@@ -112,7 +112,7 @@ export class AddStoreComponent implements OnInit {
             var place = autocomplete.getPlace();
 
             if(place.hasOwnProperty('geometry')){
-              
+
               this.marker = {
                 lat: place.geometry.location.lat(),
                 lng: place.geometry.location.lng(),
@@ -190,7 +190,7 @@ export class AddStoreComponent implements OnInit {
     }
   }
 
-  prevStage(e){
+  prevStage(){
     this.stage -= 1;
     (<HTMLInputElement>document.getElementById('storeLocationInput')).value = this.fullStoreName;
   }
