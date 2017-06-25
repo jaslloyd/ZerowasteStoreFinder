@@ -1,6 +1,6 @@
-<h3>Zero waste FAQ's</h3>
 <div class="row">
-    <div class="col-sm-6">
+    <div id="questions" class="col-sm-8">
+        <h4>Zero waste FAQ's</h4>
         <div *ngFor="let question of questions; let i = index">
             <button data-toggle="collapse" [attr.data-target]="'#question'+i" class="list-group-item" >{{question.question}}</button>
             <div [attr.id]="'question'+i" class="panel-collapse collapse">
@@ -8,17 +8,17 @@
             </div>
         </div>
     </div>
-</div>
-
-<h3>Useful Zero waste links</h3>
-<div class="row">
-    <div class="col-sm-12">
-        <h5>Facebook groups</h5>
+    <div class="col-sm-4">
+        <h4>Useful Zero waste links</h4>
         <a href="https://www.facebook.com/groups/zerowasteireland/?ref=br_rs">Zero Waste Ireland</a>
         <br/>
         <a href="https://www.facebook.com/groups/journeytozerowaste/">Journey to Zero Waste</a>
-        <h5>More on Zero Waste...</h5>
-
-        <p>If you would like to see other Zero Waste links here <a [routerLink]="['/contact']">contact us!</a><p>
     </div>
 </div>
+
+<div id="contactArea" class="row">
+    <div class="col-sm-12">
+        <app-contact></app-contact>
+    </div>
+</div>
+
