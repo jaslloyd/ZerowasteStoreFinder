@@ -24,6 +24,7 @@ import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { FooterComponent } from './components/footer/footer.component';
+import { DonateComponent } from './components/donate/donate.component';
 
 
 // Tells angular where to direct the requests
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'about', component: AboutComponent},
   {path: 'addstore', component: AddStoreComponent},
+  {path: 'donate', component: DonateComponent},
   {path: 'store/:id', component: StoreComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
@@ -51,6 +53,7 @@ const appRoutes: Routes = [
     DashboardComponent,
     LoginComponent,
     FooterComponent,
+    DonateComponent,
   ],
   imports: [
     BrowserModule,
