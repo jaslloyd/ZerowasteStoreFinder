@@ -1,5 +1,5 @@
 <div class="row">
-    <div id="questions" class="col-sm-8">
+    <div id="questions" class="col-md-8">
         <h4>Zero waste FAQ's</h4>
         <div *ngFor="let question of questions; let i = index">
             <button data-toggle="collapse" [attr.data-target]="'#question'+i" class="list-group-item" >{{question.question}}</button>
