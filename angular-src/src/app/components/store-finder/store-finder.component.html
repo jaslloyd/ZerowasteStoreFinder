@@ -1,11 +1,12 @@
-<div class="form-group">
+<div class="">
   <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
   <div class="col-sm-12 text-center">
     <div id="title" *ngIf="query.length == 0">
       <h3>Zero Waste Shop Finder</h3>
     </div>
-    <br/>
-    <input id="storeQueryField" type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
+    <div id="query"> 
+      <input id="storeQueryField" type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
+    </div>
   </div>
 </div>
 <div id="stores"  *ngIf="query.length > 0">

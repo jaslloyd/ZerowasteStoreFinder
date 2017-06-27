@@ -48,6 +48,9 @@ export class StoreFinderComponent implements OnInit {
   }
 
   searchStores(){
+    if(this.showStoresOnMap){
+      this.toggleMap();
+    }
     if (this.query.trim().length > 0){
       this.backendService.searchStores(this.query).subscribe(stores => {
         if(stores.length > 0){

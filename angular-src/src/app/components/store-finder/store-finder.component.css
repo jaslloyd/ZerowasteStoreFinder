@@ -1,5 +1,5 @@
 .sebm-google-map-container {
-  height: 400px;
+  height: 500px;
 }
  #buttons {
    padding-top: 10px;
@@ -22,4 +22,8 @@
 .well{
   background-color: #FFFFFF;
   box-shadow: -5px 5px 5px #888888;
+}
+
+#query{
+  margin-top: 25px;
 }
