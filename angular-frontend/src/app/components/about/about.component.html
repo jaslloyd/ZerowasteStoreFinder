@@ -1,11 +1,9 @@
 <div class="row">
     <div id="questions" class="col-md-8">
         <h4>Zero waste FAQ's</h4>
-        <div *ngFor="let question of questions; let i = index">
-            <button data-toggle="collapse" [attr.data-target]="'#question'+i" class="list-group-item" >{{question.question}}</button>
-            <div [attr.id]="'question'+i" class="panel-collapse collapse">
-                <span class="list-group-item">{{question.answer}}</span>
-            </div>
+        <div *ngFor="let question of questions; let i = index" class="row">
+            <p><b>Q: {{question.question}}</b></p>
+            <p><b>A:</b> {{question.answer}}</p>
         </div>
     </div>
     <div class="col-sm-4">
@@ -15,8 +13,8 @@
         <a href="https://www.facebook.com/groups/journeytozerowaste/">Journey to Zero Waste</a>
     </div>
 </div>
-
 <div id="contactArea" class="row">
+    <hr />
     <div class="col-sm-12">
         <app-contact></app-contact>
     </div>

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -19,8 +20,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DonateComponent } from './components/donate/donate.component';
 
-import { FlashMessagesModule } from 'angular2-flash-messages';
-
 // Import our services for the application
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
@@ -29,7 +28,6 @@ import { AuthGuard } from './guards/auth.guard';
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
   {path: '', component: StoreFinderComponent},
-  {path: 'contact', component: ContactComponent}, // no longer needed...
   {path: 'about', component: AboutComponent},
   {path: 'addstore', component: AddStoreComponent},
   {path: 'donate', component: DonateComponent},
