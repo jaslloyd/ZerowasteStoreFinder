@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class BackendService {
   headers: Headers = new Headers();
-  serverHostname = ""; //"http://localhost:3000"
+  serverHostname = environment.apiUrl; //"http://localhost:3000"
 
   constructor(private http:Http) {
     this.headers.append('Content-Type','application/json');
