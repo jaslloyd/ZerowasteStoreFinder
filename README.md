@@ -6,8 +6,8 @@ This is a web application where users can search for zero waste stores in their 
 
 ## Project Technical Details
 - Front-end:
-  - AngularJS 2
-    - Angular 2 maps library for google maps integration
+  - AngularJS 4
+    - Angular maps library for google maps integration
   - HTML
   - JavaScript
   - Bootstrap for CSS
