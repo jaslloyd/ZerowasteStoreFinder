@@ -3,11 +3,13 @@ import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { tokenNotExpired } from 'angular2-jwt';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AuthService {
   authToken: any;
   user: any;
+  serverHostname = environment.apiUrl;
 
   constructor(private http:Http) { }
 
@@ -28,7 +30,7 @@ export class AuthService {
   login(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
-    return this.http.post('/admin/login', user, {headers: headers})
+    return this.http.post(this.serverHostname +'/admin/login', user, {headers: headers})
       .map(res => res.json());
   }
 

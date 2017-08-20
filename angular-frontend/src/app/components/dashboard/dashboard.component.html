@@ -24,8 +24,19 @@
       <div class="well">
         <h3>Messages:<span class="badge">{{messages.length}}</span></h3>
           <div *ngFor="let message of messages; let i = index" class="list-group-item">
-            <span id="closeButton"><button (click)="deleteMessage(message._id, i)" class="btn btn-danger">X</button></span>
-            <a data-toggle="collapse" [attr.data-target]="'#messageInfo'+i" >{{message.subject}}</a>
+            <div class="row">
+              <div class="col-md-2">
+                  <span id="closeButton"><button (click)="deleteMessage(message._id, i)" class="btn btn-danger">X</button></span>
+              </div>
+              <div class="col-md-6">
+                  <a data-toggle="collapse" [attr.data-target]="'#messageInfo'+i" >{{message.subject}}</a>
+              </div>
+              <div class="col-md-4">
+                  <span class="badge">{{message.Created_at | slice:0:10}}</span>
+              </div>
+            </div>
+            
+           
             <div [attr.id]="'messageInfo'+i" class="panel-collapse collapse">
               <div id="products" class="panel-body">
                 <span>Name: {{message.name}}</span>

@@ -3,6 +3,7 @@ import { BackendService } from '../../services/backend.service';
 import { Store } from '../../interfaces/store';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import {Router} from '@angular/router';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,6 +30,7 @@ export class DashboardComponent implements OnInit {
 
     this.backendService.getMessages().subscribe(messages => {
       this.messages = messages;
+      console.log(this.messages)
     });
   }
 
