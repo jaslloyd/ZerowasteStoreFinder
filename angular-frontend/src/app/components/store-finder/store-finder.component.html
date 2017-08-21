@@ -9,9 +9,9 @@
     </div>
   </div>
 </div>
-<div id="stores"  *ngIf="query.length > 0">
+<div id="stores" *ngIf="query.length > 0">
   <div class="row" *ngFor="let store of stores">
-    <div class="col-sm-offset-2 col-sm-8">
+    <div class="col-md-offset-1 col-md-10 col-sm-12">
       <div class="well">
         <h5><b>{{store.name}}</b></h5>
         <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>

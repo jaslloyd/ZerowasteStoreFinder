@@ -18,10 +18,9 @@
   background-color: #40A497;
 }
 
-
 .well{
   background-color: #FFFFFF;
-  box-shadow: -5px 5px 5px #888888;
+  box-shadow: -10px -5px 25px 0px rgba(0,0,0,0.75);
 }
 
 #query{
