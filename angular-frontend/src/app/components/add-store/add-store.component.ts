@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { BackendService } from '../../services/backend.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';

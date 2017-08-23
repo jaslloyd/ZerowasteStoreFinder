@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { AgmCoreModule, MapsAPILoader } from 'angular2-google-maps/core';
+import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';

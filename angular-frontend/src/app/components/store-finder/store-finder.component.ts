@@ -6,8 +6,8 @@ import { Router } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { MapComponent } from '../map/map.component';
-//todo: convert to @agm/core
-import { GoogleMapsAPIWrapper, MarkerManager } from 'angular2-google-maps/core/services';
+import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
+
 @Component({
   selector: 'app-store-finder',
   templateUrl: './store-finder.component.html',

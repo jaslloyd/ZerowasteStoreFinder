@@ -11,15 +11,15 @@
       <p><span class="glyphicon glyphicon-leaf greenIcon" aria-hidden="true"></span>  Zero Waste products: {{store.products}}</p>
       <p></p>
       <div *ngIf="marker?.lat">
-        <sebm-google-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">
-          <sebm-google-map-marker
+        <agm-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">
+          <agm-marker
             [latitude]="marker.lat"
             [longitude]="marker.lng"
             [label]="marker.label"
             [markerDraggable]="marker.draggable">
 
-          </sebm-google-map-marker>
-        </sebm-google-map>
+          </agm-marker>
+        </agm-map>
       </div>
     </div>
   </div>

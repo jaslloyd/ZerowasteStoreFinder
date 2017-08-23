@@ -3,7 +3,7 @@ import { BackendService } from '../../services/backend.service';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { Router } from '@angular/router';
-import { GoogleMapsAPIWrapper, MarkerManager } from 'angular2-google-maps/core/services';
+import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
 
 @Component({
   selector: 'app-map',
