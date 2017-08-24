@@ -4,6 +4,7 @@ import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { Router } from '@angular/router';
 import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
+import { AgmMarkerCluster } from '@agm/js-marker-clusterer';
 
 @Component({
   selector: 'app-map',
