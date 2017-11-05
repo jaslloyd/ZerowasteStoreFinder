@@ -1,14 +1,14 @@
-<agm-marker
-    *ngFor="let m of allStores"
-    [latitude]="m.lat"
-    [longitude]="m.lng"
-    [label]=""
-    [markerDraggable]="false">
+  <agm-marker
+      *ngFor="let m of allStores"
+      [latitude]="m.lat"
+      [longitude]="m.lng"
+      [label]=""
+      [markerDraggable]="false">
 
-    <agm-info-window #infoWindow>
-      <p><strong>{{m.name}}</strong></p>
-      <p><strong>Address: </strong>{{m.address}}</p>
-      <p><strong>Zero waste products: </strong>{{m.products}}</p>
-      <a class="" [routerLink]="['/store', m.id]">More information</a>
-    </agm-info-window>
-</agm-marker>
+      <agm-info-window #infoWindow>
+        <p><strong>{{m.name}}</strong></p>
+        <p><strong>Address: </strong>{{m.address}}</p>
+        <p><strong>Zero waste products: </strong>{{m.products}}</p>
+        <a class="" [routerLink]="['/store', m.id]">More information</a>
+      </agm-info-window>
+  </agm-marker>
