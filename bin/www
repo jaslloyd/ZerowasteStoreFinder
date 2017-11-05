@@ -21,6 +21,7 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
+// https://stackoverflow.com/questions/11744975/enabling-https-on-express-js
 // var httpsServer = https.createServer()
 
 /**
