@@ -24,3 +24,15 @@
 .padrow {
   margin-top: 25px
 }
+
+#addStore{
+  width: 80vw;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #fff;
+}

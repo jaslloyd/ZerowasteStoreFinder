@@ -3,6 +3,11 @@ body {
   font-size: 15px;
 }
 
+html{
+  background: url("https://css-tricks.com/examples/FullPageBackgroundImage/images/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
 .greenIcon {
   color: #33b833;
   margin-right: 5px;

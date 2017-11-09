@@ -1,4 +1,5 @@
-<div class="">
+<div id="searchInput">
+<div>
   <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
   <div class="col-sm-12 text-center">
     <div id="title" *ngIf="query.length == 0">
@@ -22,6 +23,7 @@
     </div>
   </div>
 </div>
+
 <div id="noResults" class="text-center" *ngIf="noResults && query.length > 0">
   <h4>No Results found</h4>
 </div>
@@ -50,3 +52,4 @@
     </agm-marker>
   </agm-map>
 </div>
+</div> 
