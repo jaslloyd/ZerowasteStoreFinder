@@ -10,29 +10,8 @@
   background-color: #40A497;
 }
 
-/*.scrollbox {
-  height:250px;
-  overflow-y:scroll;
-}*/
-
 .form-control-inline {
    width: auto;
    float: right;
    margin-right: 5px;
-}
-
-.padrow {
-  margin-top: 25px
-}
-
-#addStore{
-  width: 80vw;
-  height: 500px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-  background: #fff;
 }

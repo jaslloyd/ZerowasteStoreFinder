@@ -1,0 +1,7 @@
+#page-wrap{
+    width: 80vw;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 20px black;
+}
