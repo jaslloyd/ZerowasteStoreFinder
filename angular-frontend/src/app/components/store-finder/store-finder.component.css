@@ -1,21 +1,44 @@
 .sebm-google-map-container {
   height: 500px;
 }
- #buttons {
-   padding-top: 10px;
-   padding-bottom: 10px;
- }
+
+.description h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 300;
+  font-family: 'Roboto', sans-serif;
+
+}
+
+.description hr{
+  width: 150px;
+  height: 1px;
+  border-top: 1px solid #E73931;
+}
+
+.description span{
+  font-family: 'Roboto', sans-serif;
+  font-size: 22px;
+  font-weight: 100;
+  color: #fff;
+}
+
+#buttons {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 
 #noResults {
-  padding-top: 50px;
+padding-top: 50px;
 }
 
 #storeQueryField {
-  margin-bottom: 10px;
+margin-bottom: 10px;
 }
 
 .btn-success {
-  background-color: #40A497;
+background-color: #40A497;
 }
 
 .well{
@@ -23,6 +46,38 @@
   box-shadow: -10px -5px 25px 0px rgba(0,0,0,0.75);
 }
 
-#query{
-  margin-top: 25px;
+.query{
+  max-width: 900px;
+  margin: 40px auto;
 }
+
+.query input{
+  height: 55px;
+  border: 0px;
+  border-radius: 3px;
+  color: #8c8c8c;
+  font-size: 18px;
+  font-weight: 300;
+  padding: 0px 20px;
+}
+
+.btn-search {
+  height: 55px;
+  padding: 0px 50px;
+  font-size: 18px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #e73931;
+}
+
+.searchInput{
+display: flex;
+flex-direction: column;
+justify-content: center;
+height: 100vh;
+}
+
+.child{
+resize: vertical;
+}
+

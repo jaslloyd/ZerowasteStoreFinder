@@ -1,55 +1,63 @@
-<div id="searchInput">
-<div>
-  <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
-  <div class="col-sm-12 text-center">
-    <div id="title" *ngIf="query.length == 0">
-      <h3>Zero Waste Shop Finder</h3>
-    </div>
-    <div id="query"> 
-      <input id="storeQueryField" type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control text-center" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
-    </div>
-  </div>
-</div>
-<div id="stores" *ngIf="query.length > 0">
-  <div class="row" *ngFor="let store of stores">
-    <div class="col-md-offset-1 col-md-10 col-sm-12">
-      <div class="well">
-        <h5><b>{{store.name}}</b></h5>
-        <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>
-        <p><span class="glyphicon glyphicon-leaf greenIcon" aria-hidden="true"></span>  Zero Waste products: <b>{{store.products}}</b></p>
-        <p><span class="glyphicon glyphicon-time blueIcon" aria-hidden="true"></span>  Opening Hours Today: {{store.openingHours[dayIndex]}}</p>
-        <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
+<div class="searchInput">
+  <div class="child">
+    <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
+    <div class="col-sm-12 text-center">
+      <div class="description" *ngIf="query.length == 0">
+        <h1>Zero Waste Shop Finder</h1>
+        <hr/>
+        <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+      </div>
+      <div class="query row"> 
+        <div class="col-sm-8">
+          <input type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control input-lg" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
+        </div>
+        <div class="col-sm-4">
+            <button type="button" class="btn btn-search">Find Stores</button>
+        </div>
+        
       </div>
     </div>
+    <div id="stores" *ngIf="query.length > 0">
+      <div class="row" *ngFor="let store of stores">
+        <div class="col-md-offset-1 col-md-10 col-sm-12">
+          <div class="well">
+            <h5><b>{{store.name}}</b></h5>
+            <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>
+            <p><span class="glyphicon glyphicon-leaf greenIcon" aria-hidden="true"></span>  Zero Waste products: <b>{{store.products}}</b></p>
+            <p><span class="glyphicon glyphicon-time blueIcon" aria-hidden="true"></span>  Opening Hours Today: {{store.openingHours[dayIndex]}}</p>
+            <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="noResults" class="text-center" *ngIf="noResults && query.length > 0">
+      <h4>No Results found</h4>
+    </div>
+    <div class="row">
+      <div id="buttons" class="col-sm-12 text-center">
+        <button id="mapBtn" (click)="toggleMap()" class="btn btn-success">{{btnText}}</button>
+      </div>
+    </div>
+
+    <div class="row" *ngIf="showStoresOnMap">
+      <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+        <agm-marker
+            *ngFor="let m of allStores"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            [label]=""
+            [markerDraggable]="false"
+            (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
+
+            <agm-info-window #infoWindow>
+              <p><strong>{{m.name}}</strong></p>
+              <p><strong>Address: </strong>{{m.address}}</p>
+              <p><strong>Zero waste products: </strong>{{m.products}}</p>
+              <a class="" [routerLink]="['/store', m.id]">More information</a>
+            </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
   </div>
-</div>
-
-<div id="noResults" class="text-center" *ngIf="noResults && query.length > 0">
-  <h4>No Results found</h4>
-</div>
-<div class="row">
-  <div id="buttons" class="col-sm-12 text-center">
-    <button id="mapBtn" (click)="toggleMap()" class="btn btn-success">{{btnText}}</button>
-  </div>
-</div>
-
-<div class="row" *ngIf="showStoresOnMap">
-  <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-    <agm-marker
-        *ngFor="let m of allStores"
-        [latitude]="m.lat"
-        [longitude]="m.lng"
-        [label]=""
-        [markerDraggable]="false"
-        (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
-
-        <agm-info-window #infoWindow>
-          <p><strong>{{m.name}}</strong></p>
-          <p><strong>Address: </strong>{{m.address}}</p>
-          <p><strong>Zero waste products: </strong>{{m.products}}</p>
-          <a class="" [routerLink]="['/store', m.id]">More information</a>
-        </agm-info-window>
-    </agm-marker>
-  </agm-map>
-</div>
 </div> 

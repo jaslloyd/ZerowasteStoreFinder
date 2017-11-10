@@ -24,12 +24,15 @@ import { DonateComponent } from './components/donate/donate.component';
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { SearchNavComponent } from './components/search-nav/search-nav.component';
 
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
   {path: '', component: StoreFinderComponent},
   {path: 'about', component: AboutComponent},
   {path: 'addstore', component: AddStoreComponent},
+  {path: 'search', component: SearchResultsComponent},
   {path: 'donate', component: DonateComponent},
   {path: 'store/:id', component: StoreComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
@@ -51,6 +54,8 @@ const appRoutes: Routes = [
     LoginComponent,
     FooterComponent,
     DonateComponent,
+    SearchResultsComponent,
+    SearchNavComponent,
   ],
   imports: [
     BrowserModule,
