@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Store } from '../../interfaces/store';
+import { BackendService } from '../../services/backend.service';
 
 @Component({
   selector: 'app-search-nav',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchNavComponent implements OnInit {
 
-  constructor() { }
+  @Input() userQuery: string;
+  @Output() onInput = new EventEmitter<Store>();
+
+  constructor(private backendService: BackendService) { }
 
   ngOnInit() {
+    this.searchStores();
+  }
+
+  searchStores() : void {
+    if (this.userQuery.trim().length > 0){
+      this.backendService.searchStores(this.userQuery).subscribe(stores => {
+        this.onInput.emit(stores);
+      }, err => {
+        console.log(err);
+        return false;
+      });
+    }
   }
 
 }

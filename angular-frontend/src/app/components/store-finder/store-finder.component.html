@@ -2,17 +2,17 @@
   <div class="child">
     <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
     <div class="col-sm-12 text-center">
-      <div class="description" *ngIf="query.length == 0">
+      <div class="description">
         <h1>Zero Waste Shop Finder</h1>
         <hr/>
         <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
       </div>
       <div class="query row"> 
         <div class="col-sm-8">
-          <input type="text" name="storeFinderInput" [(ngModel)]="query" (ngModelChange)="searchStores()" class="form-control input-lg" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
+          <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
         </div>
         <div class="col-sm-4">
-            <button type="button" class="btn btn-search">Find Stores</button>
+            <button type="button" class="btn btn-search" [routerLink]="['/search', query]">Find Stores</button>
         </div>
         
       </div>

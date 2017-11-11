@@ -32,7 +32,7 @@ const appRoutes: Routes = [
   {path: '', component: StoreFinderComponent},
   {path: 'about', component: AboutComponent},
   {path: 'addstore', component: AddStoreComponent},
-  {path: 'search', component: SearchResultsComponent},
+  {path: 'search/:query', component: SearchResultsComponent},
   {path: 'donate', component: DonateComponent},
   {path: 'store/:id', component: StoreComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
