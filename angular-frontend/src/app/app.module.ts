@@ -26,6 +26,7 @@ import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { SearchNavComponent } from './components/search-nav/search-nav.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
@@ -56,6 +57,7 @@ const appRoutes: Routes = [
     DonateComponent,
     SearchResultsComponent,
     SearchNavComponent,
+    SearchItemComponent,
   ],
   imports: [
     BrowserModule,

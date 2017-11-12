@@ -1,0 +1,22 @@
+<div class="col-12 col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">{{store.name}}</h4>
+            <p class="card-text">
+                <i class="fa fa-home blueIcon" aria-hidden="true"></i> Address: {{store.address}}
+            </p>
+            <p class="card-text">
+                <i class="fa fa-leaf greenIcon" aria-hidden="true"></i> Zero Waste products:
+                <b>{{store.products}}</b>
+            </p>
+            <div class="card-text">
+                <p *ngIf="!showMoreInfo"><i class="fa fa-clock-o blueicon" aria-hidden="true"></i>  Opening Hours Today: {{store.openingHours[dayIndex] || 'Not Available'}}</p>
+                <ul *ngIf="showMoreInfo">
+                    <li *ngFor="let entry of store.openingHours">{{entry}}</li>
+                </ul>
+            </div>
+            <a class="btn btn-sm btn-primary card-link" (click)="showMoreInfo = !showMoreInfo;">More information</a>
+        </div>
+
+    </div>
+</div>

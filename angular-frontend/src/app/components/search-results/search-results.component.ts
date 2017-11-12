@@ -10,9 +10,8 @@ import { BackendService } from '../../services/backend.service';
 })
 export class SearchResultsComponent implements OnInit {
 
-  query: string;
   stores: Store[] = [];
-  noResults: boolean = false;
+  query: string;
   lat: number = 52;
   lng: number = 13;
   zoom: number = 4;
@@ -22,14 +21,13 @@ export class SearchResultsComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.query = params['query'];
+      this.query = params['query']
       const todayIndex = new Date().getDay() - 1;
       this.dayIndex = todayIndex === -1 ? 6 : todayIndex;
     })
   }
 
   onUserInput(stores: Store[]) : void {
-    this.noResults = stores.length === 0 ? true : false;
     this.stores = stores;
   }
 }

@@ -41,11 +41,6 @@ margin-bottom: 10px;
 background-color: #40A497;
 }
 
-.well{
-  background-color: #FFFFFF;
-  box-shadow: -10px -5px 25px 0px rgba(0,0,0,0.75);
-}
-
 .query{
   max-width: 900px;
   margin: 40px auto;

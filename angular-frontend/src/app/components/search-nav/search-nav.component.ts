@@ -19,6 +19,7 @@ export class SearchNavComponent implements OnInit {
   }
 
   searchStores() : void {
+    console.log(this.userQuery)
     if (this.userQuery.trim().length > 0){
       this.backendService.searchStores(this.userQuery).subscribe(stores => {
         this.onInput.emit(stores);
