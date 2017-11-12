@@ -10,6 +10,7 @@ import { AgmMarkerCluster } from '@agm/js-marker-clusterer';
   styleUrls: ['./store-finder.component.css']
 })
 export class StoreFinderComponent implements OnInit {
+  query: string = ''
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
   constructor() { }

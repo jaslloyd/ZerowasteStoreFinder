@@ -4,30 +4,22 @@ import { BackendService } from '../../services/backend.service';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
-import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
-import { MapComponent } from '../map/map.component';
 import { Location } from '@angular/common';
 
 declare var google: any;
 @Component({
   selector: 'app-add-store',
-  templateUrl: './redesigned-add-store.component.html',
+  templateUrl: './add-store.component.html',
   styleUrls: ['./add-store.component.css']
 })
 export class AddStoreComponent implements OnInit {
-  lat: number = 52;
-  lng: number = 13;
-  zoom: number = 4;
-
-  stage: number = 1;
   gmapsOptions: Object = {}
   place: any;
-  marker: Marker;
   store: Store;
   fullStoreName: string = '';
   products: string;
-  selectedItems: Array<Object>;
+  selectedItems: Array<Object> = [];
   otherItems: string = '';
   allStores: Store[] = [];
   productOptions = [
@@ -35,8 +27,8 @@ export class AddStoreComponent implements OnInit {
   ];
   
   validInput: boolean = true;
-  storeInputClasses: string = "form-group"
-
+  storeInputClasses: string = ""
+  errMsg = "";
   image: string = '';
 
   constructor(private loader: MapsAPILoader,
@@ -54,13 +46,6 @@ export class AddStoreComponent implements OnInit {
       this.allStores = stores;
     });
     
-    if(navigator.geolocation){
-      navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.zoom = 11;
-      });
-    }
     // this.backendService.getUsersCountryCode(this.lat, this.lng).subscribe(data =>{
     //      let gmapsOptions: Object = {};
     //      let shortName: string;
@@ -110,47 +95,43 @@ export class AddStoreComponent implements OnInit {
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
             var place = autocomplete.getPlace();
-
+            console.log(place)
             if(place.hasOwnProperty('geometry')){
-
-              this.marker = {
-                lat: place.geometry.location.lat(),
-                lng: place.geometry.location.lng(),
-                label: place.name,
-                draggable: false
-              };
-
-              this.lat = this.marker.lat;
-              this.lng = this.marker.lng;
-              this.zoom = 17;
-              this.place = place;
-              this.storeInputClasses = "form-group has-success has-feedback";
-              this.validInput = true;
-              this.image = this.place.hasOwnProperty("photos") ? this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'https://vignette2.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337';
-            } else {
-              this.storeInputClasses = "form-group has-error has-feedback";
-              this.validInput = false;
+              this.backendService.getStore(place.id).subscribe(store => {
+                  if(!store){
+                    this.place = place;
+                    this.storeInputClasses = "is-valid";
+                    this.validInput = true;
+                    this.image = this.place.hasOwnProperty("photos") ? this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'https://vignette2.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337';
+                  }else{
+                    this.invalidInput(`${store.name} has already been added.`)
+                  }
+              })
+            }
+            else {
+              this.invalidInput()
             }
           });
       });
     });
   }
 
-  onAddStoreSubmit(){
-    if(!this.authService.validateSelectedItems(this.selectedItems, this.otherItems)){
-      window.scrollTo(0, 0);
-      this.flashMessage.show('Please select at least one item the store sells', {cssClass:'alert-danger', timeout: 3000});
-      return false;
-    }
+  invalidInput(msg='Please provide a valid store/shop.'){
+    this.storeInputClasses = "is-invalid"
+    this.validInput = false;
+    this.errMsg = msg;
 
+  }
+
+  onAddStoreSubmit(){
     this.store = {
       id: this.place.id,
       name: this.place.name,
       address: this.place.formatted_address,
       products: this.otherItems.length == 0 ? this.selectedItems.join(", ") : this.selectedItems.length == 0 ? this.otherItems : this.selectedItems.join(", ") + ', ' + this.otherItems,
       openingHours: this.place.hasOwnProperty("opening_hours") ? this.place.opening_hours.weekday_text : ["N/A"],
-      lat: this.marker.lat,
-      lng: this.marker.lng
+      lat: this.place.lat,
+      lng: this.place.lng
     };
 
     this.backendService.addStore(this.store).subscribe(data => {
@@ -170,28 +151,5 @@ export class AddStoreComponent implements OnInit {
       item.checked = false;
     });
     this.selectedItems = [];
-  }
-
-  nextStage(){
-    if(!this.authService.validateNewStore(this.place)){
-      window.scrollTo(0, 0);
-      this.flashMessage.show('Please search and select the store you want to add', {cssClass:'alert-danger', timeout: 3000});
-      return false;
-    } else{
-      this.backendService.getStore(this.place.id).subscribe(store => {
-        if(!store){
-          this.fullStoreName = (<HTMLInputElement>document.getElementById('storeLocationInput')).value;
-          this.stage += 1;
-        }else{
-          this.flashMessage.show('Store has already been added. Please try added another Store', {cssClass:'alert-warning', timeout: 5000});
-        }
-        
-      }); 
-    }
-  }
-
-  prevStage(){
-    this.stage -= 1;
-    (<HTMLInputElement>document.getElementById('storeLocationInput')).value = this.fullStoreName;
   }
 }

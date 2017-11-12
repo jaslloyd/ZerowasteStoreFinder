@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class BackendService {
   headers: Headers = new Headers();
-  serverHostname = environment.apiUrl; //"http://localhost:3000"
+  serverHostname = environment.apiUrl;
 
   constructor(private http:Http) {
     this.headers.append('Content-Type','application/json');
