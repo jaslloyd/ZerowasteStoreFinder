@@ -1,12 +1,14 @@
 <app-search-nav [userQuery]="query" (onInput)="onUserInput($event)"></app-search-nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2">Sidebar</div>
-        
-        <div class="col-sm-8 mt-5">
+        <!-- <div class="col-sm-2">Sidebar</div> -->
+        <div class="ml-auto col-md-8 col-sm-12 mt-5 mr-auto" >
             <div id="stores" *ngIf="stores.length > 0">
                 <div class="row" *ngFor="let store of stores">
-                    <app-search-item [store]="store" [dayIndex]="dayIndex"></app-search-item>
+                    <div class="col-md-12">
+                            <app-search-item [store]="store" [dayIndex]="dayIndex"></app-search-item>
+                    </div>
+                    
                 </div>
             </div>
 

@@ -14,31 +14,14 @@
         <div class="col-sm-4">
             <button type="button" class="btn btn-search" [routerLink]="['/search', query]">Find Stores</button>
         </div>
-        
-      </div>
-    </div>
-    <div id="stores" *ngIf="query.length > 0">
-      <div class="row" *ngFor="let store of stores">
-        <div class="col-md-offset-1 col-md-10 col-sm-12">
-          <div class="well">
-            <h5><b>{{store.name}}</b></h5>
-            <p><span class="glyphicon glyphicon-home blueIcon" aria-hidden="true"></span>  Address: {{store.address}}</p>
-            <p><span class="glyphicon glyphicon-leaf greenIcon" aria-hidden="true"></span>  Zero Waste products: <b>{{store.products}}</b></p>
-            <p><span class="glyphicon glyphicon-time blueIcon" aria-hidden="true"></span>  Opening Hours Today: {{store.openingHours[dayIndex]}}</p>
-            <a class="btn btn-sm btn-primary"[routerLink]="['/store', store.id]">More information</a>
-          </div>
-        </div>
       </div>
     </div>
 
-    <div id="noResults" class="text-center" *ngIf="noResults && query.length > 0">
-      <h4>No Results found</h4>
-    </div>
-    <div class="row">
+    <!-- <div class="row">
       <div id="buttons" class="col-sm-12 text-center">
         <button id="mapBtn" (click)="toggleMap()" class="btn btn-success">{{btnText}}</button>
       </div>
-    </div>
+    </div> -->
 
     <div class="row" *ngIf="showStoresOnMap">
       <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">

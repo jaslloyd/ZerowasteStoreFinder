@@ -4,11 +4,11 @@ import { Store } from '../../interfaces/store';
 import { BackendService } from '../../services/backend.service';
 
 @Component({
-  selector: 'app-search-results',
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.css']
+  selector: 'app-search-home',
+  templateUrl: './search-home.component.html',
+  styleUrls: ['./search-home.component.css']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchHomeComponent implements OnInit {
 
   stores: Store[] = [];
   query: string;
