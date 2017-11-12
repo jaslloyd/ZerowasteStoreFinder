@@ -1,20 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#e73931">
   <a class="navbar-brand text-center col-sm-2" href="#">Zero Waste</a>
   <form class="form-inline my-2 my-lg-0" (ngSubmit)="searchStores()">
-      <input class="form-control mr-sm-2" name="userQuery" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="userQuery">
+    <input class="form-control mr-sm-2" name="userQuery" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="userQuery">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <!-- <button class="btn btn-outline-primary my-2 my-sm-0" [routerLink]=['/search', userQuery]></button> -->
   </form>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
-        <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
-          <a class="nav-link" [routerLink]="['/addstore']">Add Store</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}">
-          <a class="nav-link" [routerLink]="['/about']">About | Contact</a>
-        </li>
-      </ul>
+      <li class="nav-item active" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/addstore']">Add Store</a>
+      </li>
+      <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a class="nav-link" [routerLink]="['/about']">About | Contact</a>
+      </li>
+    </ul>
   </div>
 </nav>

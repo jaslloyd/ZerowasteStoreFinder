@@ -10,13 +10,22 @@
                 <b>{{store.products}}</b>
             </p>
             <div class="card-text">
-                <p *ngIf="!showMoreInfo"><i class="fa fa-clock-o blueicon" aria-hidden="true"></i>  Opening Hours Today: {{store.openingHours[dayIndex] || 'Not Available'}}</p>
-                <ul *ngIf="showMoreInfo">
-                    <li *ngFor="let entry of store.openingHours">{{entry}}</li>
-                </ul>
+                <p><i class="fa fa-clock-o blueicon" aria-hidden="true"></i>  Opening Hours <span *ngIf="!showMoreInfo"> Today: {{store.openingHours[dayIndex] || 'Not Available'}}</span></p>
+                <div *ngIf="showMoreInfo">
+                    <ul>
+                        <li *ngFor="let entry of store.openingHours">{{entry}}</li>
+                    </ul>
+                    <agm-map [latitude]="marker.lat" [longitude]="marker.lng" [zoom]="zoom" [zoomControl]="true">
+                        <agm-marker
+                        [latitude]="marker.lat"
+                        [longitude]="marker.lng"
+                        [label]="marker.label"
+                        [markerDraggable]="marker.draggable">
+                        </agm-marker>
+                    </agm-map>
+                </div>
             </div>
             <a class="btn btn-sm btn-primary card-link" (click)="showMoreInfo = !showMoreInfo;">More information</a>
         </div>
-
     </div>
 </div>
