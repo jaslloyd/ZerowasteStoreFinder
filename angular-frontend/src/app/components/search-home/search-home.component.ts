@@ -11,6 +11,7 @@ import { BackendService } from '../../services/backend.service';
 export class SearchHomeComponent implements OnInit {
 
   stores: Store[] = [];
+  results = true;
   query: string;
   lat: number = 52;
   lng: number = 13;
@@ -29,5 +30,6 @@ export class SearchHomeComponent implements OnInit {
 
   onUserInput(stores: Store[]) : void {
     this.stores = stores;
+    this.results = stores.length > 0 ? true : false;
   }
 }

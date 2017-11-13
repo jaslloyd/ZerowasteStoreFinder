@@ -95,7 +95,6 @@ export class AddStoreComponent implements OnInit {
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
             var place = autocomplete.getPlace();
-            console.log(place)
             if(place.hasOwnProperty('geometry')){
               this.backendService.getStore(place.id).subscribe(store => {
                   if(!store){

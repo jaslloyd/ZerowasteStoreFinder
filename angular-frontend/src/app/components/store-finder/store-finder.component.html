@@ -8,10 +8,13 @@
         <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
       </div>
       <div class="query row"> 
-        <div class="col-sm-8">
+        <div class="col-sm-6">
           <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
+            <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Location" required>
+        </div>
+        <div class="col-sm-4 text-left">
             <button type="button" class="btn btn-search" [routerLink]="['/search', query]">Find Stores</button>
         </div>
       </div>

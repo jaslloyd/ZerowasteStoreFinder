@@ -34,7 +34,6 @@ const appRoutes: Routes = [
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent}, 
   {path: 'about', component: AboutComponent}, 
-  {path: 'addstore', component: AddStoreComponent}, // todo: change to dropdown modal
   {path: 'donate', component: DonateComponent}, // todo: change to dropdown modal
   {path: '**', component: StoreFinderComponent}
 ];

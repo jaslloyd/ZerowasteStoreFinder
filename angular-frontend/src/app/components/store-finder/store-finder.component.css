@@ -8,16 +8,15 @@
   color: #fff;
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
-
 }
 
-.description hr{
+.description hr {
   width: 150px;
   height: 1px;
   border-top: 1px solid #E73931;
 }
 
-.description span{
+.description span {
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
   font-weight: 100;
@@ -30,23 +29,23 @@
 }
 
 #noResults {
-padding-top: 50px;
+  padding-top: 50px;
 }
 
 #storeQueryField {
-margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .btn-success {
-background-color: #40A497;
+  background-color: #40A497;
 }
 
-.query{
+.query {
   max-width: 900px;
   margin: 40px auto;
 }
 
-.query input{
+.query input {
   height: 55px;
   border: 0px;
   border-radius: 3px;
@@ -65,14 +64,26 @@ background-color: #40A497;
   background-color: #e73931;
 }
 
-.searchInput{
-display: flex;
-flex-direction: column;
-justify-content: center;
-height: 100vh;
+.searchInput {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
 }
 
-.child{
-resize: vertical;
+.child {
+  resize: vertical;
 }
 
+.form-control {
+  border-radius: 0 !important;
+}
+
+.col-sm-6 {
+  padding-right: 0 !important;
+}
+
+.col-sm-2 {
+  padding-left: 0 !important;
+  border-left: 1px solid green;
+}

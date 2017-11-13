@@ -9,3 +9,7 @@
 .sebm-google-map-container {
     height: 150px;
 }
+
+.btn-primary{
+    color: white !important;
+}
