@@ -10,6 +10,7 @@ import { BackendService } from '../../services/backend.service';
 export class SearchNavComponent implements OnInit {
 
   @Input() userQuery: string;
+  @Input() location: string = '';
   @Output() onInput = new EventEmitter<Store>();
 
   constructor(private backendService: BackendService) { }
@@ -20,7 +21,7 @@ export class SearchNavComponent implements OnInit {
 
   searchStores() : void {
     if (this.userQuery.trim().length > 0){
-      this.backendService.searchStores(this.userQuery).subscribe(stores => {
+      this.backendService.searchStores(this.userQuery, this.location).subscribe(stores => {
         this.onInput.emit(stores);
       }, err => {
         console.log(err);

@@ -13,6 +13,7 @@ export class SearchHomeComponent implements OnInit {
   stores: Store[] = [];
   results = true;
   query: string;
+  location: string;
   lat: number = 52;
   lng: number = 13;
   zoom: number = 4;
@@ -21,8 +22,9 @@ export class SearchHomeComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((params: Params) => {
+    this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.query = params['query']
+      this.location = params['location'];
       const todayIndex = new Date().getDay() - 1;
       this.dayIndex = todayIndex === -1 ? 6 : todayIndex;
     })

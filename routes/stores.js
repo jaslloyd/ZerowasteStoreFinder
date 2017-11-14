@@ -4,6 +4,7 @@ const Store = require('../models/store');
 
 /* Return all stores that match query */
 router.get('/search/:query', (req, res, next) => {
+  console.log(req.query)
   const query = req.params.query;
   // const nameQuery = {name: {"$regex": "^"+ query, "$options": "i"}};
   const nameQuery = {name: {"$regex": query, "$options": "i"}};
@@ -14,6 +15,33 @@ router.get('/search/:query', (req, res, next) => {
     if(err) throw err;
     res.json(stores);
   });
+});
+
+// Will probably remove when moving fully to gmaps
+router.get('/nextsearch', (req, res, next) => {
+  const { query, location } = req.query;
+  const nameQuery = {name: {"$regex": query, "$options": "i"}};
+  const productsQuery = {products: {"$regex": query, "$options": "i"}};
+  
+
+  let fullQuery;
+  // Check for the store names or product names in that location
+  if(location.length > 0){
+    fullQuery = {
+      address: {"$regex": location, "$options": "i"},
+      $and:[{$or: [nameQuery, productsQuery]}]
+    };
+  }else{
+    // use regular query if location is empty, might be able to rediect to above route
+    const locationQuery = {address: {"$regex": query, "$options": "i"}};
+    fullQuery = {$or: [nameQuery, locationQuery, productsQuery]};
+  }
+
+  Store.getStores(fullQuery, (err, stores) => {
+    if(err) throw err;
+    res.json(stores)
+  });
+ 
 });
 
 router.get('/all', (req, res, next) => {

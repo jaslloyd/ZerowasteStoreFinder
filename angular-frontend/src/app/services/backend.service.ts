@@ -12,8 +12,11 @@ export class BackendService {
     this.headers.append('Content-Type','application/json');
   }
 
-  searchStores(query){
-    return this.http.get(this.serverHostname +'/api/stores/search/' + query, {headers: this.headers})
+  searchStores(query, location=''){
+    const fullQuery = `query=${query}&location=${location}`;
+    console.log(fullQuery)
+    //todo: safer way to do this...NoSql injection???
+    return this.http.get(this.serverHostname +'/api/stores/nextsearch?' + fullQuery, {headers: this.headers})
       .map(res => res.json());
   }
 

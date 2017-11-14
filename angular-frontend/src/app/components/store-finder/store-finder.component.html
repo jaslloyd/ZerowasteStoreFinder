@@ -15,7 +15,7 @@
             <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Location" required>
         </div>
         <div class="col-sm-4 text-left">
-            <button type="button" class="btn btn-search" [routerLink]="['/search', query]">Find Stores</button>
+            <button type="button" class="btn btn-search" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal}">Find Stores</button>
         </div>
       </div>
     </div>

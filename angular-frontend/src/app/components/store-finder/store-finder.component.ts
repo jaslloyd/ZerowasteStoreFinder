@@ -25,6 +25,7 @@ export class StoreFinderComponent implements OnInit {
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
         this.backendService.getUsersCountryCode(position.coords.latitude, position.coords.longitude).subscribe(json => {
+            console.log(json);
             this.searchLocal = json.results[2].formatted_address
           }
         )
@@ -40,7 +41,8 @@ export class StoreFinderComponent implements OnInit {
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
             let place = autocomplete.getPlace();
-            console.log(place)
+            this.searchLocal = place.address_components[0].long_name;
+            console.log(this.searchLocal)
           });
       });
     });

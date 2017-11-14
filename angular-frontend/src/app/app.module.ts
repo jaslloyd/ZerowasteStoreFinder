@@ -30,7 +30,7 @@ import { SearchItemComponent } from './components/search-item/search-item.compon
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
   {path: '', component: StoreFinderComponent},
-  {path: 'search/:query', component: SearchHomeComponent},
+  {path: 'search', component: SearchHomeComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent}, 
   {path: 'about', component: AboutComponent}, 
