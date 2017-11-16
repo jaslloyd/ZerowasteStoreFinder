@@ -10,17 +10,16 @@
   background-color: #40A497;
 }
 
-/*.scrollbox {
-  height:250px;
-  overflow-y:scroll;
-}*/
-
 .form-control-inline {
    width: auto;
    float: right;
    margin-right: 5px;
 }
 
-.padrow {
-  margin-top: 25px
+h5, label{
+  color:black;
+}
+
+.modal-header{
+  background-color: #e73931;
 }

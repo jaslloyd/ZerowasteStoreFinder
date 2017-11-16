@@ -1,72 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { BackendService } from '../../services/backend.service';
-import { FlashMessagesService } from 'angular2-flash-messages';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { Marker } from '../../interfaces/marker';
-import { Store } from '../../interfaces/store';
+import { MapsAPILoader } from '@agm/core';
 import { MapComponent } from '../map/map.component';
 import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
 import { AgmMarkerCluster } from '@agm/js-marker-clusterer';
+import { BackendService } from '../../services/backend.service';
 
+declare var google: any;
 @Component({
   selector: 'app-store-finder',
   templateUrl: './store-finder.component.html',
   styleUrls: ['./store-finder.component.css']
 })
 export class StoreFinderComponent implements OnInit {
-  query: String = '';
-  stores: Store[] = [];
-  lat: number = 52;
-  lng: number = 13;
-  zoom: number = 4;
+  gmapsOptions: Object = {}
+  query: string = '';
+  searchLocal: string = '';
   showStoresOnMap: boolean = false;
   btnText = "View all stores on map";
-  noResults: boolean = false;
-
-  dayIndex: number;
-  allStores: Store[] = [];
-  constructor(private backendService: BackendService) { }
+  constructor(private backendService: BackendService, private loader: MapsAPILoader,
+    private _zone: NgZone) { }
 
   ngOnInit() {
-    const now = new Date();
-    this.dayIndex = now.getDay() - 1;
-    if (this.dayIndex == -1){
-      this.dayIndex = 6;
-    }
-
-    this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores;
-    });
-    
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
-        this.lat = position.coords.latitude;
-        this.lng = position.coords.longitude;
-        this.zoom = 11;
+        this.backendService.getUsersCountryCode(position.coords.latitude, position.coords.longitude).subscribe(json => {
+            console.log(json);
+            this.searchLocal = json.results[2].formatted_address
+          }
+        )
       });
     }
+
+    this.autocomplete()
   }
 
-  searchStores(){
-    if(this.showStoresOnMap){
-      this.toggleMap();
-    }
-    if (this.query.trim().length > 0){
-      this.backendService.searchStores(this.query).subscribe(stores => {
-        if(stores.length > 0){
-          this.stores = stores;
-          this.noResults = false;
-        }else{
-          this.stores = [];
-          this.noResults = true;
-        }
-      },
-      err => {
-        console.log(err);
-        return false;
+  autocomplete(){
+    this.loader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(document.getElementById("searchLocal"), this.gmapsOptions);
+      google.maps.event.addListener(autocomplete, 'place_changed', () => {
+          this._zone.run(() => {
+            let place = autocomplete.getPlace();
+            this.searchLocal = place.address_components[0].long_name;
+            console.log(this.searchLocal)
+          });
       });
-    }
+    });
   }
 
   toggleMap(){

@@ -14,7 +14,6 @@ import { MapComponent } from './components/map/map.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
 import { AddStoreComponent } from './components/add-store/add-store.component';
-import { StoreComponent } from './components/store/store.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -24,16 +23,18 @@ import { DonateComponent } from './components/donate/donate.component';
 import { BackendService } from './services/backend.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { SearchHomeComponent } from './components/search-home/search-home.component';
+import { SearchNavComponent } from './components/search-nav/search-nav.component';
+import { SearchItemComponent } from './components/search-item/search-item.component';
 
 // Tells angular where to direct the requests
 const appRoutes: Routes = [
   {path: '', component: StoreFinderComponent},
-  {path: 'about', component: AboutComponent},
-  {path: 'addstore', component: AddStoreComponent},
-  {path: 'donate', component: DonateComponent},
-  {path: 'store/:id', component: StoreComponent},
+  {path: 'search', component: SearchHomeComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent}, 
+  {path: 'about', component: AboutComponent}, 
+  {path: 'donate', component: DonateComponent}, // todo: change to dropdown modal
   {path: '**', component: StoreFinderComponent}
 ];
 
@@ -46,11 +47,13 @@ const appRoutes: Routes = [
     ContactComponent,
     AboutComponent,
     AddStoreComponent,
-    StoreComponent,
     DashboardComponent,
     LoginComponent,
     FooterComponent,
     DonateComponent,
+    SearchHomeComponent,
+    SearchNavComponent,
+    SearchItemComponent
   ],
   imports: [
     BrowserModule,

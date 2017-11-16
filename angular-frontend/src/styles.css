@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
 body {
   font-size: 15px;
+  background-color: inherit;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+html {
+  background: url("http://matveyan.ru/Themes/mycity/01.Default/html/img/start/bg.jpg") no-repeat center center fixed;
+  background-size: cover;
 }
 
 .greenIcon {
@@ -11,4 +20,8 @@ body {
 .blueIcon {
   color: #4285F4;
   margin-right: 5px;
+}
+
+.pac-container {
+  z-index: 1051 !important;
 }

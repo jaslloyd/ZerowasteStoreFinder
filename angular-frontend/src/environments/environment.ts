@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://zerowasteshops.com'
+  apiUrl: 'http://localhost:3000'
 };

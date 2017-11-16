@@ -1,0 +1,20 @@
+<app-search-nav [userQuery]="query" [location]="location" (onInput)="onUserInput($event)"></app-search-nav>
+<div class="container-fluid">
+  <div class="row">
+    <!-- <div class="col-sm-2">Sidebar</div> -->
+    <div class="ml-auto col-md-8 col-sm-12 mt-5 mr-auto">
+      <div id="stores" *ngIf="stores.length > 0;">
+        <div class="row" *ngFor="let store of stores">
+          <div class="col-md-12">
+            <app-search-item [store]="store" [dayIndex]="dayIndex"></app-search-item>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!results">
+        <div class="text-center">
+          <h4>No Results found</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
