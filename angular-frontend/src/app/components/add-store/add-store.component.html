@@ -37,45 +37,45 @@
                     </agm-marker>
                   </agm-map>
               </div> -->
-      <div *ngIf="validInput && place">
-          <div class="row">
-            <div class="form-group">
-              <div class="col-sm-12">
-                <h5>
-                  <label for="productOptions">
-                    <b>Select Zero Waste products sold: </b>
+          <div *ngIf="validInput && place">
+            <div class="row">
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <h5>
+                    <label for="productOptions">
+                      <b>Select Zero Waste products sold: </b>
+                    </label>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <div *ngFor="let option of productOptions | slice:0:productOptions.length/2">
+                  <label>
+                    <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
+                    /> {{option.name}}
                   </label>
-                </h5>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div *ngFor="let option of productOptions | slice:(productOptions.length/2)+1:productOptions.length">
+                  <label>
+                    <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
+                    /> {{option.name}}
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-6">
-              <div *ngFor="let option of productOptions | slice:0:productOptions.length/2">
-                <label>
-                  <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
-                  /> {{option.name}}
+            <div class="row">
+              <div class="col-sm-12">
+                <label for="products">
+                  <b>Selected products:</b>
+                  <span *ngFor="let product of selectedItems">{{product}}, </span>
                 </label>
               </div>
             </div>
-            <div class="col-sm-6">
-              <div *ngFor="let option of productOptions | slice:(productOptions.length/2)+1:productOptions.length">
-                <label>
-                  <input type="checkbox" name="options" (change)="onSelectedProduct()" value="{{option.name}}" [(ngModel)]="option.checked"
-                  /> {{option.name}}
-                </label>
-              </div>
-            </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <label for="products">
-                <b>Selected products:</b>
-                <span *ngFor="let product of selectedItems">{{product}}, </span>
-              </label>
-            </div>
-          </div>
-        </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
