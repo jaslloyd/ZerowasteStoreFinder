@@ -25,3 +25,7 @@ html {
 .pac-container {
   z-index: 1051 !important;
 }
+
+.primary-bg-color{
+  background: #40A497;
+}

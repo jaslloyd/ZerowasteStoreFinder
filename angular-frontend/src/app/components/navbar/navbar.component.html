@@ -1,24 +1,10 @@
-<nav class="navbar navbar-inverse">
-   <div class="container">
-     <div class="navbar-header">
-       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-         <span class="sr-only">Toggle navigation</span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-         <span class="icon-bar"></span>
-       </button>
-       <a class="navbar-brand" href="#">Zero Waste Shop Finder</a>
-     </div>
-     <div id="navbar" class="collapse navbar-collapse">
-       <ul class="nav navbar-nav navbar-right">
-         <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/']">Find Stores</a></li>
-         <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/addstore']">Add Store</a></li>
-         <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/about']">About | Contact</a></li>
-         <li [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/donate']">Donate</a></li>
-         <!--<li *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/login']">Login</a></li>-->
-         <li *ngIf="isLoggedIn()" [routerLinkActive]="['active']" [routerLinkActiveOptions] = "{exact:true}"><a [routerLink]="['/dashboard']">Dashboard</a></li>
-         <li *ngIf="isLoggedIn()"><a (click)="onLogoutClick()" href="#">Logout</a></li>
-       </ul>
-     </div>
-   </div>
- </nav>
+<nav class="navbar navbar-expand-lg navbar-light navbar-dark" style="background:transparent;height: 5vh">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="container" style="padding-top:20px">
+          <h1>ZW Store Finder</h1>
+          <a class="btn btn-outline-success"[routerLink]="['/about']">About</a>
+      </div>
+    
+</nav>

@@ -2,7 +2,7 @@
   <form (submit)="onContactSubmit()">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header text-center">
+        <div class="modal-header text-center primary-bg-color">
           <h5 class="modal-title" id="contactModalLabel">Contact us!</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -50,16 +50,14 @@
               <div class="form-group">
                 <label for="name">
                   Message</label>
-                <textarea name="message" [(ngModel)]="message" name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                <textarea name="message" [(ngModel)]="message" name="message" id="message" class="form-control" rows="5" cols="25" required="required"
                   placeholder="Message"></textarea>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <div class="col-md-12">
-              <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+              <button type="submit" class="btn btn-primary" id="btnContactUs">
                 Send Message</button>
-            </div>
           </div>
         </div>
       </div>

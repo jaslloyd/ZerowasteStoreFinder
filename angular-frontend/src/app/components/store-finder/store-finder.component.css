@@ -36,10 +36,6 @@
   margin-bottom: 10px;
 }
 
-.btn-success {
-  background-color: #40A497;
-}
-
 .query {
   max-width: 900px;
   margin: 40px auto;
@@ -61,14 +57,14 @@
   font-size: 18px;
   border-radius: 3px;
   color: #fff;
-  background-color: #e73931;
+  background-color: #40A497;
 }
 
 .searchInput {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  height: 95vh;
 }
 
 .child {
@@ -85,5 +81,5 @@
 
 .col-sm-2 {
   padding-left: 0 !important;
-  border-left: 1px solid green;
+  border-left: 1px solid #40A497;
 }
