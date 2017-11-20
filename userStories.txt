@@ -12,3 +12,7 @@ Admin:
 [DONE] As an admin I want to be able to edit stores
 [DONE] As an admin I want to be able to delete stores
 [DONE] As an admin I want to able to see the user messages in dashboard
+
+
+Work log:
+Next: Pass location from store-finder -> map...

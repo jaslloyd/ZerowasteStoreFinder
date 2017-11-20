@@ -16,8 +16,6 @@ export class StoreFinderComponent implements OnInit {
   gmapsOptions: Object = {}
   query: string = '';
   searchLocal: string = '';
-  showStoresOnMap: boolean = false;
-  btnText = "View all stores on map";
   constructor(private backendService: BackendService, private loader: MapsAPILoader,
     private _zone: NgZone) { }
 
@@ -31,7 +29,6 @@ export class StoreFinderComponent implements OnInit {
         )
       });
     }
-
     this.autocomplete()
   }
 
@@ -41,15 +38,11 @@ export class StoreFinderComponent implements OnInit {
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
             let place = autocomplete.getPlace();
-            this.searchLocal = place.address_components[0].long_name;
+            console.log(place)
+            this.searchLocal = place.formatted_address;
             console.log(this.searchLocal)
           });
       });
     });
-  }
-
-  toggleMap(){
-    this.showStoresOnMap = !this.showStoresOnMap;
-    this.btnText = this.showStoresOnMap ? 'Hide Map' : 'View all stores on map';
   }
 }

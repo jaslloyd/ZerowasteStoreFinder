@@ -29,3 +29,8 @@ html {
 .primary-bg-color{
   background: #40A497;
 }
+
+
+.agm-info-window-content{
+  color:black !important;
+}

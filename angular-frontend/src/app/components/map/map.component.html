@@ -1,9 +1,13 @@
+<app-search-nav [userQuery]="usersLocation" (onInput)="onUserInput($event)"></app-search-nav>
+<agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
   <agm-marker
       *ngFor="let m of allStores"
       [latitude]="m.lat"
       [longitude]="m.lng"
       [label]=""
-      [markerDraggable]="false">
+      [markerDraggable]="false"
+      (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow"
+      >
 
       <agm-info-window #infoWindow>
         <p><strong>{{m.name}}</strong></p>
@@ -12,3 +16,4 @@
         <a class="" [routerLink]="['/store', m.id]">More information</a>
       </agm-info-window>
   </agm-marker>
+</agm-map>

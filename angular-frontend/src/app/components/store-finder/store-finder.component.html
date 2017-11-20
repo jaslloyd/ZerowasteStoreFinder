@@ -6,7 +6,7 @@
       <div class="description">
         <h1>Zero Waste Shop Finder</h1>
         <hr/>
-        <span>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</span>
+        <span>Helping save the environment one search at a time</span>
       </div>
       <div class="query row"> 
         <div class="col-sm-6">
@@ -19,32 +19,6 @@
             <button type="button" class="btn btn-search" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal}">Find Stores</button>
         </div>
       </div>
-    </div>
-
-    <!-- <div class="row">
-      <div id="buttons" class="col-sm-12 text-center">
-        <button id="mapBtn" (click)="toggleMap()" class="btn btn-success">{{btnText}}</button>
-      </div>
-    </div> -->
-
-    <div class="row" *ngIf="showStoresOnMap">
-      <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-        <agm-marker
-            *ngFor="let m of allStores"
-            [latitude]="m.lat"
-            [longitude]="m.lng"
-            [label]=""
-            [markerDraggable]="false"
-            (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow">
-
-            <agm-info-window #infoWindow>
-              <p><strong>{{m.name}}</strong></p>
-              <p><strong>Address: </strong>{{m.address}}</p>
-              <p><strong>Zero waste products: </strong>{{m.products}}</p>
-              <a class="" [routerLink]="['/store', m.id]">More information</a>
-            </agm-info-window>
-        </agm-marker>
-      </agm-map>
     </div>
   </div>
 </div> 

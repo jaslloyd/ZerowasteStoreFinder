@@ -33,7 +33,8 @@ const appRoutes: Routes = [
   {path: 'search', component: SearchHomeComponent},
   {path: 'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent}, 
-  {path: 'about', component: AboutComponent}, 
+  {path: 'about', component: AboutComponent},
+  {path: 'map', component: MapComponent},
   {path: 'donate', component: DonateComponent}, // todo: change to dropdown modal
   {path: '**', component: StoreFinderComponent}
 ];

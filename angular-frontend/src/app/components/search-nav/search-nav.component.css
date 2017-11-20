@@ -1,8 +1,19 @@
 .navbar-brand{
     color: #fff;
     margin-right: 0;
+    font-weight: 800;
 }
 
 .nav-link{
     color: #fff !important;
+}
+
+input{
+    height: 2rem;
+    border: 0px;
+    border-radius: 0;
+    color: #8c8c8c;
+    font-size: 18px;
+    font-weight: 300;
+    padding: 0px 20px;
 }

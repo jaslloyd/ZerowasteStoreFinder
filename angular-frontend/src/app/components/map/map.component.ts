@@ -3,9 +3,11 @@ import { BackendService } from '../../services/backend.service';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { Router } from '@angular/router';
-import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
-import { AgmMarkerCluster } from '@agm/js-marker-clusterer';
+import { MapsAPILoader } from '@agm/core';
+// import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
+// import { AgmMarkerCluster } from '@agm/js-marker-clusterer';
 
+declare var google: any;
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -16,15 +18,26 @@ export class MapComponent implements OnInit {
   allStores: Store[] = [];
   lat: number = 52;
   lng: number = 13;
-  zoom: number = 4;
+  zoom: number = 6;
+  usersLocation: string = 'dublin' // shoyld be passed via parent
+  geoposition = '' // should be passed via parent...
 
-  constructor(private backendService: BackendService, private gmapsApi: GoogleMapsAPIWrapper, private markerManager: MarkerManager) { }
+  constructor(private backendService: BackendService,  private loader: MapsAPILoader) { }
 
   ngOnInit() {
-    this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores;
-    });
+    if(navigator && navigator.geolocation){
+      navigator.geolocation.getCurrentPosition(position => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+      })
+    }
+    // this.backendService.getAllStores().subscribe(stores => {
+    //   this.allStores = stores;
+    // });
   }
 
+  onUserInput(stores: Store[]) : void {
+    this.allStores = stores;
+  }
 
 }
