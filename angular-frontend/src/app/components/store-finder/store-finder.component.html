@@ -6,7 +6,7 @@
       <div class="description">
         <h1>Zero Waste Shop Finder</h1>
         <hr/>
-        <span>Helping save the environment one search at a time</span>
+        <span>Helping you save the environment one search at a time</span>
       </div>
       <div class="query row"> 
         <div class="col-sm-6">
@@ -15,9 +15,15 @@
         <div class="col-sm-2">
             <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Location" required>
         </div>
-        <div class="col-sm-4 text-left">
+        <div class="col-sm-2 text-left">
             <button type="button" class="btn btn-search" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal}">Find Stores</button>
         </div>
+      </div>
+      <div class="query row">
+          <div class="col-sm-12 text-center">
+              <span>Want to see all the stores? <a href="" [routerLink]="['/map']" [queryParams]="{lat: navigatorPosition?.lat, lng: navigatorPosition?.lng}"> Click here</a></span>
+          </div>
+         
       </div>
     </div>
   </div>

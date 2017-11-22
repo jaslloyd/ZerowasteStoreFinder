@@ -16,6 +16,8 @@ export class StoreFinderComponent implements OnInit {
   gmapsOptions: Object = {}
   query: string = '';
   searchLocal: string = '';
+  navigatorPosition;
+
   constructor(private backendService: BackendService, private loader: MapsAPILoader,
     private _zone: NgZone) { }
 
@@ -27,6 +29,10 @@ export class StoreFinderComponent implements OnInit {
             this.searchLocal = json.results[2].formatted_address
           }
         )
+        this.navigatorPosition = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
       });
     }
     this.autocomplete()

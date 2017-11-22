@@ -2,3 +2,26 @@
   height: 95vh;
 }
 
+.container-fluid{
+  padding-left: 0;
+  margin: 0;
+}
+
+input, button{
+  margin-top: 20px;
+  border-radius: 0;
+}
+
+#right {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+body{
+  /* Need to add this to body... */
+  overflow:hidden; 
+}

@@ -1,19 +1,46 @@
 <app-search-nav [userQuery]="usersLocation" (onInput)="onUserInput($event)"></app-search-nav>
-<agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
-  <agm-marker
-      *ngFor="let m of allStores"
-      [latitude]="m.lat"
-      [longitude]="m.lng"
-      [label]=""
-      [markerDraggable]="false"
-      (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow"
-      >
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-9">
+    <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
+      <agm-marker
+          *ngFor="let m of allStores"
+          [latitude]="m.lat"
+          [longitude]="m.lng"
+          [label]=""
+          [markerDraggable]="false"
+          (markerClick)="gm.lastOpen?.close(); gm.lastOpen = infoWindow"
+          >
 
-      <agm-info-window #infoWindow>
-        <p><strong>{{m.name}}</strong></p>
-        <p><strong>Address: </strong>{{m.address}}</p>
-        <p><strong>Zero waste products: </strong>{{m.products}}</p>
-        <a class="" [routerLink]="['/store', m.id]">More information</a>
-      </agm-info-window>
-  </agm-marker>
-</agm-map>
+          <agm-info-window #infoWindow>
+            <p><strong>{{m.name}}</strong></p>
+            <p><strong>Address: </strong>{{m.address}}</p>
+            <p><strong>Zero waste products: </strong>{{m.products}}</p>
+            <a class="" [routerLink]="['/store', m.id]">More information</a>
+          </agm-info-window>
+      </agm-marker>
+    </agm-map>
+  </div>
+  <div class="col-md-3">
+    <form class="container-fluid" (submit)="listStores()">
+      <div class="row">
+        <div class="col-sm-8 m-0 p-0">
+            <input type="query" [(ngModel)]="query" name="query" id="query" class="form-control" placeholder="Enter query" required="required"/>
+        </div>
+        <div class="col-sm-4">
+            <button type="submit" class="btn btn-primary">SEARCH!</button>
+        </div>
+      </div>
+      <div id="right">
+      <div class="row" *ngFor="let store of allStores">
+        <div class="col-sm-12">
+            <app-search-item [store]="store" [dayIndex]="1"></app-search-item>
+        </div>
+      </div>
+      </div>
+    </form>
+    <hr />
+  </div>
+</div>
+
+</div>
