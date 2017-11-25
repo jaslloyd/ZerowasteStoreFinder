@@ -4,13 +4,13 @@
     <label for="storeFinderInput" class="col-sm-12 control-label text-center"></label>
     <div class="col-sm-12 text-center">
       <div class="description">
-        <h1>Zero Waste Shop Finder</h1>
+        <h1>ZW Store Finder</h1>
         <hr/>
         <span>Helping you save the environment one search at a time</span>
       </div>
       <div class="query row"> 
         <div class="col-sm-6">
-          <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name, Location or Product e.g. 'Dublin 7 or Rice'" required>
+          <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name, Location or Product" required>
         </div>
         <div class="col-sm-2">
             <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Location" required>
@@ -27,4 +27,10 @@
       </div>
     </div>
   </div>
-</div> 
+</div>
+<section style="background-color: white;color:#333;padding: 50px 0">
+  <app-about></app-about>  
+</section>
+<section>
+  <app-footer></app-footer>
+</section>

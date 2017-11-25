@@ -1,22 +1,26 @@
-<div class="row">
-    <div id="questions" class="col-md-8">
-        <h4>Zero waste FAQ's</h4>
-        <div *ngFor="let question of questions; let i = index" class="row">
-            <p><b>Q: {{question.question}}</b></p>
-            <p><b>A:</b> {{question.answer}}</p>
-        </div>
+<div class="container" id="about">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>About Zero Waste</h1>
     </div>
+  </div>
+  <div class="row">
+    <div *ngFor="let question of questions" class="col">
+      <h2>{{question.question}}</h2>
+      <p>
+        {{question.answer}}
+      </p>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-sm-4">
-        <h4>Useful Zero waste links</h4>
-        <a href="https://www.facebook.com/groups/zerowasteireland/?ref=br_rs">Zero Waste Ireland</a>
-        <br/>
-        <a href="https://www.facebook.com/groups/journeytozerowaste/">Journey to Zero Waste</a>
+      <h2>Useful Zero waste links</h2>
     </div>
-</div>
-<div id="contactArea" class="row">
-    <hr />
-    <div class="col-sm-12">
-        <app-contact></app-contact>
+    <div class="col">
+      <a href="https://www.facebook.com/groups/zerowasteireland/?ref=br_rs">Zero Waste Ireland</a>
     </div>
+    <div class="col">
+      <a href="https://www.facebook.com/groups/journeytozerowaste/">Journey to Zero Waste</a>
+    </div>
+  </div>
 </div>
-
