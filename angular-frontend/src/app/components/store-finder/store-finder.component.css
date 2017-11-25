@@ -79,3 +79,14 @@ span {
   padding-left: 0 !important;
   border-left: 1px solid #40A497;
 }
+
+@media(max-width: 560px){
+  #location-input, #search-btn-container{
+    border-left: none;
+    margin-top: 20px;
+    padding-left: 15px !important;
+    padding-right: 0px;
+  }
+
+
+}
