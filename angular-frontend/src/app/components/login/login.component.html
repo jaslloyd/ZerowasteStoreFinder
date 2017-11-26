@@ -1,12 +1,29 @@
-<h3 class="page-header text-center">Admin Login</h3>
-<form (submit)="onLoginSubmit()">
-  <div class="form-group">
-    <label for="username">Username:</label>
-    <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header primary-bg-color">
+        <h5 class="modal-title">Admin Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (submit)="onLoginSubmit()">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" [(ngModel)]="username" name="username" class="form-control" id="username">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password">
+          </div>
+          <div class="row">
+            <div class="col-sm-12 text-right">
+              <button type="submit" class="btn btn-success" href="">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  <div class="form-group">
-    <label for="password">Password:</label>
-    <input type="password" [(ngModel)]="password" name="password" class="form-control" id="password">
-  </div>
-  <button type="submit" class="btn btn-default">Login</button>
-</form>
+</div>
