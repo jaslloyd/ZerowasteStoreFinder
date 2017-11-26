@@ -2,16 +2,6 @@
   font-size: 25px;
 }
 
-.panel-heading {
-  border-bottom: 2px solid #f5f5f5;
-  background-color: white !important;
-}
-
-.well {
-  background-color: white !important;
-  border: 2px solid #f5f5f5;
-}
-
 .storeButton {
   color: blue;
 }
