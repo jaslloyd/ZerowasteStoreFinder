@@ -10,4 +10,8 @@ footer{
   color: rgb(102,43,129);
 }
 
-.clear { clear: both; height: 100px; }
+#loginButton{
+  background-color: #FFF;
+  color: #0062cc;
+}
+.clear { clear: both; height: 50px; }

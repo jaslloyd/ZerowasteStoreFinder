@@ -16,11 +16,11 @@ declare var google: any;
 //https://developers.google.com/maps/documentation/javascript/marker-clustering
 export class MapComponent implements OnInit {
   allStores: Store[] = [];
-  lat: number = 52;
-  lng: number = 13;
+  lat: number;
+  lng: number;
   zoom: number = 6;
   usersLocation: string = ''; // shoyld be passed via sote-finder router link or reverse heocache.//
-  geoposition = ''; // shoyld be passed via sote-finder router link
+  geoposition = ''; // should be passed via sote-finder router link
   query: string = '';
 
   constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService,  private loader: MapsAPILoader) { }
