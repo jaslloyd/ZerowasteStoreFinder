@@ -2,7 +2,7 @@
   font-size: 50px;
   text-transform: uppercase;
   color: #fff;
-  font-weight: 300;
+  font-weight: 600;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -15,7 +15,7 @@
 span {
   font-family: 'Roboto', sans-serif;
   font-size: 22px;
-  font-weight: 100;
+  font-weight: 300;
   color: #fff;
 }
 
@@ -54,6 +54,11 @@ span {
   border-radius: 3px;
   color: #fff;
   background-color: #40A497;
+}
+
+.btn-search:hover {
+  cursor: pointer;
+  background-color: rgb(57, 146, 134);
 }
 
 .searchInput {
