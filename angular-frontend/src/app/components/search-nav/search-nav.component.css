@@ -6,6 +6,8 @@
 
 .nav-link{
     color: #fff !important;
+    font-size: 20px;
+    font-weight: 500;
 }
 
 input{

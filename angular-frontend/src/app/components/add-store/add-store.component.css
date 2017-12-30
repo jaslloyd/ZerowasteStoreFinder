@@ -16,6 +16,10 @@
    margin-right: 5px;
 }
 
-h5, label{
+label{
   color:black;
+}
+
+h5{
+  font-weight: 600;
 }
