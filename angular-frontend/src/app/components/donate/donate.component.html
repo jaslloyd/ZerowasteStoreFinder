@@ -1,20 +1,38 @@
-<h3>Donate</h3>
-<div class="row">
-    <div class="col-sm-10">
-        <p>This website was created on our free time to benefit the Zero Waste community
-        and we are happy to help out. However we are paying for the hosting and domain registration out of own pockets.
-        The cost to run this site is €100+ per year(which includes 12 months of hosting and domain name registration). We don't like asking for money and we want to keep this site up  for a long time so any donations would be greatly appricated</p>
-        <p>We completely understand that not everyone has the money to donate so please only donate if you can. If you can't donate sharing the site with your friends and family would be greatly appricated.</p>
+<div class="modal fade" id="donateModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <form (submit)="onContactSubmit()">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header text-center primary-bg-color">
+          <h5 class="modal-title" id="contactModalLabel">Donate</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-10">
+              <p>This website was created on our free time to benefit the Zero Waste community and we are happy to help out.
+                However we are paying for the hosting and domain registration out of own pockets. The cost to run this site
+                is €100+ per year(which includes 12 months of hosting and domain name registration). We don't like asking
+                for money and we want to keep this site up for a long time so any donations would be greatly appricated</p>
+              <p>We completely understand that not everyone has the money to donate so please only donate if you can. If you
+                can't donate sharing the site with your friends and family would be greatly appricated.</p>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <div class="row">
+              <div class="col-sm-3">
+                <form ngNoForm action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                  <input type="hidden" name="cmd" value="_s-xclick">
+                  <input type="hidden" name="hosted_button_id" value="F524VW252FVHQ">
+                  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                  <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </form>
 </div>
-<div class="row">
-    <div class="col-sm-3">
-        <form ngNoForm action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="F524VW252FVHQ">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>            
-    </div>
-</div>
-
