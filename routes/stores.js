@@ -23,13 +23,19 @@ router.get('/nextsearch', (req, res, next) => {
   const nameQuery = {name: {"$regex": query, "$options": "i"}};
   const productsQuery = {products: {"$regex": query, "$options": "i"}};
   
-
   let fullQuery;
   // Check for the store names or product names in that location
   if(location.length > 0){
+    const locations = location.split(',');
+    const locationsQueries = locations.map(location => {
+      return {
+        address: {"$regex": location.trim(), "$options": "i"},
+      }
+    })
+
     fullQuery = {
-      address: {"$regex": location, "$options": "i"},
-      $and:[{$or: [nameQuery, productsQuery]}]
+      $or: [nameQuery, productsQuery],
+      $and: [...locationsQueries]
     };
   }else{
     // use regular query if location is empty, might be able to rediect to above route
