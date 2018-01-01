@@ -2,22 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Store = require('../models/store');
 
-/* Return all stores that match query */
-router.get('/search/:query', (req, res, next) => {
-  console.log(req.query)
-  const query = req.params.query;
-  // const nameQuery = {name: {"$regex": "^"+ query, "$options": "i"}};
-  const nameQuery = {name: {"$regex": query, "$options": "i"}};
-  const locationQuery = {address: {"$regex": query, "$options": "i"}};
-  const productsQuery = {products: {"$regex": query, "$options": "i"}};
-  const fullQuery = {$or: [nameQuery, locationQuery, productsQuery]};
-  Store.getStores(fullQuery, (err, stores) => {
-    if(err) throw err;
-    res.json(stores);
-  });
-});
-
-// Will probably remove when moving fully to gmaps
 router.get('/nextsearch', (req, res, next) => {
   const { query, location } = req.query;
   const nameQuery = {name: {"$regex": query, "$options": "i"}};
@@ -29,7 +13,7 @@ router.get('/nextsearch', (req, res, next) => {
     const locations = location.split(',');
     const locationsQueries = locations.map(location => {
       return {
-        address: {"$regex": location.trim(), "$options": "i"},
+        address: {"$regex": location, "$options": "i"},
       }
     })
 
