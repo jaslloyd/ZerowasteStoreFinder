@@ -12,6 +12,7 @@ export class SearchNavComponent implements OnInit {
   @Input() userQuery: string = '';
   @Input() location: string = '';
   @Output() onInput = new EventEmitter<Store>();
+  @Output() onQueryChange = new EventEmitter<String>();
 
   constructor(private backendService: BackendService) { }
 
@@ -21,6 +22,7 @@ export class SearchNavComponent implements OnInit {
 
   searchStores() : void {
     console.log(this.userQuery)
+    this.onQueryChange.emit(this.userQuery)
     this.backendService.searchStores(this.userQuery, this.location).subscribe(stores => this.onInput.emit(stores))
   }
 

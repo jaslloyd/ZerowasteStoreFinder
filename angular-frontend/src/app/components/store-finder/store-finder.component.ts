@@ -16,7 +16,10 @@ export class StoreFinderComponent implements OnInit {
   gmapsOptions: Object = {}
   query: string = '';
   searchLocal: string = '';
-  navigatorPosition;
+  navigatorPosition = {
+    lat: 52,
+    lng: 13
+  };
 
   constructor(private backendService: BackendService, private loader: MapsAPILoader,
     private _zone: NgZone) { }

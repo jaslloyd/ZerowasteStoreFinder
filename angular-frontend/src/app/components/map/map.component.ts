@@ -21,7 +21,8 @@ export class MapComponent implements OnInit {
   zoom: number = 6;
   usersLocation: string = ''; // shoyld be passed via sote-finder router link or reverse heocache.//
   geoposition = ''; // should be passed via sote-finder router link
-  query: string = '';
+  query: string;
+  navigatorPosition = {}
 
   constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService,  private loader: MapsAPILoader) { }
 
@@ -29,6 +30,10 @@ export class MapComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.lat = parseFloat(params.lat) || 52;
       this.lng = parseFloat(params.lng) || 13;
+      this.query = params.query || '';
+      this.usersLocation = params.location || '';
+      console.log(this.usersLocation)
+      this.listStores()
     })
   }
 
@@ -37,7 +42,8 @@ export class MapComponent implements OnInit {
   }
 
   listStores(){
-    this.backendService.searchStores(this.query, '').subscribe(stores => this.allStores = stores)
+    console.log(this.query)
+    this.backendService.searchStores(this.query, this.usersLocation).subscribe(stores => this.allStores = stores)
   }
 
 }

@@ -52,7 +52,6 @@ router.post('/addStore', (req, res, next) => {
     lng:  req.body.lng
   });
 
-  // Could move this logic into store object to Encapsulate functionality
   Store.getStore(newStore.id, (err, store) => {
     if(err) throw err;
     if(!store){

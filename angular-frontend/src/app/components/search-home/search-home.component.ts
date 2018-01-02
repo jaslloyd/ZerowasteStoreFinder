@@ -18,6 +18,9 @@ export class SearchHomeComponent implements OnInit {
   lng: number = 13;
   zoom: number = 4;
   dayIndex: number;
+  navigatorPosition: {
+
+  }
 
   constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService) { }
 
@@ -25,6 +28,10 @@ export class SearchHomeComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       this.query = params['query']
       this.location = params['location'];
+      this.navigatorPosition = {
+        lat: params.lat,
+        lng: params.lng
+      }
       const todayIndex = new Date().getDay() - 1;
       this.dayIndex = todayIndex === -1 ? 6 : todayIndex;
     })
@@ -33,5 +40,9 @@ export class SearchHomeComponent implements OnInit {
   onUserInput(stores: Store[]) : void {
     this.stores = stores;
     this.results = stores.length > 0 ? true : false;
+  }
+
+  onQueryChange(query: string) : void {
+    this.query = query
   }
 }
