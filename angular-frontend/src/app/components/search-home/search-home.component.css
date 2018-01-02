@@ -1,3 +1,8 @@
 .clear{
     height: 50px
 }
+
+#mapView:hover{
+    cursor: pointer;
+    background-color: rgb(57, 146, 134);
+}

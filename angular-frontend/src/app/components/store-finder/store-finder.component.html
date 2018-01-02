@@ -19,11 +19,13 @@
             <button type="button" class="btn btn-search" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal}">Find Stores</button>
         </div>
       </div>
-      <div class="query row">
+      <!-- <div class="query row">
           <div class="col-sm-12 text-center">
-              <span>Want to see all the stores on a map? <a href="" [routerLink]="['/map']" [queryParams]="{lat: navigatorPosition?.lat, lng: navigatorPosition?.lng}"> Click here</a></span>
+            <button class="btn btn-outline-success" [routerLink]="['/map']" [queryParams]="{lat: navigatorPosition?.lat, lng: navigatorPosition?.lng}">
+              Stores Map
+            </button>
           </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
