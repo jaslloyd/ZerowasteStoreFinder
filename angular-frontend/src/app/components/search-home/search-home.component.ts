@@ -14,13 +14,11 @@ export class SearchHomeComponent implements OnInit {
   results = true;
   query: string;
   location: string;
-  lat: number = 52;
-  lng: number = 13;
+  lat: number;
+  lng: number;
   zoom: number = 4;
   dayIndex: number;
-  navigatorPosition: {
-
-  }
+  navigatorPosition: object;
 
   constructor(private activatedRoute: ActivatedRoute, private backendService: BackendService) { }
 

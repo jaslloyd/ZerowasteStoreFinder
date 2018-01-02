@@ -28,8 +28,8 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.lat = parseFloat(params.lat) || 52;
-      this.lng = parseFloat(params.lng) || 13;
+      this.lat = parseFloat(params.lat);
+      this.lng = parseFloat(params.lng);
       this.query = params.query || '';
       this.usersLocation = params.location || '';
       console.log(this.usersLocation)
