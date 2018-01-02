@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit {
 
     this.backendService.getMessages().subscribe(messages => {
       this.messages = messages;
-      console.log(this.messages)
     });
   }
 

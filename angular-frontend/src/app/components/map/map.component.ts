@@ -32,7 +32,6 @@ export class MapComponent implements OnInit {
       this.lng = parseFloat(params.lng);
       this.query = params.query || '';
       this.usersLocation = params.location || '';
-      console.log(this.usersLocation)
       this.listStores()
     })
   }
@@ -42,7 +41,6 @@ export class MapComponent implements OnInit {
   }
 
   listStores(){
-    console.log(this.query)
     this.backendService.searchStores(this.query, this.usersLocation).subscribe(stores => this.allStores = stores)
   }
 

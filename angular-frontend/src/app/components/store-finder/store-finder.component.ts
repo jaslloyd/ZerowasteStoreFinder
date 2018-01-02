@@ -47,9 +47,7 @@ export class StoreFinderComponent implements OnInit {
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
             let place = autocomplete.getPlace();
-            console.log(place)
             this.searchLocal = place.formatted_address;
-            console.log(this.searchLocal)
           });
       });
     });
