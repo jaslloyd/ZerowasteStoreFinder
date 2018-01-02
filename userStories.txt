@@ -15,4 +15,4 @@ Admin:
 
 
 Work log:
-Next: Pass location from store-finder -> map...
+Next: Pass location from search-home -> map to view all the stores on the map
