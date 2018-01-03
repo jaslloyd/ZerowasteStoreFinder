@@ -4,8 +4,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Marker } from '../../interfaces/marker';
 import { Store } from '../../interfaces/store';
 import { MapsAPILoader } from '@agm/core';
-// import { GoogleMapsAPIWrapper, MarkerManager } from '@agm/core/services';
-// import { AgmMarkerCluster } from '@agm/js-marker-clusterer';
 
 declare var google: any;
 @Component({
@@ -19,7 +17,7 @@ export class MapComponent implements OnInit {
   lat: number;
   lng: number;
   zoom: number = 6;
-  usersLocation: string = ''; // shoyld be passed via sote-finder router link or reverse heocache.//
+  usersLocation: string = '';
   geoposition = ''; // should be passed via sote-finder router link
   query: string;
   navigatorPosition = {}
