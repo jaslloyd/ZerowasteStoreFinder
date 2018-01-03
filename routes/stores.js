@@ -68,6 +68,16 @@ router.post('/addStore', (req, res, next) => {
   });
 });
 
+/* Return specific store by ID */
+// This needs to be the last GET post since it will anything that matches /api/stores/xxxx
+router.get('/:storeID', (req, res, next) => {
+  const storeID = req.params.storeID;
+  Store.getStore(storeID, (err, store) => {
+    if(err) throw err;
+    res.json(store);
+  });
+});
+
 router.put('/:storeID', (req, res, next) => {
   const editedStore = {
     id: req.body.id,
