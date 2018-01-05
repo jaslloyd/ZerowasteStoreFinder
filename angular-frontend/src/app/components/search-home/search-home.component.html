@@ -4,7 +4,7 @@
     <div class="ml-auto col-md-8 col-sm-12 mt-5 mr-auto">
       <div id="stores" *ngIf="stores.length > 0;">
         <div class="row">
-            <div class="ml-auto col-sm-2 mb-3">
+            <div class="ml-auto mr-auto mb-3">
                 <button id="mapView" class="btn btn-success primary-bg-color" [routerLink]="['/map']" [queryParams]="{query: query, lat: navigatorPosition?.lat, lng: navigatorPosition?.lng, location: location}">
                   View results on map
                 </button>
