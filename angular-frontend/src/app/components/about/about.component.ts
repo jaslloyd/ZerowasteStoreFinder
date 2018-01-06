@@ -9,7 +9,6 @@ import { ContactComponent } from '../contact/contact.component';
 export class AboutComponent implements OnInit {
 
   questions: any = [];
-  constructor() { }
 
   ngOnInit() {
     this.addQuestion('The Zero Waste Philosophy', 'Zero Waste is a philosophy and a design principle for the 21st Century. It includes \'recycling\' but goes beyond recycling by taking a \'whole system\' approach to the vast flow of resources and waste through human society.Zero Waste maximizes recycling, minimizes waste, reduces consumption and ensures that products are made to be reused, repaired or recycled back into nature or the marketplace.');

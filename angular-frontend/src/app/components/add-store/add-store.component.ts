@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { BackendService } from '../../services/backend.service';
 import { AuthService } from '../../services/auth.service';
@@ -30,6 +30,8 @@ export class AddStoreComponent implements OnInit {
   storeInputClasses: string = ""
   errMsg = "";
   image: string = '';
+  
+  @ViewChild('modelCloseButton') modelCloseButton:ElementRef;
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
@@ -40,11 +42,11 @@ export class AddStoreComponent implements OnInit {
    private _location: Location) { }
 
   ngOnInit() {
-    this.addItems();
+    
 
-    this.backendService.getAllStores().subscribe(stores => {
-      this.allStores = stores;
-    });
+    // this.backendService.getAllStores().subscribe(stores => {
+    //   this.allStores = stores;
+    // });
     
     // this.backendService.getUsersCountryCode(this.lat, this.lng).subscribe(data =>{
     //      let gmapsOptions: Object = {};
@@ -100,6 +102,7 @@ export class AddStoreComponent implements OnInit {
                   if(!store){
                     this.place = place;
                     this.storeInputClasses = "is-valid";
+                    this.addItems();
                     this.validInput = true;
                     this.image = this.place.hasOwnProperty("photos") ? this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'https://vignette2.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337';
                   }else{
@@ -135,6 +138,7 @@ export class AddStoreComponent implements OnInit {
 
     this.backendService.addStore(this.store).subscribe(data => {
       if(data.success){
+        this.modelCloseButton.nativeElement.click();
         this.router.navigate(['/']);
         this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 5000});
       }else{

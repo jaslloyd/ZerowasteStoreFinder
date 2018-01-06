@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   username: String;
   password: String;
+  @ViewChild('modelCloseButton') modelCloseButton:ElementRef;
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -31,6 +32,7 @@ export class LoginComponent implements OnInit {
       if(data.success){
         this.authService.storeUserData(data.token, data.user);
         this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 3000});
+        this.modelCloseButton.nativeElement.click();
         this.router.navigate(['/dashboard']);
       }
       else{

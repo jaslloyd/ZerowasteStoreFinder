@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { BackendService } from '../../services/backend.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
@@ -14,6 +14,7 @@ export class ContactComponent implements OnInit {
   subject: String;
   message: String;
   subjects = ["Choose one", "Feature Suggestion", "Bug Report", "Support", "Other"];
+  @ViewChild('modelCloseButton') modelCloseButton:ElementRef;
 
   constructor(
     private flashMessage: FlashMessagesService,
@@ -36,11 +37,12 @@ export class ContactComponent implements OnInit {
 
     this.backendService.addMessage(message).subscribe(data => {
       if(data.success){
+        this.modelCloseButton.nativeElement.click();
         this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 5000});
+        this.router.navigate(['/']);
       }else{
         this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 3000});
       }
-      this.router.navigate(['/']);
     });
   }
 
