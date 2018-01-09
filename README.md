@@ -1,5 +1,5 @@
 # Zero Waste website
-![Zerowasteshops](https://i1.wp.com/thedeployguy.com/wp-content/uploads/2017/05/zero_waste_store_sample.png?w=1202 "Optional title")
+![Zerowasteshops](angular-frontend/src/assets/homepage.PNG)
 
 Zero waste is a environmental movement around reducing the amount of waste you produce to nearly zero. More can be read here(http://www.grrn.org/page/what-zero-waste)
 This is a web application where users can search for zero waste stores in their area or in any area. The website is driven by the community where they add stores to help other users find zero waste stores.
