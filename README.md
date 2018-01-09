@@ -1,4 +1,4 @@
-# Zero Waste website
+# Zero Waste Web App
 ![Zerowasteshops](angular-frontend/src/assets/homepage.PNG)
 
 Zero waste is a environmental movement around reducing the amount of waste you produce to nearly zero. More can be read here(http://www.grrn.org/page/what-zero-waste)
