@@ -18,6 +18,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { DonateComponent } from './components/donate/donate.component';
+import { StoreComponent } from './components/store/store.component';
 
 // Import our services for the application
 import { BackendService } from './services/backend.service';
@@ -54,7 +55,8 @@ const appRoutes: Routes = [
     DonateComponent,
     SearchHomeComponent,
     SearchNavComponent,
-    SearchItemComponent
+    SearchItemComponent,
+    StoreComponent
   ],
   imports: [
     BrowserModule,
