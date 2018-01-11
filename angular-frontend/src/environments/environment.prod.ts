@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://zerowasteshops.com'
+  apiUrl: 'https://zerowasteshops.com'
 };
