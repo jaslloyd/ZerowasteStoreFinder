@@ -13,3 +13,7 @@
 .badge{
   font-size: 15px;
 }
+
+.panel-body {
+  color: black;
+}

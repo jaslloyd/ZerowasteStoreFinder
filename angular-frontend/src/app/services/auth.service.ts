@@ -13,20 +13,6 @@ export class AuthService {
 
   constructor(private http:Http) { }
 
-  validateNewStore(store){
-      if (store == undefined){
-        return false;
-      }
-      return true;
-  }
-
-  validateSelectedItems(selectedItems, otherItems){
-    if(selectedItems == undefined || selectedItems.length == 0 && otherItems.length == 0){
-      return false;
-    }
-    return true;
-  }
-
   login(user){
     let headers = new Headers();
     headers.append('Content-Type','application/json');
