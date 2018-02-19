@@ -38,3 +38,15 @@ module.exports.comparePassword = function(password, hashedPassword, callback){
     callback(null, isMatch);
   });
 };
+
+// Dependancy injection + closures + currying
+/*
+  Dependancy Injection - Injecting the connection dependency from externally
+  Closures - The function that is being returned has access to its parent scopes variables which is (connection)
+  Currying - THe function takes one argument now and another later. You are returning a function until you have all the parameters to return the end result
+*/
+// const makeCreateUser = connection => query =>
+//     connection.table('users').insert({
+//       full_name: name
+//     })
+//     .then(user => user.id)

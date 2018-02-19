@@ -14,24 +14,23 @@ declare var google: any;
   styleUrls: ['./add-store.component.css']
 })
 export class AddStoreComponent implements OnInit {
-  gmapsOptions: Object = {}
+  gmapsOptions: Object = {};
   place: any;
   store: Store;
-  fullStoreName: string = '';
+  fullStoreName: '';
   products: string;
   selectedItems: Array<Object> = [];
-  otherItems: string = '';
+  otherItems: '';
   allStores: Store[] = [];
   productOptions = [
     {name: 'Vegetables', checked: false}
   ];
-  
-  validInput: boolean = true;
-  storeInputClasses: string = ""
-  errMsg = "";
-  image: string = '';
-  
-  @ViewChild('modelCloseButton') modelCloseButton:ElementRef;
+  validInput = true;
+  storeInputClasses= '';
+  errMsg = '';
+  image = '';
+
+  @ViewChild('modelCloseButton') modelCloseButton: ElementRef;
 
   constructor(private loader: MapsAPILoader,
    private _zone: NgZone,
@@ -42,27 +41,15 @@ export class AddStoreComponent implements OnInit {
    private _location: Location) { }
 
   ngOnInit() {
-    
-
-    // this.backendService.getAllStores().subscribe(stores => {
-    //   this.allStores = stores;
-    // });
-    
-    // this.backendService.getUsersCountryCode(this.lat, this.lng).subscribe(data =>{
-    //      let gmapsOptions: Object = {};
-    //      let shortName: string;
-    //      shortName = data.results[data.results.length - 1].address_components[0].short_name;
-    //      gmapsOptions = {componentRestrictions: {country: this.shortName}}
-    // });
     this.autocomplete();
   }
 
-  addItems(){
-    let fruitsVeggies = ["Fruits"];
-    let animalProducts = ["Meat", "Poultry", "Fish" , "Cheese", "Eggs", "Butter"];
-    let cereals = ["Rice", "Pasta"];
-    let breakfastItems = ["Bread, Cakes, Pastries", "Breakfast Cereals", "Nuts", "Dry Fruit", "Tea", "Coffee", "Nut Butter", "Honey"];
-    let otherItems = ["Acessories(e.g. lunchboxes, bottles etc.)", "Cleaning products", "Beauty products", "Body products", "Second hand clothing", "Second hand furniture", "Second hand appliances", "Zero waste friendly take away"];
+  addItems() {
+    const fruitsVeggies = ['Fruits'];
+    const animalProducts = ['Meat', 'Poultry', 'Fish' , 'Cheese', 'Eggs', 'Butter'];
+    const cereals = ['Rice', 'Pasta'];
+    const breakfastItems = ['Bread, Cakes, Pastries', 'Breakfast Cereals', 'Nuts', 'Dry Fruit', 'Tea', 'Coffee', 'Nut Butter', 'Honey'];
+    const otherItems = ['Acessories(e.g. lunchboxes, bottles etc.)', 'Cleaning products', 'Beauty products', 'Body products', 'Second hand clothing', 'Second hand furniture', 'Second hand appliances', 'Zero waste friendly take away'];
 
     this.addProductItems(fruitsVeggies);
     this.addProductItems(animalProducts);
@@ -72,7 +59,7 @@ export class AddStoreComponent implements OnInit {
 
   }
 
-  addProductItems(items){
+  addProductItems(items) {
     items.forEach((item) => {
       this.productOptions.push({
         name: item,
@@ -81,78 +68,75 @@ export class AddStoreComponent implements OnInit {
     });
   }
 
-  onSelectedProduct(){
+  onSelectedProduct() {
     this.selectedItems = this.getSelectedProducts();
   }
 
-  getSelectedProducts(){
+  getSelectedProducts() {
     return this.productOptions
             .filter(opt => opt.checked)
             .map(opt => opt.name);
   }
 
-  autocomplete(){
+  autocomplete() {
     this.loader.load().then(() => {
-      var autocomplete = new google.maps.places.Autocomplete(document.getElementById("storeLocationInput"), this.gmapsOptions);
+      let autocomplete = new google.maps.places.Autocomplete(document.getElementById('storeLocationInput'), this.gmapsOptions);
       google.maps.event.addListener(autocomplete, 'place_changed', () => {
           this._zone.run(() => {
-            var place = autocomplete.getPlace();
-            if(place.hasOwnProperty('geometry')){
+            let place = autocomplete.getPlace();
+            if (place.hasOwnProperty('geometry')) {
               this.backendService.getStore(place.id).subscribe(store => {
-                  if(!store){
+                  if (!store) {
                     this.place = place;
-                    this.storeInputClasses = "is-valid";
+                    this.storeInputClasses = 'is-valid';
                     this.addItems();
                     this.validInput = true;
-                    this.image = this.place.hasOwnProperty("photos") ? this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'https://vignette2.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337';
-                  }else{
-                    this.invalidInput(`${store.name} has already been added.`)
+                    this.image = this.place.hasOwnProperty('photos') ? this.place.photos[0].getUrl({'maxWidth': 300, 'maxHeight': 300}) : 'https://vignette2.wikia.nocookie.net/pandorahearts/images/a/ad/Not_available.jpg/revision/latest?cb=20141028171337';
+                  }else {
+                    this.invalidInput(`${store.name} has already been added.`);
                   }
-              })
-            }
-            else {
-              this.invalidInput()
+              });
+            } else {
+              this.invalidInput();
             }
           });
       });
     });
   }
 
-  invalidInput(msg='Please provide a valid store/shop.'){
-    this.storeInputClasses = "is-invalid"
+  invalidInput(msg = 'Please provide a valid store/shop.') {
+    this.storeInputClasses = 'is-invalid';
     this.validInput = false;
     this.errMsg = msg;
 
   }
 
-  onAddStoreSubmit(){
+  onAddStoreSubmit() {
     this.store = {
       id: this.place.id,
       name: this.place.name,
       address: this.place.formatted_address,
-      products: this.otherItems.length == 0 ? this.selectedItems.join(", ") : this.selectedItems.length == 0 ? this.otherItems : this.selectedItems.join(", ") + ', ' + this.otherItems,
-      openingHours: this.place.hasOwnProperty("opening_hours") ? this.place.opening_hours.weekday_text : ["N/A"],
+      products: this.otherItems.length === 0 ? this.selectedItems.join(', ') : this.selectedItems.length === 0 ? this.otherItems : this.selectedItems.join(', ') + ', ' + this.otherItems,
+      openingHours: this.place.hasOwnProperty('opening_hours') ? this.place.opening_hours.weekday_text : ['N/A'],
       lat: this.place.lat,
       lng: this.place.lng
     };
 
     this.backendService.addStore(this.store).subscribe(data => {
-      if(data.success){
+      if (data.success) {
         this.modelCloseButton.nativeElement.click();
         this.router.navigate(['/']);
-        this.flashMessage.show(data.msg, {cssClass:'alert-success', timeout: 5000});
-      }else{
+        this.flashMessage.show(data.msg, {cssClass: 'alert-success', timeout: 5000});
+      }else {
         window.scrollTo(0, 0);
-        this.flashMessage.show(data.msg, {cssClass:'alert-danger', timeout: 5000});
+        this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
       }
     });
 
   }
 
-  resetSelections(){
-    this.productOptions.forEach((item) => {
-      item.checked = false;
-    });
+  resetSelections() {
+    this.productOptions.forEach(item => item.checked = false);
     this.selectedItems = [];
   }
 }
