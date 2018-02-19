@@ -21,7 +21,6 @@ export class SearchNavComponent implements OnInit {
   }
 
   searchStores() : void {
-    console.log(this.userQuery)
     this.onQueryChange.emit(this.userQuery)
     this.backendService.searchStores(this.userQuery, this.location).subscribe(stores => this.onInput.emit(stores))
   }

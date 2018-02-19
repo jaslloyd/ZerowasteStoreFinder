@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
+import { HttpRequest, HttpResponse } from 'selenium-webdriver/http';
 
 @Injectable()
 export class BackendService {
@@ -12,7 +13,7 @@ export class BackendService {
     this.headers.append('Content-Type','application/json');
   }
 
-  searchStores(query, location=''){
+  searchStores(query, location='') {
     const fullQuery = `query=${query}&location=${location}`;
     return this.http.get(this.serverHostname +'/api/stores/nextsearch?' + fullQuery, {headers: this.headers})
       .map(res => res.json());
