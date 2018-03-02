@@ -20,13 +20,12 @@ export class AddStoreComponent implements OnInit {
   fullStoreName: '';
   products: string;
   selectedItems: Array<Object> = [];
-  otherItems: '';
   allStores: Store[] = [];
   productOptions = [
     {name: 'Vegetables', checked: false}
   ];
   validInput = true;
-  storeInputClasses= '';
+  storeInputClasses = '';
   errMsg = '';
   image = '';
 
@@ -116,7 +115,7 @@ export class AddStoreComponent implements OnInit {
       id: this.place.id,
       name: this.place.name,
       address: this.place.formatted_address,
-      products: this.otherItems.length === 0 ? this.selectedItems.join(', ') : this.selectedItems.length === 0 ? this.otherItems : this.selectedItems.join(', ') + ', ' + this.otherItems,
+      products: this.selectedItems.join(', '),
       openingHours: this.place.hasOwnProperty('opening_hours') ? this.place.opening_hours.weekday_text : ['N/A'],
       lat: this.place.lat,
       lng: this.place.lng
@@ -127,7 +126,7 @@ export class AddStoreComponent implements OnInit {
         this.modelCloseButton.nativeElement.click();
         this.router.navigate(['/']);
         this.flashMessage.show(data.msg, {cssClass: 'alert-success', timeout: 5000});
-      }else {
+      } else {
         window.scrollTo(0, 0);
         this.flashMessage.show(data.msg, {cssClass: 'alert-danger', timeout: 5000});
       }

@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AgmCoreModule } from '@agm/core';
-import { FlashMessagesModule } from 'angular2-flash-messages';
+import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messages';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -70,7 +70,7 @@ const appRoutes: Routes = [
         language: 'en'
     })
   ],
-  providers: [BackendService, AuthService, AuthGuard],
+  providers: [BackendService, AuthService, AuthGuard, FlashMessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
