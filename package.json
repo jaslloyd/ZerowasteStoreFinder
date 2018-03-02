@@ -1,24 +1,24 @@
 {
   "name": "zerowastestorefinder",
-  "version": "1.0.0",
+  "version": "2.0.2",
   "description": "Website to search for stores that sell Zero waste products",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "~1.16.0",
+    "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
-    "debug": "~2.6.0",
-    "express": "~4.14.1",
-    "morgan": "~1.7.0",
-    "pug": "2.0.0-alpha6",
-    "serve-favicon": "~2.3.2",
-    "jsonwebtoken": "*",
-    "mongoose": "*",
-    "passport": "*",
-    "passport-jwt": "*",
-    "bcryptjs": "*",
-    "cors": "*"
+    "debug": "~3.1.0",
+    "express": "~4.16.2",
+    "morgan": "~1.9.0",
+    "pug": "2.0.0-rc.4",
+    "serve-favicon": "~2.4.5",
+    "jsonwebtoken": "8.2.0",
+    "mongoose": "5.0.7",
+    "passport": "0.4.0",
+    "passport-jwt": "3.0.1",
+    "bcryptjs": "2.4.3",
+    "cors": "2.8.4"
   }
 }
