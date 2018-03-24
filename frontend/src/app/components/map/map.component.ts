@@ -16,7 +16,7 @@ export class MapComponent implements OnInit {
   allStores: Store[] = [];
   lat: number;
   lng: number;
-  zoom: number = 6;
+  zoom: number = 5;
   usersLocation: string = '';
   geoposition = ''; // should be passed via sote-finder router link
   query: string;

@@ -16,7 +16,7 @@ export class SearchHomeComponent implements OnInit {
   location: string;
   lat: number;
   lng: number;
-  zoom: number = 4;
+  zoom: number = 3;
   dayIndex: number;
   navigatorPosition: object;
 

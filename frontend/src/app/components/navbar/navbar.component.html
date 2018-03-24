@@ -1,7 +1,17 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-dark" style="background:transparent;height: 5vh">
-  <div class="container" style="padding-top:20px">
-    <h1>ZW Store Finder</h1>
-    <!-- <a class="btn btn-outline-success ml-auto" href="#">Map View</a> -->
-    <a class="btn btn-success primary-bg-color ml-3" href="#aboutSection">About</a>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-light navbar-dark mt-2" style="background:transparent;height: 5vh">
+  <h1 class="ml-5" href="#">ZW Store Finder</h1>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="btn btn-success primary-bg-color my-2 my-sm-0 mr-2" href="#aboutSection">About</a>
+        </li>
+        <div class="nav-item">
+            <button class="btn btn-success primary-bg-color my-2 my-sm-0" [routerLink]="['/map']" [queryParams]="{lat: 52, lng: 13}">Map View</button>
+        </div>
+    </ul>
+</div>
+  <!-- <div class="container" style="padding-top:20px">
+    <h1></h1>
+
+  </div> -->
 </nav>
