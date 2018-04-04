@@ -1,38 +1,14 @@
-.navbar-inverse {
-  background-color: #40A497;
-  font-size: 17px;
-}
-
-.navbar-inverse .navbar-brand{
-  color: #ffffff;
-}
-
-.navbar-inverse .navbar-brand:hover{
-  color: #D7D7D7;
-}
-
 li > a {
   color: #ffffff;
-}
-
-.navbar-inverse .navbar-nav>li>a:hover{
-  color: #D7D7D7;
-}
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
-  background-color: #19403B;
-}
-
-.navbar-inverse .navbar-toggle .icon-bar {
-    background-color: #ffffff;
 }
 
 .navbar-brand{
   font-size: 20px;
 }
 
-.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form{
-  border-color: #40A497;
-}
+/* .navbar-collapse.collapse.show{
+  background-color: pink;
+} */
 
 h1 {
   font-size: 25px;
