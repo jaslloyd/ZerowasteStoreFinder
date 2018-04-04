@@ -73,7 +73,7 @@ export class BackendService {
 
   getUsersCountryCodeImp(lat, lng){
     const fullQuery = `lat=${lat}&lng=${lng}`;
-    return this.http.get(`${this.serverHostname}/api/getusercountrycode?${fullQuery}`)
+    return this.http.get(`${this.serverHostname}/api/location/getUsersCountryCode?${fullQuery}`)
       .map(res => res.json());
   }
   getUsersCountryCode(lat, lng) {

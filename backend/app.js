@@ -12,6 +12,7 @@ mongoose.connect(config.database);
 const stores = require('./routes/stores');
 const users = require('./routes/users');
 const messages = require('./routes/messages');
+const location = require('./routes/location');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.set('view engine', 'html');
 app.use(cors());
 
 app.use('/api/stores', stores);
+app.use('/api/location', location)
 app.use('/admin', users);
 app.use('/message', messages);
 
