@@ -27,11 +27,11 @@ export class StoreFinderComponent implements OnInit {
   ngOnInit() {
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
-        this.backendService.getUsersCountryCode(position.coords.latitude, position.coords.longitude).subscribe(json => {
-            console.log(json);
-            this.searchLocal = json.results[2].formatted_address
-          }
-        )
+        // this.backendService.getUsersCountryCode(position.coords.latitude, position.coords.longitude).subscribe(json => {
+        //     console.log(json);
+        //     this.searchLocal = json.results[2].formatted_address
+        //   }
+        // )
         console.log(position)
         this.navigatorPosition = {
           lat: position.coords.latitude,
