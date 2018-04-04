@@ -32,6 +32,7 @@ export class StoreFinderComponent implements OnInit {
             this.searchLocal = json.results[2].formatted_address
           }
         )
+        console.log(position)
         this.navigatorPosition = {
           lat: position.coords.latitude,
           lng: position.coords.longitude

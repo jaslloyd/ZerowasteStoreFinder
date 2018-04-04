@@ -71,6 +71,11 @@ export class BackendService {
       .map(res => res.json());
   }
 
+  getUsersCountryCodeImp(lat, lng){
+    const fullQuery = `lat=${lat}&lng=${lng}`;
+    return this.http.get(`${this.serverHostname}/api/getusercountrycode?${fullQuery}`)
+      .map(res => res.json());
+  }
   getUsersCountryCode(lat, lng) {
     return this.http.get('https://maps.googleapis.com/maps/api/geocode/json?latlng=' + lat + ',' + lng, {})
       .map(res => res.json());
