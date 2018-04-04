@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Store = require('../models/store');
 
-router.get('/nextsearch', (req, res, next) => {
+router.get('/search', (req, res, next) => {
   const { query, location } = req.query;
   const nameQuery = {name: {"$regex": query, "$options": "i"}};
   const productsQuery = {products: {"$regex": query, "$options": "i"}};
