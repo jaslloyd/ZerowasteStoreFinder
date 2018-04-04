@@ -9,8 +9,8 @@ import { BackendService } from '../../services/backend.service';
 declare var google: any;
 @Component({
   selector: 'app-store-finder',
-  templateUrl: './store-finder.component.html',
-  styleUrls: ['./store-finder.component.css']
+  templateUrl: './homepage.component.html',
+  styleUrls: ['./homepage.component.css']
 })
 export class StoreFinderComponent implements OnInit {
   gmapsOptions: Object = {}

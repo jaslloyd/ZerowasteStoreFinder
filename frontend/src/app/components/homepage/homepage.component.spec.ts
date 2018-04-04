@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { StoreFinderComponent } from './store-finder.component';
+import { StoreFinderComponent } from './homepage.component';
 
 describe('StoreFinderComponent', () => {
   let component: StoreFinderComponent;

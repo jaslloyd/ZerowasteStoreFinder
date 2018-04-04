@@ -9,7 +9,7 @@ import { FlashMessagesModule, FlashMessagesService } from 'angular2-flash-messag
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { StoreFinderComponent } from './components/store-finder/store-finder.component';
+import { StoreFinderComponent } from './components/homepage/homepage.component';
 import { MapComponent } from './components/map/map.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
