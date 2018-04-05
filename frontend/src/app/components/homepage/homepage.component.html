@@ -10,10 +10,10 @@
       </div>
       <div class="query row"> 
         <div id="search-input" class="col-sm-7">
-          <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name, Location or Product" required>
+          <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name or Product" required>
         </div>
         <div id="location-input" class="col-sm-3">
-            <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Location" required>
+            <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Enter Location..." required>
         </div>
         <div id="search-btn-container" class="col-sm-2 text-left">
             <button type="button" class="btn btn-search" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal, lat: navigatorPosition?.lat, lng: navigatorPosition?.lng}">Find Stores</button>
