@@ -24,7 +24,7 @@
 }
 
 .query {
-  max-width: 900px;
+  max-width: 70vw;
   margin: 40px auto;
 }
 
@@ -67,10 +67,6 @@
   border-radius: 0 !important;
 }
 
-#search-input {
-  padding-right: 0 !important;
-}
-
 #location-input {
   padding-left: 0 !important;
   border-left: 1px solid #40A497;
@@ -87,6 +83,5 @@
     border-left: none;
     margin-top: 20px;
     padding-left: 15px !important;
-    padding-right: 0px;
   }
 }
