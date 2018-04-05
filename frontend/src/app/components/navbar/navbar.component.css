@@ -6,6 +6,10 @@ li > a {
   font-size: 20px;
 }
 
+.navbar-transparent{
+  background:transparent;
+  height: 5vh;
+}
 /* .navbar-collapse.collapse.show{
   background-color: pink;
 } */

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light navbar-dark mt-4" style="background:transparent;height: 5vh">
+<nav class="navbar navbar-expand-lg navbar-light navbar-dark navbar-transparent mt-4">
     <h1 class="ml-5" [routerLink]="['/']">ZW Store Finder</h1>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
                 <a class="btn btn-success primary-bg-color my-2 my-sm-0 mr-2" href="#aboutSection">About</a>
             </li>
             <div class="nav-item">
-                <button class="btn btn-success primary-bg-color my-2 my-sm-0" [routerLink]="['/map']" [queryParams]="{lat: 52, lng: 13}">Map View</button>
+                <button class="btn btn-success primary-bg-color my-2 my-sm-0" [routerLink]="['/map']" [queryParams]="DEFAULT_LOCATION">Map View</button>
             </div>
         </ul>
     </div>

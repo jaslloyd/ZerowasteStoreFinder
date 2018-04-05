@@ -10,21 +10,24 @@ import { AuthService } from '../../services/auth.service';
 })
 export class NavbarComponent implements OnInit {
 
+  // TODO: Could get user location but don't want to ask too many times
+  DEFAULT_LOCATION = { lat: 52, lng: 13 };
+
   constructor(private flashMessage: FlashMessagesService,
-  private authService: AuthService,
-  private router: Router) { }
+    private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
-  onLogoutClick(){
+  onLogoutClick() {
     this.authService.logout();
-    this.flashMessage.show('Logout successful', {cssClass:'alert-success', timeout: 3000});
+    this.flashMessage.show('Logout successful', { cssClass: 'alert-success', timeout: 3000 });
     this.router.navigate(['/']);
     return false;
   }
 
-  isLoggedIn(){
+  isLoggedIn() {
     return this.authService.isLoggedIn();
   }
 }

@@ -9,7 +9,7 @@
 .description hr {
   width: 150px;
   height: 1px;
-  border-top: 1px solid #40A497;
+  border-top: 3px solid #40A497;
 }
 
 #sub-title {
@@ -67,11 +67,11 @@
   border-radius: 0 !important;
 }
 
-.col-sm-7 {
+#search-input {
   padding-right: 0 !important;
 }
 
-.col-sm-3 {
+#location-input {
   padding-left: 0 !important;
   border-left: 1px solid #40A497;
 }
