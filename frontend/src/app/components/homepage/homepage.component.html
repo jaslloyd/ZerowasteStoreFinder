@@ -8,22 +8,35 @@
         <hr/>
         <span id="sub-title">Helping you save the environment one search at a time</span>
       </div>
-      <div class="query row"> 
-        <div id="search-input" class="col-sm-6">
-          <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control input-lg" placeholder="Type Store name or Product" required>
-        </div>
-        <div id="location-input" class="col-sm-3">
-            <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Enter Location..." required>
-        </div>
-        <div id="search-btn-container" class="col-sm-2 text-left">
-            <button type="button" class="btn btn-search" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal, lat: navigatorPosition?.lat, lng: navigatorPosition?.lng}">Find Stores</button>
+      <div class="query">
+        <div class="row">
+          <div class="col-sm-5">
+            <div id="search-input">
+              <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control" placeholder="Type Store name or Product"
+                required>
+            </div>
+          </div>
+          <div class="col-sm-4" id="location-input">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend">
+                  <i class="fas fa-location-arrow"></i>
+                </span>
+              </div>
+              <input type="text" id="searchLocal" name="searchLocal" [(ngModel)]="searchLocal" class="form-control input-lg" placeholder="Enter Location..."
+                required>
+            </div>
+          </div>
+          <div id="search-btn-container" class="col-sm-12 col-md-3 text-left">
+            <button type="button" class="btn btn-search btn-block" [routerLink]="['/search']" [queryParams]="{query: query, location: searchLocal, lat: navigatorPosition?.lat, lng: navigatorPosition?.lng}">Find Stores</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 <section id="aboutSection">
-  <app-about></app-about>  
+  <app-about></app-about>
 </section>
 <section>
   <app-footer></app-footer>
