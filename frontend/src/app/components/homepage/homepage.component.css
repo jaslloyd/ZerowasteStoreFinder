@@ -80,3 +80,9 @@
     padding-left: 15px !important;
   }
 }
+
+@media(min-width: 576px){
+  .col-sm-12{
+    margin-top: 20px;
+  }
+}
