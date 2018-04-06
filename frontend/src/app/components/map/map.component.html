@@ -1,7 +1,6 @@
 <app-search-nav [userQuery]="query" [location]="usersLocation" (onInput)="onUserInput($event)"></app-search-nav>
-<div class="container-fluid">
 <div class="row">
-  <div class="col-md-9">
+  <div class="col-md-12">
     <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom" [zoomControl]="true">
       <agm-marker
           *ngFor="let m of allStores"
@@ -21,26 +20,4 @@
       </agm-marker>
     </agm-map>
   </div>
-  <div class="col-md-3">
-    <form class="container-fluid" (submit)="listStores()">
-      <div class="row">
-        <div class="col-sm-8 m-0 p-0">
-            <input type="query" [(ngModel)]="query" name="query" id="query" class="form-control" placeholder="Enter query" required="required"/>
-        </div>
-        <div class="col-sm-4">
-            <button type="submit" class="btn btn-primary">SEARCH!</button>
-        </div>
-      </div>
-      <div id="right">
-      <div class="row" *ngFor="let store of allStores">
-        <div class="col-sm-12">
-            <app-search-item [store]="store" [dayIndex]="1"></app-search-item>
-        </div>
-      </div>
-      </div>
-    </form>
-    <hr />
-  </div>
-</div>
-
 </div>

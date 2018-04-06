@@ -1,11 +1,3 @@
-li > a {
-  color: #ffffff;
-}
-
-.navbar-brand {
-  font-size: 20px;
-}
-
 .navbar-transparent {
   background: transparent;
   height: 5vh;
