@@ -31,3 +31,9 @@ li > a {
 .btn:hover {
   background-color: rgb(57, 146, 134);
 }
+
+@media(max-width: 576px){
+  #addStore{
+    margin-top: 5px;
+  }
+}

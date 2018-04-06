@@ -9,7 +9,7 @@
             <li class="nav-item mr-2">
                 <button class="btn btn-success primary-bg-color my-2 my-sm-0" [routerLink]="['/map']" [queryParams]="DEFAULT_LOCATION">Map View</button>
             </li>
-            <li class="nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <li class="nav-item" id="addStore" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
                 <a class="btn btn-success primary-bg-color my-2 my-sm-0" href="" data-toggle="modal" data-target="#addStoreModal">
                   Add Store
                 </a>
