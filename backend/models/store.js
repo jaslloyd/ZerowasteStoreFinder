@@ -9,7 +9,11 @@ const StoreSchema = mongoose.Schema({
     openingHours: Array,
     products: String,
     lat: Number,
-    lng: Number
+    lng: Number,
+    location: {
+      lat: Number,
+      lng: Number
+    }
 });
 
 const Store = mongoose.model('Store', StoreSchema);
