@@ -11,8 +11,13 @@
       <div class="query">
         <div class="row">
           <div class="col-sm-12 col-md-5">
-            <div id="search-input">
-              <input type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control" placeholder="Enter Store name or Product"
+            <div class="input-group">
+              <div class="input-group-prepend">
+                  <div class="input-group-prepend">
+                      <div class="input-group-text"> <i class="fas fa-shopping-basket"></i></div>
+                    </div>
+              </div>
+              <input id="search-input" type="text" name="storeFinderInput" [(ngModel)]="query" class="form-control" placeholder="Enter Store name or Product"
                 required>
             </div>
           </div>

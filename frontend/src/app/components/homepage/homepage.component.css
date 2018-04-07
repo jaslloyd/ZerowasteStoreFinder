@@ -30,8 +30,6 @@
 
 .query input {
   height: 55px;
-  border: 0px;
-  border-radius: 3px;
   color: #8c8c8c;
   font-size: 18px;
   font-weight: 300;
@@ -63,8 +61,9 @@
   resize: vertical;
 }
 
-.form-control {
-  border-radius: 0 !important;
+.input-group-text {
+  background-color: #FF4D00;
+  color: white;
 }
 
 #aboutSection{
@@ -75,7 +74,6 @@
 
 @media(max-width: 576px){
   #location-input, #search-btn-container{
-    border-left: none;
     margin-top: 20px;
     padding-left: 15px !important;
   }
