@@ -16,29 +16,46 @@ export class StoreFinderComponent implements OnInit {
   gmapsOptions: Object = {}
   query: string = '';
   searchLocal: string = '';
-  navigatorPosition = {
-    lat: 52,
-    lng: 13
-  };
+  navigatorPosition = { lat: 52, lng: 13 };
 
+ 
   constructor(private backendService: BackendService, private loader: MapsAPILoader,
     private _zone: NgZone) { }
 
   ngOnInit() {
+      this.autocomplete();
+  }
+
+  getLocation() {
     if(navigator && navigator.geolocation){
       navigator.geolocation.getCurrentPosition(position => {
-        // this.backendService.getUsersCountryCode(position.coords.latitude, position.coords.longitude).subscribe(json => {
-        //     console.log(json);
-        //     this.searchLocal = json.results[2].formatted_address
-        //   }
-        // )
         this.navigatorPosition = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
+        this.getGeolocation();
       });
     }
-    this.autocomplete()
+  }
+
+  getGeolocation(){
+    this.loader.load().then(() => {
+      const geocoder = new google.maps.Geocoder;
+      geocoder.geocode({'location': this.navigatorPosition}, (results, status) => {
+        if(status === 'OK'){
+          if (results[0]){
+            // console.log(results)
+            const cityName = results[0].address_components.filter(result => result.types.includes('locality'))
+
+            this._zone.run(() => {
+              this.searchLocal = cityName[0].long_name
+              console.log(this.searchLocal);
+            })
+          } 
+        }
+        
+      })
+    })
   }
 
   autocomplete(){
