@@ -5,3 +5,5 @@ router.get('/getUsersCountryCode', (req, res, next) => {
     const { lng, lat } = req.query;
     console.log({lng, lat});
 });
+
+module.exports = router;
