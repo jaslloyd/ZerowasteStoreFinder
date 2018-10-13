@@ -3,7 +3,7 @@ const router = express.Router();
 const Message = require('../models/message');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
+//const config = require('../config/database');
 
 router.post('/addMessage', (req, res, next) => {
   let newMessage = new Message({

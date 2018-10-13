@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const config = require('../config/database.js');
+//const config = require('../config/database.js');
 
 //Setup user schema
 const MessageSchema = mongoose.Schema({
