@@ -3,7 +3,13 @@ const router = express.Router();
 const User = require('../models/user');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const config = require('../config/database');
+let config = {}
+
+try {
+  config = require('./config/database.js')
+} catch(e) {
+  console.log('INFO: Cannot find database.js file using, env files should be setup')
+}
 
 router.post('/register', (req, res, next) => {
   let newUser = new User({

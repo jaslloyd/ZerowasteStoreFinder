@@ -5,7 +5,13 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const config = require('./config/database.js');
+let config = {}
+
+try {
+  config = require('./config/database.js')
+} catch(e) {
+  console.log('INFO: Cannot find database.js file using, env files should be setup')
+}
 
 mongoose.connect(process.env.DB_URI || config.DB_URI);
 
