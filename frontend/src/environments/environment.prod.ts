@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://zerowasteshops.com'
+  apiUrl: 'https://zerowasteshops.herokuapp.com'
 };
