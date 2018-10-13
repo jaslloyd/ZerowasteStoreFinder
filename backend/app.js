@@ -7,7 +7,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./config/database.js');
 
-mongoose.connect(config.database);
+mongoose.connect(process.env.DB_URI || config.DB_URI);
 
 const stores = require('./routes/stores');
 const users = require('./routes/users');
