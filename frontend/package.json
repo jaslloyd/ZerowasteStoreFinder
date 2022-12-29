@@ -27,11 +27,11 @@
     "angular2-jwt": "^0.2.3",
     "core-js": "^2.5.3",
     "rxjs": "^5.5.6",
-    "webpack": "^3.11.0",
+    "webpack": "^5.75.0",
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "@angular/cli": "1.7.2",
+    "@angular/cli": "15.0.4",
     "@angular/compiler-cli": "^5.2.7",
     "@angular/language-service": "^5.2.7",
     "@types/jasmine": "~2.8.6",
